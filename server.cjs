@@ -111,6 +111,23 @@ function handleApi(req, res) {
         schedeData = payload;
         schedeData.dataExport = new Date().toISOString();
         saveData(schedeData);
+
+        // Salva anche come schede.json (per GitHub Pages)
+        const schedeFile = path.join(__dirname, "schede.json");
+        fs.writeFileSync(schedeFile, JSON.stringify(schedeData, null, 2), "utf8");
+
+        // Git add, commit e push in background
+        const { exec } = require("child_process");
+        exec('git add schede.json && git commit -m "Aggiorna schede mobile" && git push', {
+          cwd: __dirname,
+        }, (err, stdout, stderr) => {
+          if (err) {
+            console.warn("[server] git push fallito:", stderr || err.message);
+          } else {
+            console.log("[server] schede.json pushato su GitHub");
+          }
+        });
+
         res.writeHead(200, { "Content-Type": "application/json" });
         res.end(JSON.stringify({ ok: true, count: payload.sessioni.length }));
       } catch (e) {
