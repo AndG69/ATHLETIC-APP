@@ -7,3 +7,7 @@ echo NON chiudere questa finestra mentre usi l'app.
 echo.
 start "" http://localhost:3001
 node server.cjs
+echo.
+echo === SERVER TERMINATO ===
+echo Se vedi un errore sopra, segnalalo.
+pause
