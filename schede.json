@@ -1,0 +1,1618 @@
+{
+  "versione": "1.0",
+  "sessioni": [
+    {
+      "data": "2026-06-01",
+      "tipo": "palestra",
+      "numeroCiclo": 1,
+      "nomeSeduta": "Seduta 1",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Addominal Machine",
+          "gruppo": "Addominali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 36,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Curl Manubri",
+          "gruppo": "Bicipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 8,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Lat Machine presa larga",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 39,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Leg Extension",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 10,
+          "carico": 29,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Gluteus Machine",
+          "gruppo": "Glutei",
+          "serie": 4,
+          "ripetizioni": 10,
+          "carico": 23,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Supine press - presa stretta",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 25,
+          "tempoSecondi": null
+        }
+      ]
+    },
+    {
+      "data": "2026-06-02",
+      "tipo": "palestra",
+      "numeroCiclo": 2,
+      "nomeSeduta": "Seduta 2",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Alzate laterali - Macchinario",
+          "gruppo": "Spalle",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 32,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "French press cavo alto",
+          "gruppo": "Tricipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 11.3,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Plank",
+          "gruppo": "Addominali",
+          "serie": 4,
+          "ripetizioni": 1,
+          "carico": 0,
+          "tempoSecondi": 30
+        },
+        {
+          "nome": "Curl a Martello",
+          "gruppo": "Bicipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 6,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Lat Machine triangolo",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 25,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Squat corpo libero",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 6,
+          "carico": 0,
+          "tempoSecondi": null
+        }
+      ]
+    },
+    {
+      "data": "2026-06-04",
+      "tipo": "corsa",
+      "nomeSessione": "Corsa sett. 3 — 300m corsa / 700m camm × 5",
+      "settimanaProgressione": 3,
+      "schemaWalkRun": {
+        "cammMetri": 700,
+        "corsaMetri": 300,
+        "ripetizioni": 5
+      },
+      "durataStimataMin": 44,
+      "zonaFC": "Z2",
+      "rpeTarget": 6,
+      "stato": "Programmata"
+    },
+    {
+      "data": "2026-06-06",
+      "tipo": "palestra",
+      "numeroCiclo": 3,
+      "nomeSeduta": "Seduta 3",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Croci Manubri panca piana",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 10,
+          "carico": 8,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Alzate posteriori pronospinate",
+          "gruppo": "Spalle",
+          "serie": 4,
+          "ripetizioni": 10,
+          "carico": 5,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Panca presa stretta bilancere",
+          "gruppo": "Tricipiti",
+          "serie": 4,
+          "ripetizioni": 8,
+          "carico": 5,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Plank laterale",
+          "gruppo": "Addominali",
+          "serie": 4,
+          "ripetizioni": 1,
+          "carico": 0,
+          "tempoSecondi": 30
+        },
+        {
+          "nome": "Panca Scott",
+          "gruppo": "Bicipiti",
+          "serie": 4,
+          "ripetizioni": 6,
+          "carico": 7.5,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Lat Machine presa inversa",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 10,
+          "carico": 32,
+          "tempoSecondi": null
+        }
+      ]
+    },
+    {
+      "data": "2026-06-07",
+      "tipo": "palestra",
+      "numeroCiclo": 4,
+      "nomeSeduta": "Seduta 4",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Machine Abductor",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 43,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Shoulder press",
+          "gruppo": "Spalle",
+          "serie": 4,
+          "ripetizioni": 10,
+          "carico": 18,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Push down Ercolina",
+          "gruppo": "Tricipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 18,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Crunch",
+          "gruppo": "Addominali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 43,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Curl Cavo basso (ercolina)",
+          "gruppo": "Bicipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 15.8,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Pull down lat machine",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 22.6,
+          "tempoSecondi": null
+        }
+      ]
+    },
+    {
+      "data": "2026-06-09",
+      "tipo": "corsa",
+      "nomeSessione": "Corsa sett. 4 — 400m corsa / 600m camm × 5",
+      "settimanaProgressione": 4,
+      "schemaWalkRun": {
+        "cammMetri": 600,
+        "corsaMetri": 400,
+        "ripetizioni": 5
+      },
+      "durataStimataMin": 42,
+      "zonaFC": "Z2",
+      "rpeTarget": 6,
+      "stato": "Programmata"
+    },
+    {
+      "data": "2026-06-11",
+      "tipo": "palestra",
+      "numeroCiclo": 5,
+      "nomeSeduta": "Seduta 5",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Machine Adductor",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 29,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Panca Inclinata bilancere",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 15,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Push down inverso",
+          "gruppo": "Tricipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 15.8,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Alzate Gambe",
+          "gruppo": "Addominali",
+          "serie": 4,
+          "ripetizioni": 6,
+          "carico": 0.1,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Curl concentrato al cavo",
+          "gruppo": "Bicipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 6.7,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Pulley triangolo",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 32,
+          "tempoSecondi": null
+        }
+      ]
+    },
+    {
+      "data": "2026-06-12",
+      "tipo": "palestra",
+      "numeroCiclo": 6,
+      "nomeSeduta": "Seduta 6",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Leg Curl sdraiato",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 23,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Calf in piedi",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 20,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Panca Piana bilancere",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 15,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Pull Over con manubrio",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 14,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Iperestensioni",
+          "gruppo": "Lombari",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 0,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Trazioni assistite",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 8,
+          "carico": 47.6,
+          "tempoSecondi": null
+        }
+      ]
+    },
+    {
+      "data": "2026-06-14",
+      "tipo": "corsa",
+      "nomeSessione": "Corsa sett. 4 — 400m corsa / 600m camm × 5",
+      "settimanaProgressione": 4,
+      "schemaWalkRun": {
+        "cammMetri": 600,
+        "corsaMetri": 400,
+        "ripetizioni": 5
+      },
+      "durataStimataMin": 42,
+      "zonaFC": "Z2",
+      "rpeTarget": 6,
+      "stato": "Programmata"
+    },
+    {
+      "data": "2026-06-15",
+      "tipo": "palestra",
+      "numeroCiclo": 7,
+      "nomeSeduta": "Seduta 7",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Incline Level Row",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 10,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Seated Row",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 23,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Chest Press",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 29,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Supine press - presa larga",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 25,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Incline press",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 29,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Seated row 2",
+          "gruppo": "Tricipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 15,
+          "tempoSecondi": null
+        }
+      ]
+    },
+    {
+      "data": "2026-06-16",
+      "tipo": "palestra",
+      "numeroCiclo": 8,
+      "nomeSeduta": "Seduta 8",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Shoulder press",
+          "gruppo": "Spalle",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 18,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Shoulder Press 2",
+          "gruppo": "Spalle",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 10,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Decline Press 2",
+          "gruppo": "Spalle",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 20,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Rear Delt",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 39,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Trazioni assistite - Dip",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 6,
+          "carico": 61.2,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Pec Fly",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 52,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Leg Press",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 40,
+          "tempoSecondi": null
+        }
+      ]
+    },
+    {
+      "data": "2026-06-18",
+      "tipo": "corsa",
+      "nomeSessione": "Corsa sett. 4 — 400m corsa / 600m camm × 5",
+      "settimanaProgressione": 4,
+      "schemaWalkRun": {
+        "cammMetri": 600,
+        "corsaMetri": 400,
+        "ripetizioni": 5
+      },
+      "durataStimataMin": 42,
+      "zonaFC": "Z2",
+      "rpeTarget": 6,
+      "stato": "Programmata"
+    },
+    {
+      "data": "2026-06-20",
+      "tipo": "palestra",
+      "numeroCiclo": 1,
+      "nomeSeduta": "Seduta 1",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Addominal Machine",
+          "gruppo": "Addominali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 36,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Curl Manubri",
+          "gruppo": "Bicipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 8,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Lat Machine presa larga",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 39,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Leg Extension",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 10,
+          "carico": 29,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Gluteus Machine",
+          "gruppo": "Glutei",
+          "serie": 4,
+          "ripetizioni": 10,
+          "carico": 23,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Supine press - presa stretta",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 25,
+          "tempoSecondi": null
+        }
+      ]
+    },
+    {
+      "data": "2026-06-21",
+      "tipo": "palestra",
+      "numeroCiclo": 2,
+      "nomeSeduta": "Seduta 2",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Alzate laterali - Macchinario",
+          "gruppo": "Spalle",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 32,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "French press cavo alto",
+          "gruppo": "Tricipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 11.3,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Plank",
+          "gruppo": "Addominali",
+          "serie": 4,
+          "ripetizioni": 1,
+          "carico": 0,
+          "tempoSecondi": 30
+        },
+        {
+          "nome": "Curl a Martello",
+          "gruppo": "Bicipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 6,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Lat Machine triangolo",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 25,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Squat corpo libero",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 6,
+          "carico": 0,
+          "tempoSecondi": null
+        }
+      ]
+    },
+    {
+      "data": "2026-06-23",
+      "tipo": "corsa",
+      "nomeSessione": "Corsa sett. 5 — 500m corsa / 500m camm × 5",
+      "settimanaProgressione": 5,
+      "schemaWalkRun": {
+        "cammMetri": 500,
+        "corsaMetri": 500,
+        "ripetizioni": 5
+      },
+      "durataStimataMin": 40,
+      "zonaFC": "Z2",
+      "rpeTarget": 6,
+      "stato": "Programmata"
+    },
+    {
+      "data": "2026-06-25",
+      "tipo": "palestra",
+      "numeroCiclo": 3,
+      "nomeSeduta": "Seduta 3",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Croci Manubri panca piana",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 10,
+          "carico": 8,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Alzate posteriori pronospinate",
+          "gruppo": "Spalle",
+          "serie": 4,
+          "ripetizioni": 10,
+          "carico": 5,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Panca presa stretta bilancere",
+          "gruppo": "Tricipiti",
+          "serie": 4,
+          "ripetizioni": 8,
+          "carico": 5,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Plank laterale",
+          "gruppo": "Addominali",
+          "serie": 4,
+          "ripetizioni": 1,
+          "carico": 0,
+          "tempoSecondi": 30
+        },
+        {
+          "nome": "Panca Scott",
+          "gruppo": "Bicipiti",
+          "serie": 4,
+          "ripetizioni": 6,
+          "carico": 7.5,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Lat Machine presa inversa",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 10,
+          "carico": 32,
+          "tempoSecondi": null
+        }
+      ]
+    },
+    {
+      "data": "2026-06-26",
+      "tipo": "palestra",
+      "numeroCiclo": 4,
+      "nomeSeduta": "Seduta 4",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Machine Abductor",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 43,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Shoulder press",
+          "gruppo": "Spalle",
+          "serie": 4,
+          "ripetizioni": 10,
+          "carico": 18,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Push down Ercolina",
+          "gruppo": "Tricipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 18,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Crunch",
+          "gruppo": "Addominali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 43,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Curl Cavo basso (ercolina)",
+          "gruppo": "Bicipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 15.8,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Pull down lat machine",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 22.6,
+          "tempoSecondi": null
+        }
+      ]
+    },
+    {
+      "data": "2026-06-28",
+      "tipo": "corsa",
+      "nomeSessione": "Corsa sett. 5 — 500m corsa / 500m camm × 5",
+      "settimanaProgressione": 5,
+      "schemaWalkRun": {
+        "cammMetri": 500,
+        "corsaMetri": 500,
+        "ripetizioni": 5
+      },
+      "durataStimataMin": 40,
+      "zonaFC": "Z2",
+      "rpeTarget": 6,
+      "stato": "Programmata"
+    },
+    {
+      "data": "2026-06-29",
+      "tipo": "palestra",
+      "numeroCiclo": 5,
+      "nomeSeduta": "Seduta 5",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Machine Adductor",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 29,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Panca Inclinata bilancere",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 15,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Push down inverso",
+          "gruppo": "Tricipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 15.8,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Alzate Gambe",
+          "gruppo": "Addominali",
+          "serie": 4,
+          "ripetizioni": 6,
+          "carico": 0.1,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Curl concentrato al cavo",
+          "gruppo": "Bicipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 6.7,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Pulley triangolo",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 32,
+          "tempoSecondi": null
+        }
+      ]
+    },
+    {
+      "data": "2026-06-30",
+      "tipo": "palestra",
+      "numeroCiclo": 6,
+      "nomeSeduta": "Seduta 6",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Leg Curl sdraiato",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 23,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Calf in piedi",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 20,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Panca Piana bilancere",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 15,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Pull Over con manubrio",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 14,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Iperestensioni",
+          "gruppo": "Lombari",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 0,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Trazioni assistite",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 8,
+          "carico": 47.6,
+          "tempoSecondi": null
+        }
+      ]
+    },
+    {
+      "data": "2026-07-07",
+      "tipo": "corsa",
+      "nomeSessione": "Corsa sett. 6 — 600m corsa / 400m camm × 5",
+      "settimanaProgressione": 6,
+      "schemaWalkRun": {
+        "cammMetri": 400,
+        "corsaMetri": 600,
+        "ripetizioni": 5
+      },
+      "durataStimataMin": 38,
+      "zonaFC": "Z2",
+      "rpeTarget": 6,
+      "stato": "Programmata"
+    },
+    {
+      "data": "2026-07-09",
+      "tipo": "palestra",
+      "numeroCiclo": 3,
+      "nomeSeduta": "Seduta 3",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Croci Manubri panca piana",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 10,
+          "carico": 8,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Alzate posteriori pronospinate",
+          "gruppo": "Spalle",
+          "serie": 4,
+          "ripetizioni": 10,
+          "carico": 5,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Panca presa stretta bilancere",
+          "gruppo": "Tricipiti",
+          "serie": 4,
+          "ripetizioni": 8,
+          "carico": 5,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Plank laterale",
+          "gruppo": "Addominali",
+          "serie": 4,
+          "ripetizioni": 1,
+          "carico": 0,
+          "tempoSecondi": 30
+        },
+        {
+          "nome": "Panca Scott",
+          "gruppo": "Bicipiti",
+          "serie": 4,
+          "ripetizioni": 6,
+          "carico": 7.5,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Lat Machine presa inversa",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 10,
+          "carico": 32,
+          "tempoSecondi": null
+        }
+      ]
+    },
+    {
+      "data": "2026-07-10",
+      "tipo": "palestra",
+      "numeroCiclo": 4,
+      "nomeSeduta": "Seduta 4",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Machine Abductor",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 43,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Shoulder press",
+          "gruppo": "Spalle",
+          "serie": 4,
+          "ripetizioni": 10,
+          "carico": 18,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Push down Ercolina",
+          "gruppo": "Tricipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 18,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Crunch",
+          "gruppo": "Addominali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 43,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Curl Cavo basso (ercolina)",
+          "gruppo": "Bicipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 15.8,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Pull down lat machine",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 22.6,
+          "tempoSecondi": null
+        }
+      ]
+    },
+    {
+      "data": "2026-07-12",
+      "tipo": "corsa",
+      "nomeSessione": "Corsa sett. 6 — 600m corsa / 400m camm × 5",
+      "settimanaProgressione": 6,
+      "schemaWalkRun": {
+        "cammMetri": 400,
+        "corsaMetri": 600,
+        "ripetizioni": 5
+      },
+      "durataStimataMin": 38,
+      "zonaFC": "Z2",
+      "rpeTarget": 6,
+      "stato": "Programmata"
+    },
+    {
+      "data": "2026-07-13",
+      "tipo": "palestra",
+      "numeroCiclo": 5,
+      "nomeSeduta": "Seduta 5",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Machine Adductor",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 29,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Panca Inclinata bilancere",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 15,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Push down inverso",
+          "gruppo": "Tricipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 15.8,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Alzate Gambe",
+          "gruppo": "Addominali",
+          "serie": 4,
+          "ripetizioni": 6,
+          "carico": 0.1,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Curl concentrato al cavo",
+          "gruppo": "Bicipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 6.7,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Pulley triangolo",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 32,
+          "tempoSecondi": null
+        }
+      ]
+    },
+    {
+      "data": "2026-07-14",
+      "tipo": "palestra",
+      "numeroCiclo": 6,
+      "nomeSeduta": "Seduta 6",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Leg Curl sdraiato",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 23,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Calf in piedi",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 20,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Panca Piana bilancere",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 15,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Pull Over con manubrio",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 14,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Iperestensioni",
+          "gruppo": "Lombari",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 0,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Trazioni assistite",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 8,
+          "carico": 47.6,
+          "tempoSecondi": null
+        }
+      ]
+    },
+    {
+      "data": "2026-07-16",
+      "tipo": "corsa",
+      "nomeSessione": "Corsa sett. 6 — 600m corsa / 400m camm × 5",
+      "settimanaProgressione": 6,
+      "schemaWalkRun": {
+        "cammMetri": 400,
+        "corsaMetri": 600,
+        "ripetizioni": 5
+      },
+      "durataStimataMin": 38,
+      "zonaFC": "Z2",
+      "rpeTarget": 6,
+      "stato": "Programmata"
+    },
+    {
+      "data": "2026-07-18",
+      "tipo": "palestra",
+      "numeroCiclo": 7,
+      "nomeSeduta": "Seduta 7",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Incline Level Row",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 10,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Seated Row",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 23,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Chest Press",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 29,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Supine press - presa larga",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 25,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Incline press",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 29,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Seated row 2",
+          "gruppo": "Tricipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 15,
+          "tempoSecondi": null
+        }
+      ]
+    },
+    {
+      "data": "2026-07-19",
+      "tipo": "palestra",
+      "numeroCiclo": 8,
+      "nomeSeduta": "Seduta 8",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Shoulder press",
+          "gruppo": "Spalle",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 18,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Shoulder Press 2",
+          "gruppo": "Spalle",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 10,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Decline Press 2",
+          "gruppo": "Spalle",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 20,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Rear Delt",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 39,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Trazioni assistite - Dip",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 6,
+          "carico": 61.2,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Pec Fly",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 52,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Leg Press",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 40,
+          "tempoSecondi": null
+        }
+      ]
+    },
+    {
+      "data": "2026-07-21",
+      "tipo": "corsa",
+      "nomeSessione": "Corsa sett. 7 — 700m corsa / 300m camm × 5",
+      "settimanaProgressione": 7,
+      "schemaWalkRun": {
+        "cammMetri": 300,
+        "corsaMetri": 700,
+        "ripetizioni": 5
+      },
+      "durataStimataMin": 36,
+      "zonaFC": "Z2",
+      "rpeTarget": 6,
+      "stato": "Programmata"
+    },
+    {
+      "data": "2026-07-23",
+      "tipo": "palestra",
+      "numeroCiclo": 1,
+      "nomeSeduta": "Seduta 1",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Addominal Machine",
+          "gruppo": "Addominali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 36,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Curl Manubri",
+          "gruppo": "Bicipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 8,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Lat Machine presa larga",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 39,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Leg Extension",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 10,
+          "carico": 29,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Gluteus Machine",
+          "gruppo": "Glutei",
+          "serie": 4,
+          "ripetizioni": 10,
+          "carico": 23,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Supine press - presa stretta",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 25,
+          "tempoSecondi": null
+        }
+      ]
+    },
+    {
+      "data": "2026-07-24",
+      "tipo": "palestra",
+      "numeroCiclo": 2,
+      "nomeSeduta": "Seduta 2",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Alzate laterali - Macchinario",
+          "gruppo": "Spalle",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 32,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "French press cavo alto",
+          "gruppo": "Tricipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 11.3,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Plank",
+          "gruppo": "Addominali",
+          "serie": 4,
+          "ripetizioni": 1,
+          "carico": 0,
+          "tempoSecondi": 30
+        },
+        {
+          "nome": "Curl a Martello",
+          "gruppo": "Bicipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 6,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Lat Machine triangolo",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 25,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Squat corpo libero",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 6,
+          "carico": 0,
+          "tempoSecondi": null
+        }
+      ]
+    },
+    {
+      "data": "2026-07-26",
+      "tipo": "corsa",
+      "nomeSessione": "Corsa sett. 7 — 700m corsa / 300m camm × 5",
+      "settimanaProgressione": 7,
+      "schemaWalkRun": {
+        "cammMetri": 300,
+        "corsaMetri": 700,
+        "ripetizioni": 5
+      },
+      "durataStimataMin": 36,
+      "zonaFC": "Z2",
+      "rpeTarget": 6,
+      "stato": "Programmata"
+    },
+    {
+      "data": "2026-07-27",
+      "tipo": "palestra",
+      "numeroCiclo": 3,
+      "nomeSeduta": "Seduta 3",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Croci Manubri panca piana",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 10,
+          "carico": 8,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Alzate posteriori pronospinate",
+          "gruppo": "Spalle",
+          "serie": 4,
+          "ripetizioni": 10,
+          "carico": 5,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Panca presa stretta bilancere",
+          "gruppo": "Tricipiti",
+          "serie": 4,
+          "ripetizioni": 8,
+          "carico": 5,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Plank laterale",
+          "gruppo": "Addominali",
+          "serie": 4,
+          "ripetizioni": 1,
+          "carico": 0,
+          "tempoSecondi": 30
+        },
+        {
+          "nome": "Panca Scott",
+          "gruppo": "Bicipiti",
+          "serie": 4,
+          "ripetizioni": 6,
+          "carico": 7.5,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Lat Machine presa inversa",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 10,
+          "carico": 32,
+          "tempoSecondi": null
+        }
+      ]
+    },
+    {
+      "data": "2026-07-28",
+      "tipo": "palestra",
+      "numeroCiclo": 4,
+      "nomeSeduta": "Seduta 4",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Machine Abductor",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 43,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Shoulder press",
+          "gruppo": "Spalle",
+          "serie": 4,
+          "ripetizioni": 10,
+          "carico": 18,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Push down Ercolina",
+          "gruppo": "Tricipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 18,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Crunch",
+          "gruppo": "Addominali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 43,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Curl Cavo basso (ercolina)",
+          "gruppo": "Bicipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 15.8,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Pull down lat machine",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 22.6,
+          "tempoSecondi": null
+        }
+      ]
+    },
+    {
+      "data": "2026-07-30",
+      "tipo": "corsa",
+      "nomeSessione": "Corsa sett. 7 — 700m corsa / 300m camm × 5",
+      "settimanaProgressione": 7,
+      "schemaWalkRun": {
+        "cammMetri": 300,
+        "corsaMetri": 700,
+        "ripetizioni": 5
+      },
+      "durataStimataMin": 36,
+      "zonaFC": "Z2",
+      "rpeTarget": 6,
+      "stato": "Programmata"
+    }
+  ],
+  "dataExport": "2026-06-01T14:22:35.486Z"
+}
