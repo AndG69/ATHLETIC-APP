@@ -18,9 +18,24 @@
 
   var Storage = global.MaranelloStorage;
 
-  // L'URL base dell'API è lo stesso host da cui è servita l'app
+  // L'URL base dell'API: se siamo su localhost usa lo stesso host,
+  // altrimenti (GitHub Pages / mobile) usa l'IP salvato in localStorage.
   function getApiBase() {
-    return global.location.origin;
+    if (global.location.hostname === "localhost" || global.location.hostname === "127.0.0.1") {
+      return global.location.origin;
+    }
+    // Mobile: usa l'IP del PC salvato
+    var savedIp = global.localStorage.getItem("maranello_server_ip");
+    if (savedIp) {
+      return "http://" + savedIp + ":3001";
+    }
+    // Chiedi all'utente
+    var ip = global.prompt("Inserisci l'IP del PC (es. 192.168.1.100):");
+    if (ip) {
+      global.localStorage.setItem("maranello_server_ip", ip.trim());
+      return "http://" + ip.trim() + ":3001";
+    }
+    return null;
   }
 
   /**
@@ -137,7 +152,12 @@
    * Chiamata automaticamente all'apertura o con pulsante "Sincronizza".
    */
   function sincronizzaDaServer(callback) {
-    fetch(getApiBase() + "/api/schede")
+    var apiBase = getApiBase();
+    if (!apiBase) {
+      if (typeof callback === "function") callback(false, "IP del server non configurato.");
+      return;
+    }
+    fetch(apiBase + "/api/schede")
       .then(function (resp) { return resp.json(); })
       .then(function (payload) {
         if (!payload || !Array.isArray(payload.sessioni) || payload.sessioni.length === 0) {
