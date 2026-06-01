@@ -3,7 +3,7 @@
  * Strategia: Cache-first per asset statici, network-first per dati.
  */
 
-var CACHE_NAME = "maranello-v3";
+var CACHE_NAME = "maranello-v4";
 var ASSETS = [
   "./index.html",
   "./css/tokens.css",
@@ -22,6 +22,7 @@ var ASSETS = [
   "./js/modules/services/piano-corsa-generator.js",
   "./js/modules/services/piano-palestra-generator.js",
   "./js/modules/services/export-scheda-palestra.js",
+  "./js/modules/services/sync-mobile.js",
   "./js/modules/views/peso.js",
   "./js/modules/views/oggi.js",
   "./js/modules/views/form-corsa.js",
