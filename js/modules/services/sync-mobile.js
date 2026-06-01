@@ -155,7 +155,6 @@
         if (!resp.ok) throw new Error("HTTP " + resp.status);
         return resp.json();
       })
-      .then(function (resp) { return resp.json(); })
       .then(function (payload) {
         if (!payload || !Array.isArray(payload.sessioni) || payload.sessioni.length === 0) {
           if (typeof callback === "function") callback(false, "Nessuna scheda disponibile sul server.");
