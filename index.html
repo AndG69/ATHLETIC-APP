@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="description" content="Piano di allenamento Maranello 2027 — 5 km (10 km stretch). App locale, nessun backend, nessuna CDN." />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="theme-color" content="#b51f2a" />
+    <title>Programma sportivo</title>
+
+    <!-- PWA manifest -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="icon" href="icons/icon-192.svg" type="image/svg+xml" />
+
+    <!-- Token di design (palette, tipografia, spaziature) — WCAG 2.1 AA -->
+    <link rel="stylesheet" href="css/tokens.css?v=20260513" />
+    <!-- Stili dello shell applicativo -->
+    <link rel="stylesheet" href="css/app.css?v=20260513" />
+  </head>
+  <body>
+    <div id="app">
+      <p class="app-loading">Caricamento in corso&hellip;</p>
+    </div>
+
+    <!--
+      Librerie di terze parti caricate in locale (nessuna CDN a runtime).
+      Vedere app/assets/vendor/README.md per le istruzioni di sostituzione
+      dei placeholder (Req 22.2, 24.4; Property 23).
+    -->
+    <script src="assets/vendor/idb.js"></script>
+    <script src="assets/vendor/xlsx.full.min.js"></script>
+    <script src="assets/vendor/chart.umd.js"></script>
+
+    <!-- Versione applicativa (Req 24.6) -->
+    <script src="js/version.js?v=20260513"></script>
+    <!-- i18n baseline italiano (Req 17.3, 24.2) -->
+    <script src="js/i18n/it.js?v=20260513"></script>
+    <!-- Layer di persistenza IndexedDB (Req 22.3, 23.1, 23.7) -->
+    <script src="js/services/storage.js?v=20260513"></script>
+    <!-- Router hash-based (Req 22.4) -->
+    <script src="js/router.js?v=20260513"></script>
+    <!-- Helper statistico pesate (Task 10, Req 18.1, 23.3) -->
+    <script src="js/modules/services/peso-stats.js?v=20260513"></script>
+    <!-- Helper calendario/sessione per vista Oggi (Task 6) -->
+    <script src="js/modules/services/oggi-utils.js?v=20260513"></script>
+    <!-- Helper condivisi per form sessioni e diari (Task 7/8/12/13) -->
+    <script src="js/modules/services/sessioni-utils.js?v=20260513"></script>
+    <!-- Catalogo esercizi palestra (Task 8) -->
+    <script src="js/data/esercizi-catalog.js?v=20260513"></script>
+    <!-- Seed programma palestra (dati di default 8 sedute) -->
+    <script src="js/data/programma-palestra-seed.js?v=20260513"></script>
+    <!-- Componenti UI riutilizzabili (info popover, legenda RPE) -->
+    <script src="js/modules/components/info-popover.js?v=20260513"></script>
+    <!-- Motore di analisi sessioni corsa -->
+    <script src="js/modules/services/analisi-corsa.js?v=20260513"></script>
+    <!-- View Peso: form pesata + media mobile (Task 10) -->
+    <script src="js/modules/views/peso.js?v=20260513"></script>
+    <!-- View Oggi: sessione del giorno + Regola_dei_5_Minuti + timer (Task 6) -->
+    <script src="js/modules/views/oggi.js?v=20260513"></script>
+    <!-- Form e diario corsa (Task 7 + 12) -->
+    <script src="js/modules/views/form-corsa.js?v=20260513"></script>
+    <script src="js/modules/views/diario-corsa.js?v=20260513"></script>
+    <!-- Form e diario palestra (Task 8 + 13) -->
+    <script src="js/modules/views/form-palestra.js?v=20260513"></script>
+    <script src="js/modules/views/diario-palestra.js?v=20260513"></script>
+    <!-- Generatori piano mensile corsa e palestra (Task 1 + 2) -->
+    <script src="js/modules/services/piano-corsa-generator.js?v=20260513"></script>
+    <script src="js/modules/services/piano-palestra-generator.js?v=20260513"></script>
+    <!-- Export scheda palestra XLSX (Task 3) -->
+    <script src="js/modules/services/export-scheda-palestra.js?v=20260513"></script>
+    <!-- View Settimana (Task 3) -->
+    <script src="js/modules/views/settimana.js?v=20260601"></script>
+    <!-- View Genera Piano (Task 4) -->
+    <script src="js/modules/views/genera-piano.js?v=20260513c"></script>
+    <!-- View Impostazioni (Task 5) -->
+    <script src="js/modules/views/impostazioni.js?v=20260513"></script>
+    <!-- Vista Anagrafica Palestra (schede) -->
+    <script src="js/modules/views/anagrafica-palestra.js?v=20260513"></script>
+    <!-- Vista Dashboard KPI (Task 51-54) -->
+    <script src="js/modules/views/dashboard.js?v=20260513"></script>
+    <!-- Bootstrap dell'app: shell, rotte, DB (deve stare per ultimo) -->
+    <script src="js/app.js?v=20260513c"></script>
+    <!-- Service Worker registration + Export/Import schede mobile -->
+    <script src="js/modules/services/sync-mobile.js?v=20260601"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("./sw.js").catch(function(e) {
+          console.warn("[sw] registrazione fallita:", e);
+        });
+      }
+    </script>
+  </body>
+</html>

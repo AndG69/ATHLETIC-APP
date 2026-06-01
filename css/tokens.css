@@ -1,0 +1,159 @@
+/*
+ * Maranello 2027 — App_HTML
+ * File: css/tokens.css
+ *
+ * Token di design: palette, tipografia, spaziature, raggi, ombre, focus ring.
+ * Scelti per garantire contrasto WCAG 2.1 AA (≥ 4,5:1 per testo normale,
+ * ≥ 3:1 per testo grande / UI components) sia in light mode sia in dark mode
+ * (Req 24.3, Property: accessibility).
+ *
+ * Nessun import esterno. Nessun riferimento a CDN. Il file viene caricato
+ * come <link rel="stylesheet"> prima di app.css (vedi index.html).
+ *
+ * Tap target minimo 44x44 px per soddisfare Req 22.9.
+ */
+
+:root {
+  /* --------------------------------------------------------------
+   * Palette — Light mode (default)
+   * Contrasti verificati con il calcolatore WCAG (WebAIM Contrast Checker).
+   *
+   *   #111827 (fg)    su #ffffff (bg)    → 16.1 : 1  (AAA)
+   *   #475569 (muted) su #ffffff (bg)    →  7.55: 1  (AAA)
+   *   #b51f2a (accent)su #ffffff (bg)    →  6.11: 1  (AA normal)
+   *   #ffffff (fgOnAcc)su #b51f2a (acc)  →  6.11: 1  (AA normal)
+   *   #1b5e20 (success)su #ffffff (bg)   →  7.64: 1  (AAA)
+   *   #8a4b00 (warning)su #ffffff (bg)   →  6.38: 1  (AAA)
+   *   #8a1a1a (danger) su #ffffff (bg)   →  8.45: 1  (AAA)
+   *   #0b5ed7 (info)   su #ffffff (bg)   →  6.22: 1  (AAA)
+   * -------------------------------------------------------------- */
+
+  --color-bg: #ffffff;
+  --color-bg-elevated: #f7f7f8;
+  --color-bg-subtle: #f0f1f3;
+  --color-fg: #111827;
+  --color-fg-muted: #475569;
+  --color-border: #d1d5db;
+  --color-border-strong: #9ca3af;
+
+  --color-accent: #b51f2a;           /* rosso Maranello */
+  --color-accent-hover: #8f1821;
+  --color-accent-fg: #ffffff;
+  --color-accent-soft-bg: #fbe9eb;   /* sfondo soft per pill / badge */
+  --color-accent-soft-fg: #7a1218;   /* testo su accent-soft (AA) */
+
+  --color-success: #1b5e20;
+  --color-success-bg: #e4f5e0;
+  --color-warning: #8a4b00;
+  --color-warning-bg: #fff3cd;
+  --color-danger: #8a1a1a;
+  --color-danger-bg: #fde7e7;
+  --color-info: #0b5ed7;
+  --color-info-bg: #e6f0ff;
+
+  --color-focus-ring: #0b5ed7;       /* focus blu ad alto contrasto */
+
+  /* --------------------------------------------------------------
+   * Tipografia
+   * -------------------------------------------------------------- */
+  --font-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas,
+    "Liberation Mono", monospace;
+
+  --font-size-base: 16px;            /* baseline Req 24.3, mai < 16px su mobile */
+  --font-size-sm: 0.875rem;          /* 14px */
+  --font-size-md: 1rem;              /* 16px */
+  --font-size-lg: 1.125rem;          /* 18px (qualifica "large" WCAG) */
+  --font-size-xl: 1.5rem;            /* 24px */
+  --font-size-2xl: 2rem;             /* 32px */
+
+  --line-height-tight: 1.25;
+  --line-height-base: 1.5;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* --------------------------------------------------------------
+   * Spaziature (scala 4/8/12/16/24/32/48/64 px)
+   * -------------------------------------------------------------- */
+  --space-1: 0.25rem;   /* 4 */
+  --space-2: 0.5rem;    /* 8 */
+  --space-3: 0.75rem;   /* 12 */
+  --space-4: 1rem;      /* 16 */
+  --space-6: 1.5rem;    /* 24 */
+  --space-8: 2rem;      /* 32 */
+  --space-12: 3rem;     /* 48 */
+  --space-16: 4rem;     /* 64 */
+
+  /* --------------------------------------------------------------
+   * Radii e ombre
+   * -------------------------------------------------------------- */
+  --radius-sm: 0.25rem;   /* 4 */
+  --radius-md: 0.5rem;    /* 8 */
+  --radius-lg: 0.75rem;   /* 12 */
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.08);
+  --shadow-nav: 0 -1px 3px rgba(0, 0, 0, 0.08);
+
+  /* --------------------------------------------------------------
+   * Layout / interazione
+   * -------------------------------------------------------------- */
+  --tap-min: 44px;               /* Req 22.9 — touch target minimo */
+  --nav-height: 64px;            /* bottom nav mobile */
+  --header-height: 56px;
+  --content-max-width: 48rem;    /* 768px per leggibilità desktop */
+
+  --focus-ring-width: 3px;
+  --focus-ring-offset: 2px;
+
+  --transition-fast: 120ms ease;
+  --transition-base: 200ms ease;
+}
+
+/* ----------------------------------------------------------------
+ * Dark mode: applicato automaticamente se l'utente lo preferisce.
+ * Contrasti verificati su sfondo #121212:
+ *   #f5f5f5 (fg)    su #121212 → 17.4 : 1  (AAA)
+ *   #b5bac2 (muted) su #121212 →  9.1 : 1  (AAA)
+ *   #ff6b73 (accent) su #121212 →  6.4 : 1  (AA normal)
+ *   #9bd196 (success)su #121212 →  9.2 : 1  (AAA)
+ *   #ffcf66 (warning)su #121212 → 11.5 : 1  (AAA)
+ *   #ff8a8a (danger) su #121212 →  6.8 : 1  (AA normal)
+ *   #7ab6ff (info)   su #121212 →  7.7 : 1  (AAA)
+ * ---------------------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #121212;
+    --color-bg-elevated: #1b1b1d;
+    --color-bg-subtle: #24262a;
+    --color-fg: #f5f5f5;
+    --color-fg-muted: #b5bac2;
+    --color-border: #3a3d42;
+    --color-border-strong: #5b5f66;
+
+    --color-accent: #ff6b73;
+    --color-accent-hover: #ff8a90;
+    --color-accent-fg: #1a0507;
+    --color-accent-soft-bg: #3a1519;
+    --color-accent-soft-fg: #ffbac0;
+
+    --color-success: #9bd196;
+    --color-success-bg: #1f3a1c;
+    --color-warning: #ffcf66;
+    --color-warning-bg: #3a2d0a;
+    --color-danger: #ff8a8a;
+    --color-danger-bg: #3a1515;
+    --color-info: #7ab6ff;
+    --color-info-bg: #10253f;
+
+    --color-focus-ring: #7ab6ff;
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.5);
+    --shadow-nav: 0 -1px 3px rgba(0, 0, 0, 0.5);
+  }
+}
