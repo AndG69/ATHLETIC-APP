@@ -4,14 +4,14 @@
     {
       "data": "2026-06-09",
       "tipo": "corsa",
-      "nomeSessione": "Corsa sett. 3 — 300m corsa / 700m camm × 5",
-      "settimanaProgressione": 3,
+      "nomeSessione": "Corsa sett. 4 — 400m corsa / 600m camm × 5",
+      "settimanaProgressione": 4,
       "schemaWalkRun": {
-        "cammMetri": 700,
-        "corsaMetri": 300,
+        "cammMetri": 600,
+        "corsaMetri": 400,
         "ripetizioni": 5
       },
-      "durataStimataMin": 44,
+      "durataStimataMin": 42,
       "zonaFC": "Z2",
       "rpeTarget": 6,
       "stato": "Programmata"
@@ -544,14 +544,14 @@
     {
       "data": "2026-06-28",
       "tipo": "corsa",
-      "nomeSessione": "Corsa sett. 4 — 400m corsa / 600m camm × 5",
-      "settimanaProgressione": 4,
+      "nomeSessione": "Corsa sett. 5 — 500m corsa / 500m camm × 5",
+      "settimanaProgressione": 5,
       "schemaWalkRun": {
-        "cammMetri": 600,
-        "corsaMetri": 400,
+        "cammMetri": 500,
+        "corsaMetri": 500,
         "ripetizioni": 5
       },
-      "durataStimataMin": 42,
+      "durataStimataMin": 40,
       "zonaFC": "Z2",
       "rpeTarget": 6,
       "stato": "Programmata"
@@ -1363,5 +1363,5 @@
       "stato": "Programmata"
     }
   ],
-  "dataExport": "2026-06-09T08:44:50.071Z"
+  "dataExport": "2026-06-09T08:49:46.594Z"
 }
