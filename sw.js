@@ -3,7 +3,7 @@
  * Strategia: Cache-first per asset statici, network-first per dati.
  */
 
-var CACHE_NAME = "maranello-v4";
+var CACHE_NAME = "maranello-v5";
 var ASSETS = [
   "./index.html",
   "./css/tokens.css",

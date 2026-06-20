@@ -569,14 +569,19 @@
             : Promise.resolve(null);
 
           anagraficaPromise.then(function (programma) {
-            // Trova la seduta corrispondente nell'anagrafica
+            // PRIORITÀ 1: usa i dati sincronizzati salvati nella sessione (_eserciziCompleti)
+            // Utile su mobile dove l'anagrafica locale non è aggiornata.
             var sedutaCompleta = null;
-            if (programma && Array.isArray(programma.sedute) && sessione.numeroCiclo) {
+            if (Array.isArray(sessione._eserciziCompleti) && sessione._eserciziCompleti.length > 0) {
+              sedutaCompleta = { esercizi: sessione._eserciziCompleti };
+            }
+            // PRIORITÀ 2: anagrafica locale
+            if (!sedutaCompleta && programma && Array.isArray(programma.sedute) && sessione.numeroCiclo) {
               sedutaCompleta = programma.sedute.filter(function (s) {
                 return s.numeroCiclo === sessione.numeroCiclo;
               })[0] || null;
             }
-            // Fallback al seed se non trovata
+            // PRIORITÀ 3: fallback al seed
             if (!sedutaCompleta) {
               var seed = global.MaranelloProgrammaPalestraSeed;
               if (seed && Array.isArray(seed.sedute) && sessione.numeroCiclo) {
