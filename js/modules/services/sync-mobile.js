@@ -115,6 +115,8 @@
       var payload = {
         versione: "1.0",
         sessioni: sessioniProgrammate,
+        // Include l'intera anagrafica così il mobile ha sempre i dati aggiornati
+        programmaPalestra: programma || null,
       };
 
       // Invia al server locale che salva il file e fa git push
@@ -167,6 +169,15 @@
         }
 
         var sessioni = payload.sessioni;
+
+        // Salva l'anagrafica sincronizzata (se presente) in programma_palestra
+        var anagraficaPromise = Promise.resolve();
+        if (payload.programmaPalestra && Array.isArray(payload.programmaPalestra.sedute)) {
+          var prog = payload.programmaPalestra;
+          if (!prog.id) prog.id = "main";
+          anagraficaPromise = Storage.put("programma_palestra", prog, { skipLog: true })
+            .catch(function () { /* silenzioso */ });
+        }
 
         // Raggruppa per settimana ISO
         var perSettimana = {};
@@ -222,7 +233,7 @@
             });
         });
 
-        Promise.all(promises).then(function () {
+        Promise.all([anagraficaPromise].concat(promises)).then(function () {
           if (typeof callback === "function") {
             callback(true, "Sincronizzate " + sessioni.length + " schede.");
           }
