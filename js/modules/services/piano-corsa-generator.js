@@ -153,51 +153,27 @@
 
       if (giorniCorsa.indexOf(dayOfWeek) === -1) continue;
 
-      // Calcola la settimana di progressione per questo giorno.
-      // La progressione avanza ogni 2 settimane ISO: ogni coppia di settimane
-      // (sab+dom della sett N e sab+dom della sett N+1) usa lo stesso schema,
-      // poi si avanza di 1 livello.
-      //
-      // Esempio con dataRif=9 mag (sett ISO 19), settimanaCorrente=2:
-      //   sett ISO 19 (9-10 mag)  → delta=0  → coppia 0 → sett 2
-      //   sett ISO 20 (16-17 mag) → delta=1  → coppia 1 → sett 3
-      //   sett ISO 21 (23-24 mag) → delta=2  → coppia 1 → sett 3
-      //   sett ISO 22 (30-31 mag) → delta=3  → coppia 2 → sett 4
-      //
-      // Formula: coppia = ceil(delta / 2) per delta > 0
-      //                   floor(delta / 2) per delta < 0 (settimane passate)
-      var deltaSettimane = deltaSettimaneIso(dataRif, dataGiorno);
-      var deltaProgressione;
-      if (deltaSettimane > 0) {
-        deltaProgressione = Math.ceil(deltaSettimane / 2);
-      } else if (deltaSettimane < 0) {
-        deltaProgressione = -Math.ceil(-deltaSettimane / 2);
-      } else {
-        deltaProgressione = 0;
-      }
-      var settimanaProgressione = settimanaCorrente + deltaProgressione;
-
-      // Clamp tra 1 e 16
-      settimanaProgressione = Math.max(1, Math.min(16, settimanaProgressione));
-
-      var schema = PROGRESSIONE[settimanaProgressione - 1];
-      var durataStimataMin = calcolaDurataStimata(schema);
+      // La progressione riflette la settimana ISO dell'anno della sessione
+      // (es. "Corsa sett. 31"), calcolata automaticamente dalla data.
+      var settimanaProgressione = getIsoWeekNumber(dataGiorno);
 
       var dataIso = anno + "-" + pad2(mese) + "-" + pad2(giorno);
-      var nomeSessione = "Corsa sett. " + settimanaProgressione + " — " +
-        schema.corsaMetri + "m corsa / " + schema.cammMetri + "m camm × " +
-        schema.ripetizioni;
+      // Il tipo di corsa (camminata / corsa / distanza in metri) viene
+      // inserito manualmente dall'utente nella vista Settimana. Qui generiamo
+      // la sessione con lo schema vuoto: resta solo il calcolo automatico
+      // della progressione (settimana ISO dell'anno).
+      var nomeSessione = "Corsa sett. " + settimanaProgressione;
 
       sessioni.push({
         data: dataIso,
         tipo: "corsa",
         settimanaProgressione: settimanaProgressione,
         schemaWalkRun: {
-          cammMetri: schema.cammMetri,
-          corsaMetri: schema.corsaMetri,
-          ripetizioni: schema.ripetizioni,
+          cammMetri: null,
+          corsaMetri: null,
+          distanzaMetri: null,
         },
-        durataStimataMin: durataStimataMin,
+        durataStimataMin: null,
         zonaFC: "Z2",
         rpeTarget: 6,
         nomeSessione: nomeSessione,

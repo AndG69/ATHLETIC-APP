@@ -392,6 +392,8 @@
     var defaultMese = (now.getMonth() + 1) % 12 + 1; // mese successivo (1-12)
 
     var settimanaCorrente = (impostazioni && impostazioni.settimanaProgressione) || 5;
+    var sessioniCorsaAlLivello = (impostazioni && typeof impostazioni.sessioniCorsaAlLivello === "number")
+      ? impostazioni.sessioniCorsaAlLivello : 0;
     var ultimaSeduta = (impostazioni && impostazioni.ultimaSedutaPalestra) ||
       { data: "2026-05-07", numeroCiclo: 4 };
     var giorniCorsa = (impostazioni && impostazioni.giorniCorsa) || [6, 0];
@@ -429,6 +431,72 @@
       el("div", { class: "genera-piano-mese-row" }, [selectMese, inputAnno]),
     ]));
 
+    // Data di partenza: genera sessioni solo da questa data in poi
+    var oggiIsoDefault = now.getFullYear() + "-" + pad2(now.getMonth() + 1) + "-" + pad2(now.getDate());
+    var inputDataPartenza = el("input", {
+      type: "date",
+      name: "dataPartenza",
+      value: oggiIsoDefault,
+      class: "genera-piano-input-data",
+    });
+    form.appendChild(el("div", { class: "genera-piano-field" }, [
+      el("label", { text: "Genera a partire dal:" }),
+      inputDataPartenza,
+    ]));
+
+    // La progressione della corsa (settimana ISO dell'anno) è calcolata
+    // automaticamente dalle date: non serve più selezionare un livello.
+    form.appendChild(el("p", {
+      class: "genera-piano-hint",
+      text: "La progressione della corsa (settimana dell\u2019anno) \u00E8 calcolata automaticamente dalle date delle sessioni.",
+    }));
+
+    // Scheda palestra di partenza: se scelta, il ciclo riparte da quella scheda
+    // invece di continuare dopo l'ultima registrata.
+    var selectSchedaPartenza = el("select", {
+      name: "schedaPartenza",
+      class: "genera-piano-select",
+      "aria-label": "Scheda palestra di partenza",
+    });
+    selectSchedaPartenza.appendChild(el("option", {
+      value: "",
+      text: "Automatico (dopo l\u2019ultima registrata)",
+    }));
+    form.appendChild(el("div", { class: "genera-piano-field" }, [
+      el("label", { text: "Scheda palestra di partenza:" }),
+      selectSchedaPartenza,
+    ]));
+
+    // Popola le opzioni con le sedute del programma (async), fallback al ciclo base.
+    (function popolaSchedePartenza() {
+      function aggiungi(sedute) {
+        (sedute || []).forEach(function (s) {
+          if (!s || typeof s.numeroCiclo === "undefined" || s.numeroCiclo === null) return;
+          selectSchedaPartenza.appendChild(el("option", {
+            value: String(s.numeroCiclo),
+            text: "Scheda " + s.numeroCiclo + (s.nome ? " \u2014 " + s.nome : ""),
+          }));
+        });
+      }
+      function fallback() {
+        var GymGen = global.MaranelloPianoGymGenerator;
+        if (GymGen && Array.isArray(GymGen.CICLO_PALESTRA)) aggiungi(GymGen.CICLO_PALESTRA);
+      }
+      if (Storage && typeof Storage.get === "function") {
+        Storage.get("programma_palestra", "main")
+          .then(function (prog) {
+            if (prog && Array.isArray(prog.sedute) && prog.sedute.length) {
+              aggiungi(prog.sedute);
+            } else {
+              fallback();
+            }
+          })
+          .catch(fallback);
+      } else {
+        fallback();
+      }
+    })();
+
     // Tipo piano
     var checkCorsa = el("input", { type: "checkbox", name: "corsa", id: "gp-check-corsa" });
     checkCorsa.checked = true;
@@ -447,11 +515,6 @@
       ]),
     ]));
 
-    // Nota upgrade palestra
-    form.appendChild(el("p", {
-      class: "genera-piano-nota",
-      text: t("view.genera_piano.nota_palestra"),
-    }));
 
     // Area anteprima
     var anteprimaEl = el("div", {
@@ -471,8 +534,10 @@
       var mese = parseInt(selectMese.value, 10);
       var includiCorsa = checkCorsa.checked;
       var includiPalestra = checkPalestra.checked;
+      var dataPartenzaPreview = inputDataPartenza.value || oggiIsoDefault;
+      var schedaPartenzaPreview = selectSchedaPartenza.value ? parseInt(selectSchedaPartenza.value, 10) : null;
       renderAnteprima(anteprimaEl, anno, mese, includiCorsa, includiPalestra,
-        settimanaCorrente, ultimaSeduta, giorniCorsa, giorniPalestra, null, cadenza);
+        settimanaCorrente, ultimaSeduta, giorniCorsa, giorniPalestra, null, cadenza, sessioniCorsaAlLivello, dataPartenzaPreview, schedaPartenzaPreview);
     });
     form.appendChild(btnAnteprima);
 
@@ -497,6 +562,10 @@
       var mese = parseInt(selectMese.value, 10);
       var includiCorsa = checkCorsa.checked;
       var includiPalestra = checkPalestra.checked;
+
+      // Legge i parametri dal form
+      var dataPartenza = inputDataPartenza.value || oggiIsoDefault;
+      var schedaPartenza = selectSchedaPartenza.value ? parseInt(selectSchedaPartenza.value, 10) : null;
 
       if (!includiCorsa && !includiPalestra) {
         feedbackEl.textContent = t("view.genera_piano.errore_nessun_tipo");
@@ -524,7 +593,7 @@
             ? programmaPalestra.sedute
             : null;
           var sessioni = generaSessioni(anno, mese, includiCorsa, includiPalestra,
-            settimanaCorrente, ultimaSeduta, giorniCorsa, giorniPalestra, programmaSedute, cadenza);
+            settimanaCorrente, ultimaSeduta, giorniCorsa, giorniPalestra, programmaSedute, cadenza, sessioniCorsaAlLivello, dataPartenza, schedaPartenza);
           return cancellaSettimaneDelMese(anno, mese, Storage)
             .then(function () {
               return salvaSessioniComePiano(sessioni, Storage);
@@ -550,7 +619,7 @@
   }
 
   function generaSessioni(anno, mese, includiCorsa, includiPalestra,
-    settimanaCorrente, ultimaSeduta, giorniCorsa, giorniPalestra, programmaSedute, cadenza) {
+    settimanaCorrente, ultimaSeduta, giorniCorsa, giorniPalestra, programmaSedute, cadenza, sessioniCorsaAlLivello, dataPartenza, schedaPartenza) {
     var sessioni = [];
 
     var CorsaGen = global.MaranelloPianoCorsaGenerator;
@@ -580,16 +649,35 @@
     }
     var numSedute = ciclo ? ciclo.length : 8;
 
-    // Prossima seduta palestra (0-based index)
+    // Prossima seduta palestra (0-based index).
+    // Di default riparte dopo l'ultima seduta registrata.
     var ultimoNumeroCiclo = (ultimaSeduta && ultimaSeduta.numeroCiclo) || 0;
     var prossimoCicloIdx = ultimoNumeroCiclo % numSedute;
 
-    // Filtra sessioni passate se mese in corso o passato
-    var oggi = new Date();
-    var oggiAnno = oggi.getFullYear();
-    var oggiMese = oggi.getMonth() + 1; // 1-based
-    var oggiGiorno = oggi.getDate();
-    var oggiIso = oggiAnno + "-" + pad2(oggiMese) + "-" + pad2(oggiGiorno);
+    // Override: se l'utente ha scelto una scheda di partenza, il ciclo parte
+    // esattamente da quella scheda (per numeroCiclo).
+    if (schedaPartenza != null && ciclo) {
+      var idxStart = -1;
+      for (var ci = 0; ci < ciclo.length; ci++) {
+        if (ciclo[ci] && ciclo[ci].numeroCiclo === schedaPartenza) { idxStart = ci; break; }
+      }
+      if (idxStart === -1) {
+        idxStart = Math.max(0, Math.min(numSedute - 1, schedaPartenza - 1));
+      }
+      prossimoCicloIdx = idxStart;
+    }
+
+    // Data di partenza: usa dataPartenza se fornita, altrimenti oggi
+    var oggiIso;
+    if (dataPartenza && typeof dataPartenza === "string" && dataPartenza.length === 10) {
+      oggiIso = dataPartenza;
+    } else {
+      var oggi = new Date();
+      oggiIso = oggi.getFullYear() + "-" + pad2(oggi.getMonth() + 1) + "-" + pad2(oggi.getDate());
+    }
+    var oggiParts = oggiIso.split("-");
+    var oggiAnno = parseInt(oggiParts[0], 10);
+    var oggiMese = parseInt(oggiParts[1], 10);
 
     var meseInCorsoOPassato =
       anno < oggiAnno ||
@@ -630,42 +718,25 @@
         // Avanza al prossimo ciclo
         prossimoCicloIdx = (prossimoCicloIdx + 1) % numSedute;
 
-      } else if (tipo === "C" && includiCorsa && CorsaGen && typeof CorsaGen.generaPianoMensileCorsa === "function") {
-        // Genera sessione corsa con la stessa logica di progressione walk-run
-        var dataGiorno = new Date(anno, mese0, giorno);
-        var dataRif = new Date(); // oggi come riferimento
-
-        // Calcola la settimana di progressione per questo giorno
-        var deltaSettimane = deltaSettimaneIsoLocal(dataRif, dataGiorno);
-        var deltaProgressione;
-        if (deltaSettimane > 0) {
-          deltaProgressione = Math.ceil(deltaSettimane / 2);
-        } else if (deltaSettimane < 0) {
-          deltaProgressione = -Math.ceil(-deltaSettimane / 2);
-        } else {
-          deltaProgressione = 0;
-        }
-        var settimanaProgressione = settimanaCorrente + deltaProgressione;
-        settimanaProgressione = Math.max(1, Math.min(16, settimanaProgressione));
-
-        var schema = CorsaGen.PROGRESSIONE[settimanaProgressione - 1];
-        var durataStimataMin = CorsaGen.calcolaDurataStimata(schema);
+      } else if (tipo === "C" && includiCorsa) {
+        // Il tipo di corsa (camminata / corsa / distanza in metri) è manuale.
+        // La progressione riflette la settimana ISO dell'anno della sessione,
+        // calcolata automaticamente dalla data.
+        var settimanaProgressioneCorsa = getIsoWeekNumberLocal(new Date(anno, mese0, giorno));
 
         var dataIsoCorsa = anno + "-" + pad2(mese) + "-" + pad2(giorno);
-        var nomeSessione = "Corsa sett. " + settimanaProgressione + " \u2014 " +
-          schema.corsaMetri + "m corsa / " + schema.cammMetri + "m camm \u00D7 " +
-          schema.ripetizioni;
+        var nomeSessione = "Corsa sett. " + settimanaProgressioneCorsa;
 
         sessioni.push({
           data: dataIsoCorsa,
           tipo: "corsa",
-          settimanaProgressione: settimanaProgressione,
+          settimanaProgressione: settimanaProgressioneCorsa,
           schemaWalkRun: {
-            cammMetri: schema.cammMetri,
-            corsaMetri: schema.corsaMetri,
-            ripetizioni: schema.ripetizioni,
+            cammMetri: null,
+            corsaMetri: null,
+            distanzaMetri: null,
           },
-          durataStimataMin: durataStimataMin,
+          durataStimataMin: null,
           zonaFC: "Z2",
           rpeTarget: 6,
           nomeSessione: nomeSessione,
@@ -727,11 +798,11 @@
   }
 
   function renderAnteprima(anteprimaEl, anno, mese, includiCorsa, includiPalestra,
-    settimanaCorrente, ultimaSeduta, giorniCorsa, giorniPalestra, programmaSedute, cadenza) {
+    settimanaCorrente, ultimaSeduta, giorniCorsa, giorniPalestra, programmaSedute, cadenza, sessioniCorsaAlLivello, dataPartenza, schedaPartenza) {
     anteprimaEl.innerHTML = "";
 
     var sessioni = generaSessioni(anno, mese, includiCorsa, includiPalestra,
-      settimanaCorrente, ultimaSeduta, giorniCorsa, giorniPalestra, programmaSedute, cadenza);
+      settimanaCorrente, ultimaSeduta, giorniCorsa, giorniPalestra, programmaSedute, cadenza, sessioniCorsaAlLivello, dataPartenza, schedaPartenza);
 
     if (sessioni.length === 0) {
       anteprimaEl.appendChild(el("p", { text: t("view.genera_piano.anteprima_vuota") }));

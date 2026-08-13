@@ -259,9 +259,13 @@
         renderListaGiorni(listaEl, state);
         return;
       }
-      Storage.get(STORE_PIANO, weekId)
-        .then(function onLoaded(record) {
-          state.settimana = record || null;
+      Promise.all([
+        Storage.get(STORE_PIANO, weekId),
+        Storage.get("programma_palestra", "main").catch(function () { return null; }),
+      ])
+        .then(function onLoaded(res) {
+          state.settimana = res[0] || null;
+          state.programmaPalestra = res[1] || null;
           renderHeader(headerEl, state, onNaviga);
           renderListaGiorni(listaEl, state);
         })
@@ -395,34 +399,62 @@
         }));
       }
 
-      // Schema walk-run (corsa)
-      if (sessione.tipo === "corsa" && sessione.schemaWalkRun) {
-        var wr = sessione.schemaWalkRun;
-        infoEl.appendChild(el("p", {
-          class: "settimana-sessione-schema",
-          text: t("view.settimana.schema_walkrun", {
-            camm: wr.cammMetri,
-            corsa: wr.corsaMetri,
-            rip: wr.ripetizioni,
-          }),
-        }));
+      // Tipo corsa manuale (camminata / corsa / distanza in metri)
+      if (sessione.tipo === "corsa") {
+        var wr = sessione.schemaWalkRun || {};
+        var hasValori =
+          wr.cammMetri != null || wr.corsaMetri != null || wr.distanzaMetri != null;
+        if (hasValori) {
+          infoEl.appendChild(el("p", {
+            class: "settimana-sessione-schema",
+            text: t("view.settimana.schema_manuale", {
+              camm: wr.cammMetri != null ? wr.cammMetri : "\u2014",
+              corsa: wr.corsaMetri != null ? wr.corsaMetri : "\u2014",
+              dist: wr.distanzaMetri != null ? wr.distanzaMetri : "\u2014",
+            }),
+          }));
+        } else {
+          infoEl.appendChild(el("p", {
+            class: "settimana-sessione-schema settimana-sessione-schema-vuoto",
+            text: t("view.settimana.schema_da_impostare"),
+          }));
+        }
       }
 
       // Esercizi (palestra) con gruppo muscolare
       if (sessione.tipo === "palestra" && Array.isArray(sessione.esercizi)) {
-        // Cerca i gruppi dall'anagrafica (programma_palestra) o dal catalogo
+        // Risolve il gruppo di ogni esercizio dall'anagrafica personalizzata
+        // (programma_palestra) per la seduta corrispondente; fallback al catalogo.
         var catalog = global.MaranelloEserciziCatalog;
-        var eserciziConGruppo = sessione.esercizi.map(function (nome) {
+        var gruppoPerNome = {};
+        var progPal = state.programmaPalestra;
+        if (progPal && Array.isArray(progPal.sedute)) {
+          var sedutaAna = progPal.sedute.filter(function (s) {
+            return s.numeroCiclo === sessione.numeroCiclo;
+          })[0];
+          if (sedutaAna && Array.isArray(sedutaAna.esercizi)) {
+            sedutaAna.esercizi.forEach(function (e) {
+              if (e && e.nome) gruppoPerNome[e.nome] = e.gruppo || "";
+            });
+          }
+        }
+        var eserciziConGruppo = sessione.esercizi.map(function (item) {
+          var nome = typeof item === "string" ? item : (item && item.nome);
+          if (!nome) return "";
           var gruppo = "";
-          if (catalog && Array.isArray(catalog.esercizi)) {
+          if (Object.prototype.hasOwnProperty.call(gruppoPerNome, nome)) {
+            gruppo = gruppoPerNome[nome];
+          } else if (typeof item === "object" && item && item.gruppo) {
+            gruppo = item.gruppo;
+          } else if (catalog && Array.isArray(catalog.esercizi)) {
             var found = catalog.esercizi.filter(function (e) { return e.nome === nome; })[0];
             if (found) gruppo = found.gruppo;
           }
-          return gruppo ? nome + " (" + gruppo + ")" : nome;
+          return gruppo ? gruppo + " / " + nome : nome;
         });
         var listaEs = el("ul", { class: "settimana-sessione-esercizi-lista" });
         eserciziConGruppo.forEach(function (testo) {
-          listaEs.appendChild(el("li", { text: testo }));
+          if (testo) listaEs.appendChild(el("li", { text: testo }));
         });
         infoEl.appendChild(listaEs);
       }
@@ -449,6 +481,20 @@
           apriFormSessione(sessione, dataIso, mount);
         });
         azioniEl.appendChild(btnRegistra);
+
+        // Pulsante Modifica corsa (solo corsa): imposta manualmente
+        // camminata / corsa / distanza in metri.
+        if (sessione.tipo === "corsa") {
+          var btnModificaCorsa = el("button", {
+            type: "button",
+            class: "settimana-btn-modifica-corsa",
+            text: t("view.settimana.modifica_corsa"),
+          });
+          btnModificaCorsa.addEventListener("click", function onModificaCorsa() {
+            apriModificaCorsa(sessione, dataIso, card, state);
+          });
+          azioniEl.appendChild(btnModificaCorsa);
+        }
 
         // Pulsante export scheda palestra (solo per sessioni palestra)
         if (sessione.tipo === "palestra") {
@@ -641,32 +687,23 @@
       }
     }
 
-    /** Pre-popola il form corsa con i dati della sessione programmata. */
+    /** Pre-popola il form corsa (registrazione) con i dati della sessione programmata. */
     function prepopolaFormCorsa(formMount, sessione, dataIso) {
       // Data
       var dataInput = formMount.querySelector("[type='date']");
       if (dataInput) dataInput.value = dataIso;
 
-      // Schema walk-run: se presente, attiva il toggle e pre-popola
-      if (sessione.schemaWalkRun) {
-        var wr = sessione.schemaWalkRun;
-        var toggle = formMount.querySelector("[id$='-walkrun-toggle']");
-        if (toggle) {
-          toggle.checked = true;
-          toggle.dispatchEvent(new Event("change"));
-        }
-        var cammInput = formMount.querySelector("[id$='-walkrun-camm']");
-        var corsaInput = formMount.querySelector("[id$='-walkrun-corsa']");
-        var ripInput = formMount.querySelector("[id$='-walkrun-rip']");
-        if (cammInput) cammInput.value = String(wr.cammMetri);
-        if (corsaInput) corsaInput.value = String(wr.corsaMetri);
-        if (ripInput) ripInput.value = String(wr.ripetizioni);
-
-        // Distanza stimata: (cammMetri + corsaMetri) / 1000 * ripetizioni
+      // Distanza totale (km): la sessione programmata memorizza i metri manuali
+      // (distanzaMetri). In assenza, si usa la somma camminata + corsa.
+      var wr = sessione.schemaWalkRun || {};
+      var distanzaMetri = wr.distanzaMetri;
+      if (distanzaMetri == null && (wr.cammMetri != null || wr.corsaMetri != null)) {
+        distanzaMetri = (wr.cammMetri || 0) + (wr.corsaMetri || 0);
+      }
+      if (distanzaMetri != null) {
         var distanzaInput = formMount.querySelector("[id$='-distanza']");
         if (distanzaInput) {
-          var distKm = ((wr.cammMetri + wr.corsaMetri) / 1000) * wr.ripetizioni;
-          distanzaInput.value = String(Math.round(distKm * 10) / 10);
+          distanzaInput.value = String(Math.round((distanzaMetri / 1000) * 100) / 100);
           distanzaInput.dispatchEvent(new Event("input"));
         }
       }
@@ -721,6 +758,140 @@
           tempoInput.value = String(es.tempoSecondi);
         }
       }
+    }
+
+    /**
+     * Converte una stringa in metri (intero >= 0) oppure null se vuota.
+     * Ritorna false se il valore non è un numero valido.
+     */
+    function parseMetri(value) {
+      var v = (value == null ? "" : String(value)).trim();
+      if (v === "") return null;
+      var n = Number(v.replace(",", "."));
+      if (!isFinite(n) || n < 0) return false;
+      return Math.round(n);
+    }
+
+    /**
+     * Mostra un editor inline nella card per impostare manualmente il tipo di
+     * corsa: camminata, corsa e distanza (tutti in metri). La progressione
+     * della settimana resta calcolata automaticamente.
+     */
+    function apriModificaCorsa(sessione, dataIso, card, state) {
+      var existing = card.querySelector(".settimana-corsa-box");
+      if (existing) { existing.remove(); return; }
+
+      var wr = sessione.schemaWalkRun || {};
+      var box = el("div", { class: "settimana-corsa-box" });
+
+      function campo(labelKey, valore) {
+        var input = el("input", {
+          type: "number",
+          class: "settimana-corsa-input",
+          min: "0",
+          step: "1",
+          inputmode: "numeric",
+          value: valore != null ? String(valore) : "",
+        });
+        var wrap = el("label", { class: "settimana-corsa-campo" }, [
+          el("span", { text: t(labelKey) }),
+          input,
+        ]);
+        return { wrap: wrap, input: input };
+      }
+
+      var cammCampo = campo("view.settimana.corsa_camm_label", wr.cammMetri);
+      var corsaCampo = campo("view.settimana.corsa_corsa_label", wr.corsaMetri);
+      var distCampo = campo("view.settimana.corsa_distanza_label", wr.distanzaMetri);
+
+      var feedback = el("p", {
+        class: "settimana-corsa-feedback",
+        "aria-live": "polite",
+      });
+
+      var btnConferma = el("button", {
+        type: "button",
+        class: "settimana-form-btn-salva",
+        text: t("view.settimana.corsa_salva"),
+      });
+      var btnAnnulla = el("button", {
+        type: "button",
+        class: "settimana-form-btn-annulla",
+        text: t("common.annulla"),
+      });
+
+      btnAnnulla.addEventListener("click", function () { box.remove(); });
+      btnConferma.addEventListener("click", function () {
+        var camm = parseMetri(cammCampo.input.value);
+        var corsa = parseMetri(corsaCampo.input.value);
+        var dist = parseMetri(distCampo.input.value);
+        if (camm === false || corsa === false || dist === false) {
+          feedback.textContent = t("view.settimana.corsa_errore");
+          return;
+        }
+        salvaCorsaManuale(
+          sessione,
+          dataIso,
+          { cammMetri: camm, corsaMetri: corsa, distanzaMetri: dist },
+          state
+        );
+        box.remove();
+      });
+
+      var titolo = el("p", {
+        class: "settimana-corsa-titolo",
+        text: t("view.settimana.modifica_corsa_titolo"),
+      });
+      var campiGrid = el("div", { class: "settimana-corsa-campi" }, [
+        cammCampo.wrap,
+        corsaCampo.wrap,
+        distCampo.wrap,
+      ]);
+
+      box.appendChild(titolo);
+      box.appendChild(campiGrid);
+      box.appendChild(feedback);
+      box.appendChild(el("div", { class: "settimana-form-actions" }, [btnConferma, btnAnnulla]));
+      card.appendChild(box);
+    }
+
+    /**
+     * Salva i valori manuali (camminata / corsa / distanza in metri) sulla
+     * sessione di corsa programmata, ricalcola la durata stimata e persiste
+     * il piano della settimana.
+     */
+    function salvaCorsaManuale(sessione, dataIso, valori, state) {
+      if (!Storage || typeof Storage.put !== "function") return;
+      if (!state.settimana || !Array.isArray(state.settimana.sessioniProgrammate)) return;
+
+      // Stima durata: passo camminata 10 min/km, passo corsa 6 min/km.
+      var durata = null;
+      if (valori.cammMetri != null || valori.corsaMetri != null) {
+        var durataMin =
+          ((valori.cammMetri || 0) / 1000) * 10 + ((valori.corsaMetri || 0) / 1000) * 6;
+        durata = durataMin > 0 ? Math.round(durataMin) : null;
+      }
+
+      state.settimana.sessioniProgrammate.forEach(function (s) {
+        if (s && s.data === dataIso && s.tipo === "corsa") {
+          s.schemaWalkRun = {
+            cammMetri: valori.cammMetri,
+            corsaMetri: valori.corsaMetri,
+            distanzaMetri: valori.distanzaMetri,
+          };
+          s.durataStimataMin = durata;
+        }
+      });
+
+      Storage.put(STORE_PIANO, state.settimana, { origine: "utente" })
+        .then(function () {
+          renderListaGiorni(listaEl, state);
+        })
+        .catch(function (err) {
+          if (global.console && global.console.error) {
+            global.console.error("[settimana] errore salvataggio corsa manuale:", err);
+          }
+        });
     }
 
     /**

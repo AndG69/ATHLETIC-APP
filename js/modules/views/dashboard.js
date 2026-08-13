@@ -456,6 +456,15 @@
     return S.get("impostazioni", "main").catch(function() { return null; });
   }
 
+  /** Numero di settimana ISO (1-53) per una data. */
+  function getIsoWeekNumber(date) {
+    var d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+    var dayNum = d.getUTCDay() || 7;
+    d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+    var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+    return Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
+  }
+
   // ---------------------------------------------------------------------------
   // Sezione Corsa
   // ---------------------------------------------------------------------------
@@ -463,28 +472,9 @@
   function renderSezioneCorsa(body, sessioni, impostazioni) {
     body.innerHTML = "";
 
-    // Progressione walk-run
-    var settimana = impostazioni && impostazioni.settimanaProgressione
-      ? impostazioni.settimanaProgressione : null;
-    var progressioneText = "\u2014";
-    if (settimana !== null) {
-      // Cerca schema walk-run dall'ultima sessione con schema
-      var schema = null;
-      for (var i = sessioni.length - 1; i >= 0; i--) {
-        if (sessioni[i] && sessioni[i].schemaWalkRun) {
-          schema = sessioni[i].schemaWalkRun;
-          break;
-        }
-      }
-      if (schema) {
-        progressioneText = "Settimana " + settimana + "/16 \u2014 " +
-          schema.corsaMetri + "m corsa / " + schema.cammMetri + "m camm";
-      } else {
-        progressioneText = "Settimana " + settimana + "/16";
-      }
-    }
-
-    body.appendChild(buildKpiRow("Progressione walk-run", progressioneText));
+    // Progressione: settimana ISO dell'anno in corso.
+    var settimanaAnno = getIsoWeekNumber(new Date());
+    body.appendChild(buildKpiRow("Settimana dell'anno", "Settimana " + settimanaAnno));
 
     // Volume settimanale
     var volume = calcolaVolumeSettimanale(sessioni);

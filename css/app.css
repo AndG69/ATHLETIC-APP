@@ -2631,6 +2631,89 @@ body {
   min-height: var(--tap-min);
 }
 
+/* --- Tipo corsa: stato "da impostare" --- */
+
+.settimana-sessione-schema-vuoto {
+  color: var(--color-fg-muted);
+  font-style: italic;
+}
+
+/* --- Pulsante "Modifica corsa" --- */
+
+.settimana-btn-modifica-corsa {
+  font: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-accent);
+  background: transparent;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  padding: var(--space-1) var(--space-3);
+  min-height: var(--tap-min);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.settimana-btn-modifica-corsa:hover {
+  background: var(--color-accent-soft-bg);
+}
+
+/* --- Editor inline "Modifica corsa" (camminata / corsa / distanza) --- */
+
+.settimana-corsa-box {
+  margin-top: var(--space-3);
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.settimana-corsa-titolo {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-fg);
+}
+
+.settimana-corsa-campi {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+  gap: var(--space-2);
+}
+
+.settimana-corsa-campo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-fg-muted);
+}
+
+.settimana-corsa-input {
+  font: inherit;
+  color: var(--color-fg);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  min-height: var(--tap-min);
+  width: 100%;
+}
+
+.settimana-corsa-feedback {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-danger);
+}
+
+.settimana-corsa-feedback:empty {
+  display: none;
+}
+
 /* ----------------------------------------------------------------
  * Vista Anagrafica Palestra (📋 Schede)
  * ---------------------------------------------------------------- */
@@ -2661,6 +2744,106 @@ body {
 
 .anagrafica-btn-ripristina:hover {
   background: var(--color-warning-bg);
+}
+
+/* --- Gestione gruppi muscolari --- */
+
+.anagrafica-gruppi {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-elevated);
+  padding: var(--space-2) var(--space-3);
+}
+
+.anagrafica-gruppi > summary {
+  cursor: pointer;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-sm);
+  padding: var(--space-1) 0;
+}
+
+.anagrafica-gruppi-hint {
+  margin: var(--space-2) 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-fg-muted);
+}
+
+.anagrafica-gruppi-lista {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.anagrafica-gruppo-row {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.anagrafica-gruppo-input {
+  font: inherit;
+  flex: 1;
+  min-width: 0;
+  color: var(--color-fg);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  min-height: var(--tap-min);
+}
+
+.anagrafica-gruppo-del {
+  font: inherit;
+  flex: 0 0 auto;
+  color: var(--color-danger);
+  background: transparent;
+  border: 1px solid var(--color-danger);
+  border-radius: var(--radius-md);
+  min-height: var(--tap-min);
+  min-width: var(--tap-min);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.anagrafica-gruppo-del:hover {
+  background: var(--color-danger-bg);
+}
+
+.anagrafica-gruppo-add-row {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.anagrafica-gruppo-nuovo {
+  font: inherit;
+  flex: 1;
+  min-width: 0;
+  color: var(--color-fg);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  min-height: var(--tap-min);
+}
+
+.anagrafica-gruppo-add {
+  font: inherit;
+  flex: 0 0 auto;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-accent);
+  background: transparent;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  min-height: var(--tap-min);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.anagrafica-gruppo-add:hover {
+  background: var(--color-accent-soft-bg);
 }
 
 .anagrafica-feedback-globale {
@@ -2729,9 +2912,10 @@ body {
 
 .anagrafica-esercizi-table th,
 .anagrafica-esercizi-table td {
-  padding: var(--space-2) var(--space-3);
+  padding: var(--space-2);
   border-bottom: 1px solid var(--color-border);
   vertical-align: middle;
+  overflow-wrap: break-word;
 }
 
 .anagrafica-esercizi-table th {
@@ -2742,35 +2926,32 @@ body {
   white-space: nowrap;
 }
 
-/* Larghezze colonne fisse per allineamento */
+/* Larghezze colonne fisse per allineamento (5 colonne:
+   Gruppo · Esercizio · Serie · Rip · Carico/Tempo) */
 .anagrafica-esercizi-table th:nth-child(1),
 .anagrafica-esercizi-table td:nth-child(1) {
-  width: 50%;
+  width: 20%;
 }
 
 .anagrafica-esercizi-table th:nth-child(2),
-.anagrafica-esercizi-table td:nth-child(2),
-.anagrafica-esercizi-table th:nth-child(3),
-.anagrafica-esercizi-table td:nth-child(3) {
-  width: 12%;
-  text-align: center;
+.anagrafica-esercizi-table td:nth-child(2) {
+  width: 38%;
 }
 
+.anagrafica-esercizi-table th:nth-child(3),
+.anagrafica-esercizi-table td:nth-child(3),
 .anagrafica-esercizi-table th:nth-child(4),
 .anagrafica-esercizi-table td:nth-child(4) {
-  width: 26%;
-  text-align: right;
-}
-
-.anagrafica-esercizi-table td:nth-child(2),
-.anagrafica-esercizi-table td:nth-child(3) {
-  font-variant-numeric: tabular-nums;
+  width: 12%;
   text-align: center;
+  font-variant-numeric: tabular-nums;
 }
 
-.anagrafica-esercizi-table td:nth-child(4) {
-  font-variant-numeric: tabular-nums;
+.anagrafica-esercizi-table th:nth-child(5),
+.anagrafica-esercizi-table td:nth-child(5) {
+  width: 18%;
   text-align: right;
+  font-variant-numeric: tabular-nums;
   font-weight: var(--font-weight-medium);
 }
 
@@ -2819,12 +3000,48 @@ body {
 .anagrafica-esercizio-row {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-end;
   gap: var(--space-2);
   padding: var(--space-2);
   background: var(--color-bg-subtle);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
+}
+
+.anagrafica-esercizio-main {
+  display: flex;
+  gap: var(--space-2);
+  flex: 1 1 240px;
+  min-width: 0;
+}
+
+.anagrafica-esercizio-nums {
+  display: flex;
+  gap: var(--space-2);
+  align-items: flex-end;
+  flex: 0 0 auto;
+}
+
+.anagrafica-num-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: var(--font-size-sm);
+  color: var(--color-fg-muted);
+}
+
+.anagrafica-select-gruppo {
+  font: inherit;
+  font-size: var(--font-size-sm);
+  color: var(--color-fg);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  padding: var(--space-1) var(--space-2);
+  min-height: var(--tap-min);
+  flex: 0 1 130px;
+  min-width: 0;
 }
 
 .anagrafica-select-esercizio {
@@ -2840,7 +3057,8 @@ body {
   flex: 1 1 180px;
 }
 
-.anagrafica-input-nome-libero {
+.anagrafica-input-nome-libero,
+.anagrafica-input-esercizio {
   font: inherit;
   font-size: var(--font-size-sm);
   color: var(--color-fg);
@@ -2849,8 +3067,8 @@ body {
   border-radius: var(--radius-md);
   padding: var(--space-1) var(--space-2);
   min-height: var(--tap-min);
-  min-width: 140px;
-  flex: 1 1 140px;
+  min-width: 0;
+  flex: 1 1 120px;
 }
 
 .anagrafica-input-serie,
@@ -3132,4 +3350,82 @@ body {
 .settimana-btn-import-mobile:active {
   background: var(--color-primary, #b51f2a);
   color: #fff;
+}
+
+/* --- Anagrafica: pulsante elimina seduta --- */
+.anagrafica-btn-elimina-seduta {
+  margin-left: 0.5rem;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid #c00;
+  border-radius: var(--radius-sm, 6px);
+  background: transparent;
+  color: #c00;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.anagrafica-btn-elimina-seduta:active {
+  background: #c00;
+  color: #fff;
+}
+.anagrafica-btn-aggiungi {
+  display: block;
+  margin: 1rem 0;
+  padding: 0.5rem 1.2rem;
+  border: 1px solid var(--color-border, #ccc);
+  border-radius: var(--radius-sm, 6px);
+  background: var(--color-surface, #fff);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.anagrafica-btn-aggiungi:active {
+  background: var(--color-primary, #b51f2a);
+  color: #fff;
+}
+
+/* --- Anagrafica: crea nuovo esercizio --- */
+.anagrafica-nuovo-esercizio {
+  margin: 0.75rem 0;
+  padding: 0.5rem;
+  border: 1px solid var(--color-border, #ddd);
+  border-radius: var(--radius-sm, 6px);
+}
+.anagrafica-nuovo-esercizio summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.anagrafica-nuovo-form {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.4rem 0.5rem;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+.anagrafica-nuovo-form label {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+.anagrafica-nuovo-campo {
+  padding: 0.3rem 0.4rem;
+  font-size: 0.85rem;
+  border: 1px solid var(--color-border, #ccc);
+  border-radius: 4px;
+}
+.anagrafica-btn-crea-nuovo {
+  grid-column: 1 / -1;
+  margin-top: 0.4rem;
+  padding: 0.4rem 1rem;
+  background: var(--color-primary, #b51f2a);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm, 6px);
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+/* --- Genera Piano: input data più alto e leggibile --- */
+.genera-piano-input-data {
+  padding: 0.6rem 0.5rem;
+  font-size: 1rem;
+  min-height: 2.5rem;
 }

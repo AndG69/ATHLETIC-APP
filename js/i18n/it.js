@@ -364,6 +364,15 @@
     "view.settimana.elimina_sessione": "Elimina",
     "view.settimana.elimina_conferma": "Eliminare questa sessione dal piano?",
     "view.settimana.registra_sessione": "Registra sessione",
+    "view.settimana.schema_manuale": "Camminata {camm}m \u00B7 Corsa {corsa}m \u00B7 Distanza {dist}m",
+    "view.settimana.schema_da_impostare": "Tipo corsa da impostare",
+    "view.settimana.modifica_corsa": "\u270F\uFE0F Modifica corsa",
+    "view.settimana.modifica_corsa_titolo": "Imposta il tipo di corsa",
+    "view.settimana.corsa_camm_label": "Camminata (m)",
+    "view.settimana.corsa_corsa_label": "Corsa (m)",
+    "view.settimana.corsa_distanza_label": "Distanza (m)",
+    "view.settimana.corsa_salva": "Salva",
+    "view.settimana.corsa_errore": "Inserisci numeri validi (metri, \u2265 0).",
 
     // ---- Genera Piano (Task 4) -------------------------------------
     "view.genera_piano.titolo": "Genera piano mensile",
