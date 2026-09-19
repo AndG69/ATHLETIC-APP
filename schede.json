@@ -9,64 +9,7 @@
       "serie": 4,
       "repsRange": "6-12",
       "stato": "Programmata",
-      "esercizi": [
-        {
-          "nome": "Shoulder press 2",
-          "gruppo": "Deltoidi laterali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 10,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Alzate laterali - Macchinario",
-          "gruppo": "Addominali laterali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 32,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Seated Row",
-          "gruppo": "Dorsali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 23,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Leg Press",
-          "gruppo": "Gambe",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 0,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Cable wood chopper",
-          "gruppo": "Addominali laterali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 0,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Elbow Side Plank – Up-Down",
-          "gruppo": "Addominali laterali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 0,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Alternating Heel Touch",
-          "gruppo": "Addominali laterali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 0,
-          "tempoSecondi": null
-        }
-      ]
+      "esercizi": []
     },
     {
       "data": "2026-06-26",
@@ -82,7 +25,7 @@
           "gruppo": "Trapezi",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 10,
+          "carico": 5,
           "tempoSecondi": null
         },
         {
@@ -90,7 +33,7 @@
           "gruppo": "Deltoidi Posteriori",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 5,
+          "carico": 6,
           "tempoSecondi": null
         },
         {
@@ -98,7 +41,7 @@
           "gruppo": "Deltoidi Posteriori",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 0,
+          "carico": 15.8,
           "tempoSecondi": null
         },
         {
@@ -106,7 +49,7 @@
           "gruppo": "Tricipiti",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 11.3,
+          "carico": 13.5,
           "tempoSecondi": null
         },
         {
@@ -114,7 +57,7 @@
           "gruppo": "Tricipiti",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 5,
+          "carico": 10,
           "tempoSecondi": null
         },
         {
@@ -122,7 +65,7 @@
           "gruppo": "Tricipiti",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 15.8,
+          "carico": 18,
           "tempoSecondi": null
         }
       ]
@@ -143,7 +86,7 @@
       "stato": "Programmata"
     },
     {
-      "data": "2026-09-01",
+      "data": "2026-09-20",
       "tipo": "palestra",
       "numeroCiclo": 1,
       "nomeSeduta": "Seduta 1",
@@ -202,7 +145,7 @@
       ]
     },
     {
-      "data": "2026-09-05",
+      "data": "2026-09-24",
       "tipo": "palestra",
       "numeroCiclo": 2,
       "nomeSeduta": "Seduta 2",
@@ -215,7 +158,7 @@
           "gruppo": "Trapezi",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 10,
+          "carico": 5,
           "tempoSecondi": null
         },
         {
@@ -223,7 +166,7 @@
           "gruppo": "Deltoidi Posteriori",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 5,
+          "carico": 6,
           "tempoSecondi": null
         },
         {
@@ -231,7 +174,7 @@
           "gruppo": "Deltoidi Posteriori",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 0,
+          "carico": 15.8,
           "tempoSecondi": null
         },
         {
@@ -239,7 +182,7 @@
           "gruppo": "Tricipiti",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 11.3,
+          "carico": 13.5,
           "tempoSecondi": null
         },
         {
@@ -247,7 +190,7 @@
           "gruppo": "Tricipiti",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 5,
+          "carico": 10,
           "tempoSecondi": null
         },
         {
@@ -255,13 +198,13 @@
           "gruppo": "Tricipiti",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 15.8,
+          "carico": 18,
           "tempoSecondi": null
         }
       ]
     },
     {
-      "data": "2026-09-06",
+      "data": "2026-09-25",
       "tipo": "palestra",
       "numeroCiclo": 3,
       "nomeSeduta": "Seduta 3",
@@ -290,7 +233,7 @@
           "gruppo": "Dorsali",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 32,
+          "carico": 39,
           "tempoSecondi": null
         },
         {
@@ -320,7 +263,7 @@
       ]
     },
     {
-      "data": "2026-09-10",
+      "data": "2026-09-28",
       "tipo": "palestra",
       "numeroCiclo": 4,
       "nomeSeduta": "Seduta 4",
@@ -333,7 +276,7 @@
           "gruppo": "Addominali Superiori",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 0,
+          "carico": 43,
           "tempoSecondi": 43
         },
         {
@@ -341,8 +284,8 @@
           "gruppo": "Addominali Superiori",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 30,
-          "tempoSecondi": null
+          "carico": 0,
+          "tempoSecondi": 30
         },
         {
           "nome": "Mountain Climber",
@@ -353,7 +296,7 @@
           "tempoSecondi": null
         },
         {
-          "nome": "Gluteus Machine 1 ",
+          "nome": "Gluteus Machine 1",
           "gruppo": "Glutei",
           "serie": 4,
           "ripetizioni": 12,
@@ -361,7 +304,7 @@
           "tempoSecondi": null
         },
         {
-          "nome": "Gluteus Machine 2",
+          "nome": "Ponte Glutei",
           "gruppo": "Glutei",
           "serie": 4,
           "ripetizioni": 12,
@@ -379,7 +322,7 @@
       ]
     },
     {
-      "data": "2026-09-11",
+      "data": "2026-09-29",
       "tipo": "palestra",
       "numeroCiclo": 5,
       "nomeSeduta": "Seduta 5",
@@ -400,7 +343,7 @@
           "gruppo": "Pettorali",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 23,
+          "carico": 29,
           "tempoSecondi": null
         },
         {
@@ -416,7 +359,7 @@
           "gruppo": "Bicipiti",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 0,
+          "carico": 36,
           "tempoSecondi": null
         },
         {
@@ -438,7 +381,184 @@
       ]
     },
     {
-      "data": "2026-09-14",
+      "data": "2026-10-08",
+      "tipo": "palestra",
+      "numeroCiclo": 3,
+      "nomeSeduta": "Seduta 3",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Pulley triangolo",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 32,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Lat Machine presa larga",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 39,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Lat Machine presa inversa",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 39,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Squat corpo libero",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 0,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Leg Extension",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 29,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Machine Adductor",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 29,
+          "tempoSecondi": null
+        }
+      ]
+    },
+    {
+      "data": "2026-10-09",
+      "tipo": "palestra",
+      "numeroCiclo": 4,
+      "nomeSeduta": "Seduta 4",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Addominal Machine",
+          "gruppo": "Addominali Superiori",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 43,
+          "tempoSecondi": 43
+        },
+        {
+          "nome": "Plank",
+          "gruppo": "Addominali Superiori",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 0,
+          "tempoSecondi": 30
+        },
+        {
+          "nome": "Mountain Climber",
+          "gruppo": "Addominali Inferiori",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 0,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Gluteus Machine 1",
+          "gruppo": "Glutei",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 23,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Ponte Glutei",
+          "gruppo": "Glutei",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 0,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Iperestensioni",
+          "gruppo": "Lombari",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 0,
+          "tempoSecondi": null
+        }
+      ]
+    },
+    {
+      "data": "2026-10-12",
+      "tipo": "palestra",
+      "numeroCiclo": 5,
+      "nomeSeduta": "Seduta 5",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Panca Piana bilancere",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 20,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Chest Press",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 29,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Supine press - presa larga",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 35,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Panca Scott",
+          "gruppo": "Bicipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 36,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Curl Cavo basso (ercolina)",
+          "gruppo": "Bicipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 15.8,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Curl concentrato al cavo",
+          "gruppo": "Bicipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 6.8,
+          "tempoSecondi": null
+        }
+      ]
+    },
+    {
+      "data": "2026-10-13",
       "tipo": "palestra",
       "numeroCiclo": 6,
       "nomeSeduta": "Seduta 6",
@@ -451,7 +571,7 @@
           "gruppo": "Deltoidi Posteriori",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 0,
+          "carico": 45,
           "tempoSecondi": null
         },
         {
@@ -459,7 +579,7 @@
           "gruppo": "Deltoidi anteriori",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 15,
+          "carico": 20,
           "tempoSecondi": null
         },
         {
@@ -467,7 +587,7 @@
           "gruppo": "Deltoidi anteriori",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 14,
+          "carico": 18,
           "tempoSecondi": null
         },
         {
@@ -483,7 +603,7 @@
           "gruppo": "Tricipiti",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 10,
+          "carico": 20,
           "tempoSecondi": null
         },
         {
@@ -491,13 +611,13 @@
           "gruppo": "Tricipiti",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 10,
+          "carico": 11.3,
           "tempoSecondi": null
         }
       ]
     },
     {
-      "data": "2026-09-15",
+      "data": "2026-10-17",
       "tipo": "palestra",
       "numeroCiclo": 7,
       "nomeSeduta": "Seduta 7",
@@ -556,7 +676,7 @@
       ]
     },
     {
-      "data": "2026-09-19",
+      "data": "2026-10-18",
       "tipo": "palestra",
       "numeroCiclo": 8,
       "nomeSeduta": "Seduta 8",
@@ -581,7 +701,7 @@
           "tempoSecondi": null
         },
         {
-          "nome": "Dunbell russian twist",
+          "nome": "Woodchopper al cavo",
           "gruppo": "Addominali laterali",
           "serie": 4,
           "ripetizioni": 12,
@@ -609,80 +729,13 @@
           "gruppo": "Pettorali",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 45,
+          "carico": 52,
           "tempoSecondi": null
         }
       ]
     },
     {
-      "data": "2026-09-20",
-      "tipo": "palestra",
-      "numeroCiclo": 9,
-      "nomeSeduta": "Seduta 9",
-      "serie": 4,
-      "repsRange": "6-12",
-      "stato": "Programmata",
-      "esercizi": [
-        {
-          "nome": "Shoulder press 2",
-          "gruppo": "Deltoidi laterali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 10,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Alzate laterali - Macchinario",
-          "gruppo": "Addominali laterali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 32,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Seated Row",
-          "gruppo": "Dorsali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 23,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Leg Press",
-          "gruppo": "Gambe",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 0,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Cable wood chopper",
-          "gruppo": "Addominali laterali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 0,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Elbow Side Plank – Up-Down",
-          "gruppo": "Addominali laterali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 0,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Alternating Heel Touch",
-          "gruppo": "Addominali laterali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 0,
-          "tempoSecondi": null
-        }
-      ]
-    },
-    {
-      "data": "2026-09-24",
+      "data": "2026-10-22",
       "tipo": "palestra",
       "numeroCiclo": 1,
       "nomeSeduta": "Seduta 1",
@@ -741,7 +794,7 @@
       ]
     },
     {
-      "data": "2026-09-25",
+      "data": "2026-10-23",
       "tipo": "palestra",
       "numeroCiclo": 2,
       "nomeSeduta": "Seduta 2",
@@ -754,7 +807,7 @@
           "gruppo": "Trapezi",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 10,
+          "carico": 5,
           "tempoSecondi": null
         },
         {
@@ -762,7 +815,7 @@
           "gruppo": "Deltoidi Posteriori",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 5,
+          "carico": 6,
           "tempoSecondi": null
         },
         {
@@ -770,7 +823,7 @@
           "gruppo": "Deltoidi Posteriori",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 0,
+          "carico": 15.8,
           "tempoSecondi": null
         },
         {
@@ -778,7 +831,7 @@
           "gruppo": "Tricipiti",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 11.3,
+          "carico": 13.5,
           "tempoSecondi": null
         },
         {
@@ -786,7 +839,7 @@
           "gruppo": "Tricipiti",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 5,
+          "carico": 10,
           "tempoSecondi": null
         },
         {
@@ -794,13 +847,13 @@
           "gruppo": "Tricipiti",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 15.8,
+          "carico": 18,
           "tempoSecondi": null
         }
       ]
     },
     {
-      "data": "2026-09-28",
+      "data": "2026-10-26",
       "tipo": "palestra",
       "numeroCiclo": 3,
       "nomeSeduta": "Seduta 3",
@@ -829,7 +882,7 @@
           "gruppo": "Dorsali",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 32,
+          "carico": 39,
           "tempoSecondi": null
         },
         {
@@ -859,7 +912,7 @@
       ]
     },
     {
-      "data": "2026-09-29",
+      "data": "2026-10-27",
       "tipo": "palestra",
       "numeroCiclo": 4,
       "nomeSeduta": "Seduta 4",
@@ -872,7 +925,7 @@
           "gruppo": "Addominali Superiori",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 0,
+          "carico": 43,
           "tempoSecondi": 43
         },
         {
@@ -880,8 +933,8 @@
           "gruppo": "Addominali Superiori",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 30,
-          "tempoSecondi": null
+          "carico": 0,
+          "tempoSecondi": 30
         },
         {
           "nome": "Mountain Climber",
@@ -892,7 +945,7 @@
           "tempoSecondi": null
         },
         {
-          "nome": "Gluteus Machine 1 ",
+          "nome": "Gluteus Machine 1",
           "gruppo": "Glutei",
           "serie": 4,
           "ripetizioni": 12,
@@ -900,7 +953,7 @@
           "tempoSecondi": null
         },
         {
-          "nome": "Gluteus Machine 2",
+          "nome": "Ponte Glutei",
           "gruppo": "Glutei",
           "serie": 4,
           "ripetizioni": 12,
@@ -913,6 +966,65 @@
           "serie": 4,
           "ripetizioni": 12,
           "carico": 0,
+          "tempoSecondi": null
+        }
+      ]
+    },
+    {
+      "data": "2026-10-31",
+      "tipo": "palestra",
+      "numeroCiclo": 5,
+      "nomeSeduta": "Seduta 5",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Panca Piana bilancere",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 20,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Chest Press",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 29,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Supine press - presa larga",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 35,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Panca Scott",
+          "gruppo": "Bicipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 36,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Curl Cavo basso (ercolina)",
+          "gruppo": "Bicipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 15.8,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Curl concentrato al cavo",
+          "gruppo": "Bicipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 6.8,
           "tempoSecondi": null
         }
       ]
@@ -984,7 +1096,7 @@
             "gruppo": "Trapezi",
             "serie": 4,
             "ripetizioni": 12,
-            "carico": 10,
+            "carico": 5,
             "tempoSecondi": null
           },
           {
@@ -992,7 +1104,7 @@
             "gruppo": "Deltoidi Posteriori",
             "serie": 4,
             "ripetizioni": 12,
-            "carico": 5,
+            "carico": 6,
             "tempoSecondi": null
           },
           {
@@ -1000,7 +1112,7 @@
             "gruppo": "Deltoidi Posteriori",
             "serie": 4,
             "ripetizioni": 12,
-            "carico": 0,
+            "carico": 15.8,
             "tempoSecondi": null
           },
           {
@@ -1008,7 +1120,7 @@
             "gruppo": "Tricipiti",
             "serie": 4,
             "ripetizioni": 12,
-            "carico": 11.3,
+            "carico": 13.5,
             "tempoSecondi": null
           },
           {
@@ -1016,7 +1128,7 @@
             "gruppo": "Tricipiti",
             "serie": 4,
             "ripetizioni": 12,
-            "carico": 5,
+            "carico": 10,
             "tempoSecondi": null
           },
           {
@@ -1024,7 +1136,7 @@
             "gruppo": "Tricipiti",
             "serie": 4,
             "ripetizioni": 12,
-            "carico": 15.8,
+            "carico": 18,
             "tempoSecondi": null
           }
         ]
@@ -1054,7 +1166,7 @@
             "gruppo": "Dorsali",
             "serie": 4,
             "ripetizioni": 12,
-            "carico": 32,
+            "carico": 39,
             "tempoSecondi": null
           },
           {
@@ -1092,7 +1204,7 @@
             "gruppo": "Addominali Superiori",
             "serie": 4,
             "ripetizioni": 12,
-            "carico": 0,
+            "carico": 43,
             "tempoSecondi": 43
           },
           {
@@ -1100,8 +1212,8 @@
             "gruppo": "Addominali Superiori",
             "serie": 4,
             "ripetizioni": 12,
-            "carico": 30,
-            "tempoSecondi": null
+            "carico": 0,
+            "tempoSecondi": 30
           },
           {
             "nome": "Mountain Climber",
@@ -1112,7 +1224,7 @@
             "tempoSecondi": null
           },
           {
-            "nome": "Gluteus Machine 1 ",
+            "nome": "Gluteus Machine 1",
             "gruppo": "Glutei",
             "serie": 4,
             "ripetizioni": 12,
@@ -1120,7 +1232,7 @@
             "tempoSecondi": null
           },
           {
-            "nome": "Gluteus Machine 2",
+            "nome": "Ponte Glutei",
             "gruppo": "Glutei",
             "serie": 4,
             "ripetizioni": 12,
@@ -1154,7 +1266,7 @@
             "gruppo": "Pettorali",
             "serie": 4,
             "ripetizioni": 12,
-            "carico": 23,
+            "carico": 29,
             "tempoSecondi": null
           },
           {
@@ -1170,7 +1282,7 @@
             "gruppo": "Bicipiti",
             "serie": 4,
             "ripetizioni": 12,
-            "carico": 0,
+            "carico": 36,
             "tempoSecondi": null
           },
           {
@@ -1200,7 +1312,7 @@
             "gruppo": "Deltoidi Posteriori",
             "serie": 4,
             "ripetizioni": 12,
-            "carico": 0,
+            "carico": 45,
             "tempoSecondi": null
           },
           {
@@ -1208,7 +1320,7 @@
             "gruppo": "Deltoidi anteriori",
             "serie": 4,
             "ripetizioni": 12,
-            "carico": 15,
+            "carico": 20,
             "tempoSecondi": null
           },
           {
@@ -1216,7 +1328,7 @@
             "gruppo": "Deltoidi anteriori",
             "serie": 4,
             "ripetizioni": 12,
-            "carico": 14,
+            "carico": 18,
             "tempoSecondi": null
           },
           {
@@ -1232,7 +1344,7 @@
             "gruppo": "Tricipiti",
             "serie": 4,
             "ripetizioni": 12,
-            "carico": 10,
+            "carico": 20,
             "tempoSecondi": null
           },
           {
@@ -1240,7 +1352,7 @@
             "gruppo": "Tricipiti",
             "serie": 4,
             "ripetizioni": 12,
-            "carico": 10,
+            "carico": 11.3,
             "tempoSecondi": null
           }
         ]
@@ -1320,7 +1432,7 @@
             "tempoSecondi": null
           },
           {
-            "nome": "Dunbell russian twist",
+            "nome": "Woodchopper al cavo",
             "gruppo": "Addominali laterali",
             "serie": 4,
             "ripetizioni": 12,
@@ -1348,69 +1460,7 @@
             "gruppo": "Pettorali",
             "serie": 4,
             "ripetizioni": 12,
-            "carico": 45,
-            "tempoSecondi": null
-          }
-        ]
-      },
-      {
-        "numeroCiclo": 9,
-        "nome": "Seduta 9",
-        "esercizi": [
-          {
-            "nome": "Shoulder press 2",
-            "gruppo": "Deltoidi laterali",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 10,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Alzate laterali - Macchinario",
-            "gruppo": "Addominali laterali",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 32,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Seated Row",
-            "gruppo": "Dorsali",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 23,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Leg Press",
-            "gruppo": "Gambe",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 0,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Cable wood chopper",
-            "gruppo": "Addominali laterali",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 0,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Elbow Side Plank – Up-Down",
-            "gruppo": "Addominali laterali",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 0,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Alternating Heel Touch",
-            "gruppo": "Addominali laterali",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 0,
+            "carico": 52,
             "tempoSecondi": null
           }
         ]
@@ -1436,5 +1486,5 @@
       "Deltoidi laterali"
     ]
   },
-  "dataExport": "2026-08-13T13:52:47.707Z"
+  "dataExport": "2026-09-19T14:11:40.607Z"
 }
