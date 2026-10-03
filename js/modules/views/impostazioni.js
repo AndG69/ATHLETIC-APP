@@ -133,7 +133,7 @@
     // Assicura che gli array siano array
     if (!Array.isArray(merged.giorniPalestra)) merged.giorniPalestra = defaults.giorniPalestra;
     if (!Array.isArray(merged.giorniCorsa)) merged.giorniCorsa = defaults.giorniCorsa;
-    if (!Array.isArray(merged.cadenza) || merged.cadenza.length !== 14) merged.cadenza = defaults.cadenza;
+    if (!Array.isArray(merged.cadenza) || merged.cadenza.length < 1) merged.cadenza = defaults.cadenza;
     if (!merged.ultimaSedutaPalestra) merged.ultimaSedutaPalestra = defaults.ultimaSedutaPalestra;
     return merged;
   }
@@ -401,7 +401,7 @@
       ev.preventDefault();
       var raw = cadenzaInput.value.trim().toUpperCase();
       var parti = raw.split("-");
-      if (parti.length !== 14) {
+      if (parti.length < 1 || raw === "") {
         setFeedback(feedback, t("view.impostazioni.cadenza.errore"), "error");
         return;
       }

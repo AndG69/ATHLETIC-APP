@@ -65,10 +65,23 @@
     return n < 10 ? "0" + n : String(n);
   }
 
-  var NOMI_MESI_FULL = [
-    "Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno",
-    "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"
-  ];
+  /**
+   * Ricava anno e mese (1-12) da una data ISO "YYYY-MM-DD".
+   * Il mese di generazione è derivato automaticamente dalla data di partenza:
+   * non esiste più un selettore mese separato. In caso di data non valida usa
+   * i fallback forniti.
+   */
+  function annoMeseDaData(dataIso, fallbackAnno, fallbackMese) {
+    if (dataIso && typeof dataIso === "string" && dataIso.length >= 10) {
+      var parti = dataIso.split("-");
+      var a = parseInt(parti[0], 10);
+      var m = parseInt(parti[1], 10);
+      if (!isNaN(a) && !isNaN(m) && m >= 1 && m <= 12) {
+        return { anno: a, mese: m };
+      }
+    }
+    return { anno: fallbackAnno, mese: fallbackMese };
+  }
 
   // ---------------------------------------------------------------------------
   // Logica di generazione e salvataggio
@@ -398,40 +411,17 @@
       { data: "2026-05-07", numeroCiclo: 4 };
     var giorniCorsa = (impostazioni && impostazioni.giorniCorsa) || [6, 0];
     var giorniPalestra = (impostazioni && impostazioni.giorniPalestra) || [1, 3];
-    var cadenza = (impostazioni && Array.isArray(impostazioni.cadenza) && impostazioni.cadenza.length === 14)
+    var cadenza = (impostazioni && Array.isArray(impostazioni.cadenza) && impostazioni.cadenza.length >= 1)
       ? impostazioni.cadenza
       : ["P","P","R","C","R","P","P","R","C","R","P","P","R","C"];
 
     // Form
     var form = el("form", { class: "genera-piano-form", novalidate: "novalidate" });
 
-    // Selezione mese/anno
-    var selectMese = el("select", {
-      name: "mese",
-      class: "genera-piano-select",
-      "aria-label": t("view.genera_piano.mese_label"),
-    });
-    for (var m = 1; m <= 12; m++) {
-      var opt = el("option", { value: String(m), text: NOMI_MESI_FULL[m - 1] });
-      if (m === defaultMese) opt.setAttribute("selected", "selected");
-      selectMese.appendChild(opt);
-    }
-
-    var inputAnno = el("input", {
-      type: "number",
-      name: "anno",
-      min: "2026",
-      max: "2030",
-      value: String(defaultAnno),
-      class: "genera-piano-input-anno",
-    });
-
-    form.appendChild(el("div", { class: "genera-piano-field" }, [
-      el("label", { text: t("view.genera_piano.mese_label") }),
-      el("div", { class: "genera-piano-mese-row" }, [selectMese, inputAnno]),
-    ]));
-
-    // Data di partenza: genera sessioni solo da questa data in poi
+    // Data di partenza: genera sessioni solo da questa data in poi.
+    // Mese e anno del piano sono ricavati automaticamente da questa data
+    // (non esiste più un selettore mese separato): il piano copre dalla data
+    // scelta fino alla fine del suo mese.
     var oggiIsoDefault = now.getFullYear() + "-" + pad2(now.getMonth() + 1) + "-" + pad2(now.getDate());
     var inputDataPartenza = el("input", {
       type: "date",
@@ -442,6 +432,10 @@
     form.appendChild(el("div", { class: "genera-piano-field" }, [
       el("label", { text: "Genera a partire dal:" }),
       inputDataPartenza,
+      el("p", {
+        class: "genera-piano-hint",
+        text: "Il piano copre dalla data scelta fino alla fine del relativo mese.",
+      }),
     ]));
 
     // La progressione della corsa (settimana ISO dell'anno) è calcolata
@@ -530,11 +524,12 @@
       text: t("view.genera_piano.btn_anteprima"),
     });
     btnAnteprima.addEventListener("click", function () {
-      var anno = parseInt(inputAnno.value, 10);
-      var mese = parseInt(selectMese.value, 10);
+      var dataPartenzaPreview = inputDataPartenza.value || oggiIsoDefault;
+      var amPrev = annoMeseDaData(dataPartenzaPreview, defaultAnno, defaultMese);
+      var anno = amPrev.anno;
+      var mese = amPrev.mese;
       var includiCorsa = checkCorsa.checked;
       var includiPalestra = checkPalestra.checked;
-      var dataPartenzaPreview = inputDataPartenza.value || oggiIsoDefault;
       var schedaPartenzaPreview = selectSchedaPartenza.value ? parseInt(selectSchedaPartenza.value, 10) : null;
       renderAnteprima(anteprimaEl, anno, mese, includiCorsa, includiPalestra,
         settimanaCorrente, ultimaSeduta, giorniCorsa, giorniPalestra, null, cadenza, sessioniCorsaAlLivello, dataPartenzaPreview, schedaPartenzaPreview);
@@ -558,13 +553,13 @@
 
     form.addEventListener("submit", function onSubmit(ev) {
       ev.preventDefault();
-      var anno = parseInt(inputAnno.value, 10);
-      var mese = parseInt(selectMese.value, 10);
-      var includiCorsa = checkCorsa.checked;
-      var includiPalestra = checkPalestra.checked;
-
       // Legge i parametri dal form
       var dataPartenza = inputDataPartenza.value || oggiIsoDefault;
+      var amSubmit = annoMeseDaData(dataPartenza, defaultAnno, defaultMese);
+      var anno = amSubmit.anno;
+      var mese = amSubmit.mese;
+      var includiCorsa = checkCorsa.checked;
+      var includiPalestra = checkPalestra.checked;
       var schedaPartenza = selectSchedaPartenza.value ? parseInt(selectSchedaPartenza.value, 10) : null;
 
       if (!includiCorsa && !includiPalestra) {
@@ -627,18 +622,15 @@
 
     // Default cadenza: Sett 1: P-P-R-C-R-P-P | Sett 2: R-C-R-P-P-R-C
     var DEFAULT_CADENZA = ["P","P","R","C","R","P","P","R","C","R","P","P","R","C"];
-    var cadenzaEffettiva = (Array.isArray(cadenza) && cadenza.length === 14) ? cadenza : DEFAULT_CADENZA;
+    var cadenzaEffettiva = (Array.isArray(cadenza) && cadenza.length >= 1) ? cadenza : DEFAULT_CADENZA;
 
     var mese0 = mese - 1;
     var giorniNelMese = new Date(anno, mese0 + 1, 0).getDate();
 
-    // Calcola l'offset: quale posizione della cadenza corrisponde al primo giorno del mese
-    // La cadenza[0] = lunedì sett.1, cadenza[1] = martedì sett.1, ..., cadenza[6] = domenica sett.1
-    // cadenza[7] = lunedì sett.2, ..., cadenza[13] = domenica sett.2
-    var primoGiorno = new Date(anno, mese0, 1);
-    var dowPrimo = primoGiorno.getDay(); // 0=dom, 1=lun, ..., 6=sab
-    // Converti in indice lun-based: lun=0, mar=1, ..., dom=6
-    var offsetPrimo = (dowPrimo === 0) ? 6 : dowPrimo - 1;
+    // Cadenza ciclica pura: i valori (P/C/R) si ripetono in sequenza a partire
+    // dal primo giorno effettivamente generato, indipendentemente dal giorno
+    // della settimana e con lunghezza libera (non più fissa a 14).
+    var lunghezzaCadenza = cadenzaEffettiva.length || 1;
 
     // Programma sedute palestra (per lookup esercizi)
     var ciclo = null;
@@ -684,15 +676,17 @@
       (anno === oggiAnno && mese < oggiMese) ||
       (anno === oggiAnno && mese === oggiMese);
 
+    var giornoInizioPattern = null;
     for (var giorno = 1; giorno <= giorniNelMese; giorno++) {
-      // Posizione nel ciclo di 14 giorni
-      var posCiclo = (offsetPrimo + giorno - 1) % 14;
-      var tipo = cadenzaEffettiva[posCiclo]; // "P", "C" o "R"
-
       var dataIsoCheck = anno + "-" + pad2(mese) + "-" + pad2(giorno);
 
       // Salta i giorni passati: non genera sessioni e non consuma indici
       if (meseInCorsoOPassato && dataIsoCheck < oggiIso) continue;
+
+      // Il pattern parte dal primo giorno generato e si ripete ciclicamente.
+      if (giornoInizioPattern === null) giornoInizioPattern = giorno;
+      var posCiclo = (giorno - giornoInizioPattern) % lunghezzaCadenza;
+      var tipo = cadenzaEffettiva[posCiclo]; // "P", "C" o "R"
 
       if (tipo === "P" && includiPalestra && ciclo) {
         // Genera sessione palestra
