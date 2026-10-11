@@ -21,7 +21,7 @@
     <!-- Token di design (palette, tipografia, spaziature) — WCAG 2.1 AA -->
     <link rel="stylesheet" href="css/tokens.css?v=20260513" />
     <!-- Stili dello shell applicativo -->
-    <link rel="stylesheet" href="css/app.css?v=20260813" />
+    <link rel="stylesheet" href="css/app.css?v=20261011a" />
   </head>
   <body>
     <div id="app">
@@ -40,7 +40,7 @@
     <!-- Versione applicativa (Req 24.6) -->
     <script src="js/version.js?v=20260513"></script>
     <!-- i18n baseline italiano (Req 17.3, 24.2) -->
-    <script src="js/i18n/it.js?v=20260813a"></script>
+    <script src="js/i18n/it.js?v=20261011a"></script>
     <!-- Layer di persistenza IndexedDB (Req 22.3, 23.1, 23.7) -->
     <script src="js/services/storage.js?v=20260513"></script>
     <!-- Router hash-based (Req 22.4) -->
@@ -55,6 +55,8 @@
     <script src="js/data/esercizi-catalog.js?v=20260513"></script>
     <!-- Seed programma palestra (dati di default 8 sedute) -->
     <script src="js/data/programma-palestra-seed.js?v=20260513"></script>
+    <!-- Anagrafica esercizi: fonte di verità esercizi/gruppi + cascate -->
+    <script src="js/modules/services/anagrafica-esercizi.js?v=20261011a"></script>
     <!-- Componenti UI riutilizzabili (info popover, legenda RPE) -->
     <script src="js/modules/components/info-popover.js?v=20260513"></script>
     <!-- Motore di analisi sessioni corsa -->
@@ -81,11 +83,13 @@
     <!-- View Impostazioni (Task 5) -->
     <script src="js/modules/views/impostazioni.js?v=20260813a"></script>
     <!-- Vista Anagrafica Palestra (schede) -->
-    <script src="js/modules/views/anagrafica-palestra.js?v=20260813e"></script>
+    <script src="js/modules/views/anagrafica-palestra.js?v=20261011a"></script>
+    <!-- Vista Anagrafica Esercizi (catalogo editabile per gruppo) -->
+    <script src="js/modules/views/anagrafica-esercizi.js?v=20261011a"></script>
     <!-- Vista Dashboard KPI (Task 51-54) -->
     <script src="js/modules/views/dashboard.js?v=20260513"></script>
     <!-- Bootstrap dell'app: shell, rotte, DB (deve stare per ultimo) -->
-    <script src="js/app.js?v=20260513c"></script>
+    <script src="js/app.js?v=20261011a"></script>
     <!-- Service Worker registration + Export/Import schede mobile -->
     <script src="js/modules/services/sync-mobile.js?v=20260601b"></script>
     <script>

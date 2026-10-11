@@ -139,6 +139,7 @@
     { hash: "#/peso", labelKey: "nav.peso", icon: "\u2696" },
     { hash: "#/dashboard", labelKey: "nav.dashboard", icon: "\uD83D\uDCCA" },
     { hash: "#/anagrafica-palestra", labelKey: "nav.schede", icon: "\uD83D\uDCCB" },
+    { hash: "#/anagrafica-esercizi", labelKey: "nav.esercizi", icon: "\uD83D\uDCD2" },
     {
       hash: "#/impostazioni",
       labelKey: "nav.impostazioni",
@@ -397,6 +398,11 @@
         makePlaceholderView("nav.schede", "nav.schede")
     );
     Router.register(
+      "#/anagrafica-esercizi",
+      (global.MaranelloViews && global.MaranelloViews.AnagraficaEsercizi) ||
+        makePlaceholderView("nav.esercizi", "nav.esercizi")
+    );
+    Router.register(
       "#/impostazioni",
       (global.MaranelloViews && global.MaranelloViews.Impostazioni) ||
         renderImpostazioniView
@@ -434,10 +440,26 @@
   function seedProgrammaPalestra() {
     var seed = global.MaranelloProgrammaPalestraSeed;
     if (!seed || !Storage || typeof Storage.get !== "function") return Promise.resolve();
+    var A = global.MaranelloAnagraficaEsercizi;
     return Storage.get("programma_palestra", "main")
       .then(function onCheck(existing) {
-        if (existing) return; // già presente, niente da fare
-        return Storage.put("programma_palestra", seed, { origine: "sistema_piano", skipLog: true });
+        if (!existing) {
+          // Primo avvio: semina il programma e, se possibile, l'anagrafica esercizi.
+          var fresh = seed;
+          if (A && typeof A.ensure === "function") {
+            try { A.ensure(fresh); } catch (e) { /* difensivo */ }
+          }
+          return Storage.put("programma_palestra", fresh, { origine: "sistema_piano", skipLog: true });
+        }
+        // Doc già presente (utenti esistenti): migrazione soft dell'anagrafica.
+        if (A && typeof A.ensure === "function") {
+          var changed = false;
+          try { changed = A.ensure(existing); } catch (e) { changed = false; }
+          if (changed) {
+            return Storage.put("programma_palestra", existing, { origine: "sistema_piano", skipLog: true });
+          }
+        }
+        return undefined;
       })
       .catch(function onErr(err) {
         if (global.console && global.console.warn) {

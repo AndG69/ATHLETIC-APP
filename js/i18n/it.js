@@ -38,6 +38,7 @@
     "nav.impostazioni": "Impostazioni",
     "nav.impostazioni.aria": "Impostazioni",
     "nav.schede": "Schede",
+    "nav.esercizi": "Esercizi",
 
     // ---- Stato DB ---------------------------------------------------
     "db.status.pending": "DB in apertura\u2026",

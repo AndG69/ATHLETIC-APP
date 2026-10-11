@@ -3429,3 +3429,223 @@ body {
   font-size: 1rem;
   min-height: 2.5rem;
 }
+
+/* =========================================================================
+   Anagrafica esercizi (vista #/anagrafica-esercizi) + ritocchi Schede
+   ========================================================================= */
+
+/* Hint sotto i titoli delle viste schede/esercizi. */
+.anagrafica-hint,
+.anag-eserc-hint {
+  margin: 0 0 var(--space-3);
+  font-size: var(--font-size-sm);
+  color: var(--color-fg-muted);
+}
+
+/* Badge gruppo (sola lettura) accanto al picker esercizio nelle Schede. */
+.anagrafica-gruppo-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-fg-muted);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-1) var(--space-2);
+  min-height: var(--tap-min);
+  flex: 0 1 130px;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---- Vista Anagrafica esercizi ---- */
+
+.anag-eserc-view {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.anag-eserc-feedback {
+  min-height: 1.2em;
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-accent);
+}
+
+.anag-eserc-gruppi {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.anag-eserc-gruppo-box {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+}
+
+.anag-eserc-gruppo-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.anag-eserc-gruppo-nome {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+}
+
+.anag-eserc-gruppo-input {
+  font: inherit;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-fg);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  padding: var(--space-1) var(--space-2);
+  min-height: var(--tap-min);
+  flex: 1 1 160px;
+  min-width: 0;
+}
+
+.anag-eserc-gruppo-del {
+  font: inherit;
+  font-size: var(--font-size-sm);
+  color: var(--color-danger, #b51f2a);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-1) var(--space-2);
+  min-height: var(--tap-min);
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.anag-eserc-lista {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.anag-eserc-vuoto {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-fg-muted);
+  font-style: italic;
+}
+
+.anag-eserc-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.anag-eserc-nome-input {
+  font: inherit;
+  color: var(--color-fg);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  padding: var(--space-1) var(--space-2);
+  min-height: var(--tap-min);
+  flex: 1 1 180px;
+  min-width: 0;
+}
+
+.anag-eserc-row-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex: 0 0 auto;
+}
+
+.anag-eserc-gruppo-sel {
+  font: inherit;
+  font-size: var(--font-size-sm);
+  color: var(--color-fg);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  padding: var(--space-1) var(--space-2);
+  min-height: var(--tap-min);
+  flex: 0 1 130px;
+}
+
+.anag-eserc-tempo-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--font-size-sm);
+  color: var(--color-fg-muted);
+  white-space: nowrap;
+}
+
+.anag-eserc-del {
+  font: inherit;
+  color: var(--color-danger, #b51f2a);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  min-height: var(--tap-min);
+  min-width: var(--tap-min);
+  cursor: pointer;
+}
+
+.anag-eserc-add-es {
+  font: inherit;
+  font-size: var(--font-size-sm);
+  color: var(--color-fg);
+  background: var(--color-bg);
+  border: 1px dashed var(--color-border-strong);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  min-height: var(--tap-min);
+  cursor: pointer;
+}
+
+.anag-eserc-add-gruppo-row {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: var(--space-2);
+}
+
+.anag-eserc-nuovo-gruppo {
+  font: inherit;
+  color: var(--color-fg);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  padding: var(--space-1) var(--space-2);
+  min-height: var(--tap-min);
+  flex: 1 1 200px;
+  min-width: 0;
+}
+
+.anag-eserc-add-gruppo {
+  font: inherit;
+  color: var(--color-bg);
+  background: var(--color-accent, #b51f2a);
+  border: 1px solid var(--color-accent, #b51f2a);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  min-height: var(--tap-min);
+  cursor: pointer;
+  flex: 0 0 auto;
+}

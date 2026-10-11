@@ -2,11 +2,20 @@
  * Maranello 2027 — App_HTML
  * File: js/modules/views/anagrafica-palestra.js
  *
- * Vista Anagrafica Palestra — rotta #/anagrafica-palestra
+ * Vista Schede Palestra — rotta #/anagrafica-palestra
  *
- * Mostra le 8 sedute con i loro esercizi. Permette di modificare ogni
- * seduta (nome, esercizi, serie, ripetizioni, carico) e di ripristinare
- * il programma di default.
+ * Mostra le sedute (schede template) con i loro esercizi. Permette di
+ * modificare ogni seduta (nome, esercizi, serie, ripetizioni, carico) e di
+ * ripristinare il programma di default.
+ *
+ * Gli esercizi si inseriscono SCEGLIENDOLI dall'anagrafica esercizi (rotta
+ * #/anagrafica-esercizi), con possibilità di crearne di nuovi al volo. Il
+ * gruppo muscolare è risolto per nome dall'anagrafica (sola lettura qui); la
+ * gestione dei gruppi vive nella vista Anagrafica esercizi, non più qui.
+ *
+ * Il carico di una nuova riga viene pre-compilato con l'ultima esecuzione
+ * nota di quell'esercizio (dal diario sessioni_palestra); da lì in poi il
+ * carry-over per-seduta mantiene i valori aggiornati.
  *
  * Espone: window.MaranelloViews.AnagraficaPalestra
  */
@@ -15,6 +24,8 @@
   "use strict";
 
   var STORE = "programma_palestra";
+  var NUOVO_SENTINEL = "__nuovo_esercizio__";
+  var VUOTO_SENTINEL = "";
 
   // ---------------------------------------------------------------------------
   // Helper DOM
@@ -39,7 +50,8 @@
           key === "type" || key === "name" || key === "id" ||
           key === "value" || key === "checked" || key === "selected" ||
           key === "disabled" || key === "multiple" || key === "min" ||
-          key === "max" || key === "step" || key === "placeholder"
+          key === "max" || key === "step" || key === "placeholder" ||
+          key === "label"
         ) {
           node.setAttribute(key, value);
         } else {
@@ -58,88 +70,45 @@
     return node;
   }
 
-  function t(key) {
-    var I18n = global.I18n;
-    return I18n && typeof I18n.t === "function" ? I18n.t(key) : key;
+  function keyNome(s) { return String(s == null ? "" : s).trim().toLowerCase(); }
+
+  function anagrafica() { return global.MaranelloAnagraficaEsercizi; }
+
+  /** Gruppo risolto per nome dall'anagrafica (fallback alla copia sulla riga). */
+  function gruppoDi(programma, es) {
+    var A = anagrafica();
+    if (A && typeof A.gruppoDi === "function") {
+      var g = A.gruppoDi(programma, es.nome);
+      if (g) return g;
+    }
+    return es.gruppo || "Altro";
   }
 
-  // ---------------------------------------------------------------------------
-  // Gestione gruppi muscolari
-  //
-  // I gruppi vivono nel campo `gruppi` (array di stringhe) dell'oggetto
-  // programma_palestra "main". "Altro" è sempre disponibile come catch-all e
-  // non è modificabile né eliminabile.
-  // ---------------------------------------------------------------------------
-
-  var GRUPPI_DEFAULT = [
-    "Addominali", "Bicipiti", "Dorsali", "Gambe", "Glutei",
-    "Lombari", "Pettorali", "Spalle", "Tricipiti",
-  ];
-
-  /**
-   * Ritorna l'elenco ordinato dei gruppi disponibili: quelli definiti
-   * dall'utente (o i default), più eventuali gruppi già usati dagli esercizi,
-   * con "Altro" sempre in coda.
-   */
-  function getGruppiEffettivi(programma) {
-    var out = [];
-    var seen = Object.create(null);
-    function add(g) {
-      if (!g) return;
-      var k = String(g).toLowerCase();
-      if (k === "altro" || seen[k]) return;
-      seen[k] = true;
-      out.push(g);
-    }
-    if (programma && Array.isArray(programma.gruppi) && programma.gruppi.length) {
-      programma.gruppi.forEach(add);
-    } else {
-      GRUPPI_DEFAULT.forEach(add);
-    }
-    // Include i gruppi già usati dagli esercizi, così non spariscono mai.
-    if (programma && Array.isArray(programma.sedute)) {
-      programma.sedute.forEach(function (s) {
-        (s.esercizi || []).forEach(function (e) {
-          if (e && e.gruppo) add(e.gruppo);
-        });
-      });
-    }
-    out.push("Altro");
-    return out;
-  }
-
-  /** Inizializza programma.gruppi se assente (senza "Altro"). */
-  function ensureGruppi(programma) {
-    if (!programma) return [];
-    if (!Array.isArray(programma.gruppi) || programma.gruppi.length === 0) {
-      programma.gruppi = getGruppiEffettivi(programma).filter(function (g) {
-        return g !== "Altro";
-      });
-    }
-    return programma.gruppi;
+  function isTempoEs(programma, nome) {
+    var A = anagrafica();
+    if (A && typeof A.isTempo === "function") return A.isTempo(programma, nome);
+    return false;
   }
 
   // ---------------------------------------------------------------------------
   // Rendering lista sedute (sola lettura)
   // ---------------------------------------------------------------------------
 
-  function renderSedutaCard(seduta, onModifica, onElimina) {
+  function renderSedutaCard(seduta, programma, onModifica, onElimina) {
     var card = el("div", { class: "anagrafica-seduta-card" });
 
     var btnModifica = el("button", {
       type: "button",
       class: "anagrafica-btn-modifica",
-      text: "✏️ Modifica",
+      text: "\u270F\uFE0F Modifica",
       "aria-label": "Modifica " + seduta.nome,
     });
-    btnModifica.addEventListener("click", function () {
-      onModifica(seduta);
-    });
+    btnModifica.addEventListener("click", function () { onModifica(seduta); });
 
     var btnElimina = el("button", {
       type: "button",
       class: "anagrafica-btn-elimina-seduta",
-      text: "🗑️ Elimina",
+      text: "\uD83D\uDDD1\uFE0F Elimina",
       "aria-label": "Elimina " + seduta.nome,
     });
     btnElimina.onclick = function () {
@@ -171,7 +140,7 @@
         ? es.tempoSecondi + " sec"
         : (es.carico || 0) + " kg";
       tbody.appendChild(el("tr", {}, [
-        el("td", { text: es.gruppo || "Altro" }),
+        el("td", { text: gruppoDi(programma, es) }),
         el("td", { text: es.nome }),
         el("td", { text: String(es.serie || 4) }),
         el("td", { text: String(es.ripetizioni || 0) }),
@@ -188,7 +157,8 @@
   // Form di modifica seduta (inline)
   // ---------------------------------------------------------------------------
 
-  function renderFormModifica(seduta, onSalva, onAnnulla, programmaCorrente) {
+  function renderFormModifica(seduta, onSalva, onAnnulla, programma, ultimoCaricoPerNome, onAnagraficaChange) {
+    var A = anagrafica();
     var form = el("form", { class: "anagrafica-form-modifica", novalidate: "novalidate" });
 
     // Nome seduta
@@ -214,107 +184,105 @@
       return Object.assign({}, es);
     });
 
-    // --- Helper gruppi muscolari (dinamici + creazione inline) ---
-    var NUOVO_GRUPPO_SENTINEL = "__nuovo_gruppo__";
-
-    /** Riempie un <select> con i gruppi correnti + l'opzione "Nuovo gruppo…". */
-    function fillGruppoSelect(selectEl, selezionato) {
-      selectEl.innerHTML = "";
-      getGruppiEffettivi(programmaCorrente).forEach(function (g) {
-        var opt = el("option", { value: g, text: g });
-        if (g === selezionato) opt.setAttribute("selected", "selected");
-        selectEl.appendChild(opt);
+    /** Costruisce il <select> picker con optgroup per gruppo muscolare. */
+    function buildPicker(selectedNome) {
+      var sel = el("select", {
+        class: "anagrafica-select-esercizio",
+        "aria-label": "Esercizio",
       });
-      selectEl.appendChild(
-        el("option", { value: NUOVO_GRUPPO_SENTINEL, text: "➕ Nuovo gruppo…" })
-      );
-    }
+      var ph = el("option", { value: VUOTO_SENTINEL, text: "\u2014 scegli esercizio \u2014" });
+      if (!selectedNome) ph.setAttribute("selected", "selected");
+      sel.appendChild(ph);
 
-    /**
-     * Chiede il nome di un nuovo gruppo, lo aggiunge a programmaCorrente.gruppi
-     * e persiste. Ritorna il nome (o quello esistente) oppure null se annullato.
-     */
-    function creaNuovoGruppoInline() {
-      var nome = (global.prompt("Nome del nuovo gruppo muscolare:") || "").trim();
-      if (!nome) return null;
-      if (nome.toLowerCase() === "altro") return "Altro";
-      ensureGruppi(programmaCorrente);
-      var esistente = programmaCorrente.gruppi.filter(function (g) {
-        return g.toLowerCase() === nome.toLowerCase();
-      })[0];
-      if (esistente) return esistente;
-      programmaCorrente.gruppi.push(nome);
-      var S = global.MaranelloStorage;
-      if (S && typeof S.put === "function") {
-        S.put(STORE, programmaCorrente, { origine: "utente" });
-      }
-      return nome;
-    }
-
-    // Datalist con i nomi esercizio noti (catalogo + programma) per i
-    // suggerimenti durante la digitazione del nome esercizio.
-    var datalistId = "anagrafica-esercizi-suggeriti";
-    function buildDatalist() {
-      var catalog = global.MaranelloEserciziCatalog;
-      var nomi = [];
-      var seen = Object.create(null);
-      function add(n) {
-        if (!n) return;
-        var k = n.toLowerCase();
-        if (seen[k]) return;
-        seen[k] = true;
-        nomi.push(n);
-      }
-      if (catalog && Array.isArray(catalog.esercizi)) {
-        catalog.esercizi.forEach(function (e) { add(e.nome); });
-      }
-      if (programmaCorrente && Array.isArray(programmaCorrente.sedute)) {
-        programmaCorrente.sedute.forEach(function (s) {
-          (s.esercizi || []).forEach(function (e) { add(e && e.nome); });
+      var found = false;
+      if (A) {
+        var perGruppo = A.eserciziPerGruppo(programma);
+        A.listaGruppi(programma).forEach(function (g) {
+          var arr = perGruppo.get(g) || [];
+          if (!arr.length) return;
+          var og = el("optgroup", { label: g });
+          arr.forEach(function (e) {
+            var o = el("option", { value: e.nome, text: e.nome });
+            if (selectedNome && keyNome(e.nome) === keyNome(selectedNome)) {
+              o.setAttribute("selected", "selected");
+              found = true;
+            }
+            og.appendChild(o);
+          });
+          sel.appendChild(og);
         });
       }
-      nomi.sort(function (a, b) { return a.toLowerCase() < b.toLowerCase() ? -1 : 1; });
-      var dl = el("datalist", { id: datalistId });
-      nomi.forEach(function (n) { dl.appendChild(el("option", { value: n })); });
-      return dl;
+      // Esercizio non in anagrafica (difensivo): opzione ad hoc.
+      if (selectedNome && !found) {
+        var oAd = el("option", { value: selectedNome, text: selectedNome });
+        oAd.setAttribute("selected", "selected");
+        sel.appendChild(oAd);
+      }
+      sel.appendChild(el("option", { value: NUOVO_SENTINEL, text: "\u2795 nuovo esercizio\u2026" }));
+      return sel;
+    }
+
+    /** Crea un nuovo esercizio nell'anagrafica (prompt nome + gruppo). */
+    function creaNuovoEsercizioInline() {
+      if (!A) return null;
+      var nome = (global.prompt("Nome del nuovo esercizio:") || "").trim();
+      if (!nome) return null;
+      var gruppiDisponibili = A.listaGruppi(programma).join(", ");
+      var gruppo = (global.prompt(
+        "Gruppo muscolare per \u201C" + nome + "\u201D?\nDisponibili: " + gruppiDisponibili,
+        "Altro"
+      ) || "").trim() || "Altro";
+      var res = A.aggiungiEsercizio(programma, nome, gruppo, false);
+      if (!res.ok && res.motivo !== "duplicato") return null;
+      if (typeof onAnagraficaChange === "function") onAnagraficaChange();
+      return A.trovaEsercizio(programma, nome) || { nome: nome, gruppo: gruppo, tempo: false };
+    }
+
+    function applicaSelezione(idx, nome) {
+      var tempo = isTempoEs(programma, nome);
+      eserciziLocali[idx].nome = nome;
+      eserciziLocali[idx].gruppo = gruppoDi(programma, { nome: nome });
+      if (tempo) {
+        eserciziLocali[idx].tempoSecondi =
+          eserciziLocali[idx].tempoSecondi != null ? eserciziLocali[idx].tempoSecondi : 30;
+      } else {
+        eserciziLocali[idx].tempoSecondi = null;
+        if (!eserciziLocali[idx].carico) {
+          var last = ultimoCaricoPerNome && ultimoCaricoPerNome[keyNome(nome)];
+          eserciziLocali[idx].carico = typeof last === "number" ? last : (eserciziLocali[idx].carico || 0);
+        }
+      }
     }
 
     function renderEserciziRows() {
       eserciziContainer.innerHTML = "";
-      eserciziContainer.appendChild(buildDatalist());
       eserciziLocali.forEach(function (es, idx) {
         var row = el("div", { class: "anagrafica-esercizio-row" });
 
-        // Nome esercizio: testo libero con suggerimenti (datalist).
-        var inputNome = el("input", {
-          type: "text",
-          class: "anagrafica-input-esercizio",
-          value: es.nome || "",
-          placeholder: "Esercizio",
-          "aria-label": "Esercizio " + (idx + 1),
-          autocomplete: "off",
-        });
-        inputNome.setAttribute("list", datalistId);
-        inputNome.addEventListener("input", function () {
-          eserciziLocali[idx].nome = inputNome.value;
-        });
-
-        // Select gruppo muscolare: SEMPRE visibile e autoritativo.
-        // Opzioni dinamiche (gruppi definiti dall'utente) + "➕ Nuovo gruppo…".
-        var selectGruppo = el("select", {
-          class: "anagrafica-select-gruppo",
-          "aria-label": "Gruppo muscolare",
-        });
-        fillGruppoSelect(selectGruppo, es.gruppo || "Altro");
-        selectGruppo.addEventListener("change", function () {
-          if (selectGruppo.value === NUOVO_GRUPPO_SENTINEL) {
-            var nuovo = creaNuovoGruppoInline();
-            if (nuovo) eserciziLocali[idx].gruppo = nuovo;
+        // Picker esercizio (dall'anagrafica).
+        var selectEs = buildPicker(es.nome || "");
+        selectEs.addEventListener("change", function () {
+          var val = selectEs.value;
+          if (val === NUOVO_SENTINEL) {
+            var creato = creaNuovoEsercizioInline();
+            if (creato) applicaSelezione(idx, creato.nome);
             renderEserciziRows();
             return;
           }
-          eserciziLocali[idx].gruppo = selectGruppo.value;
+          if (val === VUOTO_SENTINEL) {
+            eserciziLocali[idx].nome = "";
+            renderEserciziRows();
+            return;
+          }
+          applicaSelezione(idx, val);
+          renderEserciziRows();
         });
+
+        // Gruppo (sola lettura, risolto per nome).
+        var gruppoTxt = es.nome ? gruppoDi(programma, es) : "\u2014";
+        var gruppoBadge = el("span", { class: "anagrafica-gruppo-badge", text: gruppoTxt });
+
+        var isTempo = !!es.tempoSecondi || (es.nome && isTempoEs(programma, es.nome));
 
         // Serie
         var inputSerie = el("input", {
@@ -339,21 +307,16 @@
         });
 
         // Carico / Tempo
-        var isPlank = !!es.tempoSecondi;
         var inputCarico = el("input", {
           type: "number", min: "0", step: "0.1",
           class: "anagrafica-input-carico",
-          value: isPlank ? String(es.tempoSecondi) : String(es.carico || 0),
-          "aria-label": isPlank ? "Tempo (sec)" : "Carico (kg)",
-          placeholder: isPlank ? "sec" : "kg",
-        });
-        var labelCarico = el("span", {
-          class: "anagrafica-label-carico",
-          text: isPlank ? "sec" : "kg",
+          value: isTempo ? String(es.tempoSecondi || 0) : String(es.carico || 0),
+          "aria-label": isTempo ? "Tempo (sec)" : "Carico (kg)",
+          placeholder: isTempo ? "sec" : "kg",
         });
         inputCarico.addEventListener("input", function () {
           var val = parseFloat(inputCarico.value) || 0;
-          if (eserciziLocali[idx].tempoSecondi !== null && eserciziLocali[idx].tempoSecondi !== undefined) {
+          if (isTempo) {
             eserciziLocali[idx].tempoSecondi = val;
           } else {
             eserciziLocali[idx].carico = val;
@@ -364,7 +327,7 @@
         var btnRimuovi = el("button", {
           type: "button",
           class: "anagrafica-btn-rimuovi",
-          text: "✕",
+          text: "\u2715",
           "aria-label": "Rimuovi esercizio",
         });
         (function captureIdx(i) {
@@ -375,8 +338,8 @@
         })(idx);
 
         var mainWrap = el("div", { class: "anagrafica-esercizio-main" }, [
-          selectGruppo,
-          inputNome,
+          selectEs,
+          gruppoBadge,
         ]);
         var numsWrap = el("div", { class: "anagrafica-esercizio-nums" }, [
           el("label", { class: "anagrafica-num-field" }, [
@@ -386,7 +349,7 @@
             el("span", { text: "Rip." }), inputRip,
           ]),
           el("label", { class: "anagrafica-num-field" }, [
-            el("span", { text: isPlank ? "Tempo" : "Peso" }), inputCarico,
+            el("span", { text: isTempo ? "Tempo" : "Peso" }), inputCarico,
           ]),
           btnRimuovi,
         ]);
@@ -405,11 +368,9 @@
       text: "+ Aggiungi esercizio",
     });
     btnAggiungi.addEventListener("click", function () {
-      var gruppiEff = getGruppiEffettivi(programmaCorrente);
-      var gruppoDefault = gruppiEff.length > 1 ? gruppiEff[0] : "Altro";
       eserciziLocali.push({
         nome: "",
-        gruppo: gruppoDefault,
+        gruppo: "",
         serie: 4,
         ripetizioni: 12,
         carico: 0,
@@ -427,7 +388,7 @@
     var btnSalva = el("button", {
       type: "submit",
       class: "anagrafica-btn-salva",
-      text: "💾 Salva",
+      text: "\uD83D\uDCBE Salva",
     });
     var btnAnnullaForm = el("button", {
       type: "button",
@@ -442,10 +403,21 @@
       ev.preventDefault();
       var nomeSeduta = inputNome.value.trim();
       if (!nomeSeduta) {
-        feedbackEl.textContent = "Il nome della seduta è obbligatorio.";
+        feedbackEl.textContent = "Il nome della seduta \u00E8 obbligatorio.";
         return;
       }
-      var eserciziValidi = eserciziLocali.filter(function (es) { return es.nome && es.nome.trim(); });
+      var eserciziValidi = eserciziLocali
+        .filter(function (es) { return es.nome && es.nome.trim(); })
+        .map(function (es) {
+          return {
+            nome: es.nome.trim(),
+            gruppo: gruppoDi(programma, es),
+            serie: es.serie || 4,
+            ripetizioni: es.ripetizioni || 0,
+            carico: es.carico || 0,
+            tempoSecondi: es.tempoSecondi != null ? es.tempoSecondi : null,
+          };
+        });
       if (eserciziValidi.length === 0) {
         feedbackEl.textContent = "Aggiungi almeno un esercizio.";
         return;
@@ -461,15 +433,45 @@
   }
 
   // ---------------------------------------------------------------------------
+  // Costruzione mappa "ultimo carico per nome" dal diario sessioni_palestra
+  // ---------------------------------------------------------------------------
+
+  function costruisciUltimoCarico(sessioni) {
+    var map = Object.create(null);
+    if (!Array.isArray(sessioni)) return map;
+    var ordinate = sessioni.slice().sort(function (a, b) {
+      var da = a && a.data ? a.data : "";
+      var db = b && b.data ? b.data : "";
+      return da < db ? -1 : da > db ? 1 : 0; // ascendente: le più recenti sovrascrivono
+    });
+    ordinate.forEach(function (sess) {
+      (sess.gruppi || []).forEach(function (g) {
+        (g.esercizi || []).forEach(function (es) {
+          if (es && es.nome && typeof es.carico === "number" && es.carico > 0) {
+            map[keyNome(es.nome)] = es.carico;
+          }
+        });
+      });
+    });
+    return map;
+  }
+
+  // ---------------------------------------------------------------------------
   // Render principale della vista
   // ---------------------------------------------------------------------------
 
   function render(params, mount) {
     var Storage = global.MaranelloStorage;
+    var A = anagrafica();
     var container = el("div", { class: "anagrafica-palestra-view" });
     mount.appendChild(container);
 
-    container.appendChild(el("h2", { text: "📋 Schede Palestra" }));
+    container.appendChild(el("h2", { text: "\uD83D\uDCCB Schede Palestra" }));
+
+    container.appendChild(el("p", {
+      class: "anagrafica-hint",
+      text: "Gli esercizi si scelgono dall\u2019Anagrafica esercizi. Per gestire gruppi ed esercizi vai in \u201CEsercizi\u201D.",
+    }));
 
     var feedbackGlobale = el("p", { class: "anagrafica-feedback-globale", "aria-live": "polite" });
     container.appendChild(feedbackGlobale);
@@ -478,7 +480,7 @@
     var btnRipristina = el("button", {
       type: "button",
       class: "anagrafica-btn-ripristina",
-      text: "🔄 Ripristina default",
+      text: "\uD83D\uDD04 Ripristina default",
     });
     btnRipristina.addEventListener("click", function () {
       if (!global.confirm("Ripristinare il programma di default? Tutte le modifiche saranno perse.")) return;
@@ -487,12 +489,14 @@
         feedbackGlobale.textContent = "Seed non disponibile.";
         return;
       }
-      Storage.put(STORE, seed, { origine: "utente" })
+      // Clona il seed per non mutarlo e ri-semina l'anagrafica.
+      var fresh = JSON.parse(JSON.stringify(seed));
+      if (A) A.ensure(fresh);
+      Storage.put(STORE, fresh, { origine: "utente" })
         .then(function () {
-          programmaCorrente = seed;
+          programmaCorrente = fresh;
           feedbackGlobale.textContent = "Programma ripristinato.";
-          renderGruppiSection();
-          renderLista(seed.sedute);
+          renderLista(fresh.sedute);
         })
         .catch(function (err) {
           feedbackGlobale.textContent = "Errore nel ripristino.";
@@ -501,132 +505,20 @@
     });
     container.appendChild(btnRipristina);
 
-    // --- Sezione gestione gruppi muscolari (aperta di default) ---
-    var gruppiBox = el("details", { class: "anagrafica-gruppi", open: "open" });
-    container.appendChild(gruppiBox);
-
-    function persistGruppi(msg) {
-      return Storage.put(STORE, programmaCorrente, { origine: "utente" })
-        .then(function () { if (msg) feedbackGlobale.textContent = msg; })
-        .catch(function (err) {
-          feedbackGlobale.textContent = "Errore nel salvataggio dei gruppi.";
-          if (global.console) global.console.error(err);
-        });
-    }
-
-    function aggiungiGruppo(nome) {
-      nome = (nome || "").trim();
-      if (!nome) return;
-      ensureGruppi(programmaCorrente);
-      var dup = nome.toLowerCase() === "altro" || programmaCorrente.gruppi.some(function (g) {
-        return g.toLowerCase() === nome.toLowerCase();
-      });
-      if (dup) { feedbackGlobale.textContent = "Il gruppo \"" + nome + "\" esiste già."; return; }
-      programmaCorrente.gruppi.push(nome);
-      persistGruppi("Gruppo \"" + nome + "\" aggiunto.").then(function () {
-        renderGruppiSection();
-        renderLista(programmaCorrente.sedute);
-      });
-    }
-
-    function rinominaGruppo(vecchio, nuovo) {
-      nuovo = (nuovo || "").trim();
-      if (!nuovo || nuovo === vecchio) { renderGruppiSection(); return; }
-      ensureGruppi(programmaCorrente);
-      if (nuovo.toLowerCase() === "altro") {
-        feedbackGlobale.textContent = "Nome non valido.";
-        renderGruppiSection(); return;
-      }
-      var dup = programmaCorrente.gruppi.some(function (g) {
-        return g.toLowerCase() === nuovo.toLowerCase() && g.toLowerCase() !== vecchio.toLowerCase();
-      });
-      if (dup) {
-        feedbackGlobale.textContent = "Esiste già un gruppo \"" + nuovo + "\".";
-        renderGruppiSection(); return;
-      }
-      programmaCorrente.gruppi = programmaCorrente.gruppi.map(function (g) {
-        return g === vecchio ? nuovo : g;
-      });
-      (programmaCorrente.sedute || []).forEach(function (s) {
-        (s.esercizi || []).forEach(function (e) {
-          if (e && e.gruppo === vecchio) e.gruppo = nuovo;
-        });
-      });
-      persistGruppi("Gruppo rinominato in \"" + nuovo + "\".").then(function () {
-        renderGruppiSection();
-        renderLista(programmaCorrente.sedute);
-      });
-    }
-
-    function eliminaGruppo(nome) {
-      ensureGruppi(programmaCorrente);
-      var count = 0;
-      (programmaCorrente.sedute || []).forEach(function (s) {
-        (s.esercizi || []).forEach(function (e) {
-          if (e && e.gruppo === nome) count++;
-        });
-      });
-      var msg = count > 0
-        ? "Eliminare il gruppo \"" + nome + "\"? " + count + " esercizi verranno spostati in \"Altro\"."
-        : "Eliminare il gruppo \"" + nome + "\"?";
-      if (!global.confirm(msg)) return;
-      programmaCorrente.gruppi = programmaCorrente.gruppi.filter(function (g) { return g !== nome; });
-      (programmaCorrente.sedute || []).forEach(function (s) {
-        (s.esercizi || []).forEach(function (e) {
-          if (e && e.gruppo === nome) e.gruppo = "Altro";
-        });
-      });
-      persistGruppi("Gruppo \"" + nome + "\" eliminato.").then(function () {
-        renderGruppiSection();
-        renderLista(programmaCorrente.sedute);
-      });
-    }
-
-    function renderGruppiSection() {
-      gruppiBox.innerHTML = "";
-      gruppiBox.appendChild(el("summary", { text: "🏷️ Gestione gruppi muscolari" }));
-      if (!programmaCorrente) return;
-      ensureGruppi(programmaCorrente);
-
-      gruppiBox.appendChild(el("p", {
-        class: "anagrafica-gruppi-hint",
-        text: "Aggiungi, rinomina o elimina i gruppi muscolari. \u201CAltro\u201D \u00E8 sempre disponibile.",
-      }));
-
-      var lista = el("div", { class: "anagrafica-gruppi-lista" });
-      programmaCorrente.gruppi.forEach(function (g) {
-        var input = el("input", {
-          type: "text", class: "anagrafica-gruppo-input",
-          value: g, "aria-label": "Nome gruppo " + g,
-        });
-        input.addEventListener("change", function () { rinominaGruppo(g, input.value); });
-        var btnDel = el("button", {
-          type: "button", class: "anagrafica-gruppo-del",
-          text: "\uD83D\uDDD1", "aria-label": "Elimina gruppo " + g,
-        });
-        btnDel.addEventListener("click", function () { eliminaGruppo(g); });
-        lista.appendChild(el("div", { class: "anagrafica-gruppo-row" }, [input, btnDel]));
-      });
-      gruppiBox.appendChild(lista);
-
-      var nuovoInput = el("input", {
-        type: "text", class: "anagrafica-gruppo-nuovo",
-        placeholder: "Nuovo gruppo", "aria-label": "Nome nuovo gruppo",
-      });
-      var btnAdd = el("button", {
-        type: "button", class: "anagrafica-gruppo-add", text: "\uFF0B Aggiungi gruppo",
-      });
-      btnAdd.addEventListener("click", function () {
-        aggiungiGruppo(nuovoInput.value);
-        nuovoInput.value = "";
-      });
-      gruppiBox.appendChild(el("div", { class: "anagrafica-gruppo-add-row" }, [nuovoInput, btnAdd]));
-    }
-
     var listaContainer = el("div", { class: "anagrafica-lista-container" });
     container.appendChild(listaContainer);
 
     var programmaCorrente = null;
+    var ultimoCaricoPerNome = Object.create(null);
+
+    function salvaAnagrafica(msg) {
+      return Storage.put(STORE, programmaCorrente, { origine: "utente" })
+        .then(function () { if (msg) feedbackGlobale.textContent = msg; })
+        .catch(function (err) {
+          feedbackGlobale.textContent = "Errore nel salvataggio.";
+          if (global.console) global.console.error(err);
+        });
+    }
 
     function renderLista(sedute) {
       listaContainer.innerHTML = "";
@@ -636,7 +528,7 @@
 
         function mostraCard(sed) {
           wrapper.innerHTML = "";
-          var card = renderSedutaCard(sed, function onModifica(s) {
+          var card = renderSedutaCard(sed, programmaCorrente, function onModifica(s) {
             wrapper.innerHTML = "";
             var form = renderFormModifica(s, function onSalva(sedutaAggiornata) {
               var idx = programmaCorrente.sedute.findIndex(function (x) {
@@ -656,11 +548,14 @@
                 });
             }, function onAnnulla() {
               mostraCard(s);
-            }, programmaCorrente);
+            }, programmaCorrente, ultimoCaricoPerNome, function onAnagraficaChange() {
+              // Persistenza immediata quando viene creato un nuovo esercizio
+              // nell'anagrafica dal picker.
+              salvaAnagrafica();
+            });
             wrapper.appendChild(form);
           }, function onElimina(s) {
-            console.log("[anagrafica] elimina premuto per:", s.nome, s.numeroCiclo);
-            if (!global.confirm("Eliminare " + s.nome + "? L'operazione non è reversibile.")) return;
+            if (!global.confirm("Eliminare " + s.nome + "? L'operazione non \u00E8 reversibile.")) return;
             programmaCorrente.sedute = programmaCorrente.sedute.filter(function (x) {
               return x.numeroCiclo !== s.numeroCiclo;
             });
@@ -681,7 +576,6 @@
       });
     }
 
-    // Carica il programma da IndexedDB
     if (!Storage || typeof Storage.get !== "function") {
       feedbackGlobale.textContent = "Storage non disponibile.";
       return;
@@ -691,11 +585,10 @@
     var btnAggiungi = el("button", {
       type: "button",
       class: "anagrafica-btn-aggiungi",
-      text: "➕ Aggiungi seduta",
+      text: "\u2795 Aggiungi seduta",
     });
     btnAggiungi.addEventListener("click", function () {
       if (!programmaCorrente) return;
-      // Calcola il prossimo numeroCiclo
       var maxCiclo = 0;
       (programmaCorrente.sedute || []).forEach(function (s) {
         if (s.numeroCiclo > maxCiclo) maxCiclo = s.numeroCiclo;
@@ -719,15 +612,22 @@
     });
     container.appendChild(btnAggiungi);
 
-    Storage.get(STORE, "main")
-      .then(function (programma) {
+    // Carica programma + diario (per il pre-fill dei carichi).
+    Promise.all([
+      Storage.get(STORE, "main"),
+      Storage.query ? Storage.query("sessioni_palestra").catch(function () { return []; }) : Promise.resolve([]),
+    ])
+      .then(function (res) {
+        var programma = res[0];
         if (!programma) {
-          // Usa il seed come fallback
           programma = global.MaranelloProgrammaPalestraSeed || { id: "main", sedute: [] };
         }
         programmaCorrente = programma;
-        renderGruppiSection();
-        renderLista(programma.sedute);
+        ultimoCaricoPerNome = costruisciUltimoCarico(res[1]);
+
+        var changed = A ? A.ensure(programmaCorrente) : false;
+        var p = changed ? salvaAnagrafica() : Promise.resolve();
+        p.then(function () { renderLista(programmaCorrente.sedute); });
       })
       .catch(function (err) {
         feedbackGlobale.textContent = "Errore nel caricamento del programma.";
