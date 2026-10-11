@@ -117,6 +117,11 @@
 
     var header = el("div", { class: "anagrafica-seduta-header" }, [
       el("h3", { class: "anagrafica-seduta-nome", text: seduta.nome }),
+      el("span", {
+        class: "anagrafica-seduta-numero",
+        text: "Scheda " + seduta.numeroCiclo,
+        "aria-label": "Numero scheda " + seduta.numeroCiclo,
+      }),
       btnModifica,
       btnElimina,
     ]);

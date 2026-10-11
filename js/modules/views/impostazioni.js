@@ -39,6 +39,9 @@
     settimanaProgressione: 2,
     ultimaSedutaPalestra: { data: "2026-05-07", numeroCiclo: 4 },
     cadenza: DEFAULT_CADENZA,
+    // Sequenza schede palestra (numeri di scheda) usata dai giorni "P" della
+    // cadenza, ripetuta ciclicamente. Vuota = automatico (dopo l'ultima registrata).
+    sequenzaSedute: [],
     targetDistanza: "5km",
     dataGara: "",
     versioneApp: typeof global.APP_VERSION !== "undefined" ? global.APP_VERSION : "0.0.0",
@@ -134,6 +137,7 @@
     if (!Array.isArray(merged.giorniPalestra)) merged.giorniPalestra = defaults.giorniPalestra;
     if (!Array.isArray(merged.giorniCorsa)) merged.giorniCorsa = defaults.giorniCorsa;
     if (!Array.isArray(merged.cadenza) || merged.cadenza.length < 1) merged.cadenza = defaults.cadenza;
+    if (!Array.isArray(merged.sequenzaSedute)) merged.sequenzaSedute = defaults.sequenzaSedute || [];
     if (!merged.ultimaSedutaPalestra) merged.ultimaSedutaPalestra = defaults.ultimaSedutaPalestra;
     return merged;
   }
@@ -152,6 +156,9 @@
 
     // 3b. Cadenza bisettimanale
     container.appendChild(buildSezioneCadenza(impostazioni, Storage));
+
+    // 3c. Sequenza schede palestra
+    container.appendChild(buildSezioneSequenzaSedute(impostazioni, Storage));
 
     // 4. Obiettivo
     container.appendChild(buildSezioneObiettivo(impostazioni, Storage));
@@ -414,6 +421,75 @@
         parti[i] = v;
       }
       impostazioni.cadenza = parti;
+      salvaImpostazioni(impostazioni, Storage, feedback);
+    });
+
+    section.appendChild(form);
+    return section;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Sezione 3c: Sequenza schede palestra
+  //
+  // Numeri di scheda separati da trattino (es. 1-2-3-1-4-5). I giorni "P" della
+  // cadenza consumano questa sequenza ciclicamente. Vuota = automatico.
+  // ---------------------------------------------------------------------------
+
+  function buildSezioneSequenzaSedute(impostazioni, Storage) {
+    var section = el("section", { class: "impostazioni-sezione" });
+    section.appendChild(el("h3", { text: t("view.impostazioni.sequenza.titolo") }));
+
+    var feedback = el("p", { class: "impostazioni-feedback", "aria-live": "polite" });
+
+    var sequenzaArray = Array.isArray(impostazioni.sequenzaSedute) ? impostazioni.sequenzaSedute : [];
+    var sequenzaStr = sequenzaArray.join("-");
+
+    var sequenzaInput = el("input", {
+      type: "text",
+      id: "imp-sequenza-sedute",
+      name: "sequenzaSedute",
+      value: sequenzaStr,
+      placeholder: "1-2-3-1-4-5",
+      inputmode: "numeric",
+    });
+
+    var form = el("form", { class: "impostazioni-form", novalidate: "novalidate" }, [
+      el("div", { class: "impostazioni-field" }, [
+        el("label", { for: "imp-sequenza-sedute", text: t("view.impostazioni.sequenza.label") }),
+        sequenzaInput,
+        el("small", { text: t("view.impostazioni.sequenza.hint") }),
+      ]),
+      feedback,
+      el("div", { class: "impostazioni-actions" }, [
+        el("button", { type: "submit", class: "impostazioni-btn-salva", text: t("common.salva") }),
+      ]),
+    ]);
+
+    form.addEventListener("submit", function onSubmit(ev) {
+      ev.preventDefault();
+      var raw = sequenzaInput.value.trim();
+      // Vuoto = automatico (nessuna sequenza forzata).
+      if (raw === "") {
+        impostazioni.sequenzaSedute = [];
+        salvaImpostazioni(impostazioni, Storage, feedback);
+        return;
+      }
+      var parti = raw.split("-");
+      var numeri = [];
+      for (var i = 0; i < parti.length; i++) {
+        var v = parti[i].trim();
+        if (!/^\d+$/.test(v)) {
+          setFeedback(feedback, t("view.impostazioni.sequenza.errore"), "error");
+          return;
+        }
+        var n = parseInt(v, 10);
+        if (!isFinite(n) || n < 1) {
+          setFeedback(feedback, t("view.impostazioni.sequenza.errore"), "error");
+          return;
+        }
+        numeri.push(n);
+      }
+      impostazioni.sequenzaSedute = numeri;
       salvaImpostazioni(impostazioni, Storage, feedback);
     });
 

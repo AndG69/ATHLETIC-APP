@@ -414,6 +414,9 @@
     var cadenza = (impostazioni && Array.isArray(impostazioni.cadenza) && impostazioni.cadenza.length >= 1)
       ? impostazioni.cadenza
       : ["P","P","R","C","R","P","P","R","C","R","P","P","R","C"];
+    var sequenzaSedute = (impostazioni && Array.isArray(impostazioni.sequenzaSedute))
+      ? impostazioni.sequenzaSedute
+      : [];
 
     // Form
     var form = el("form", { class: "genera-piano-form", novalidate: "novalidate" });
@@ -456,10 +459,18 @@
       value: "",
       text: "Automatico (dopo l\u2019ultima registrata)",
     }));
-    form.appendChild(el("div", { class: "genera-piano-field" }, [
+    var schedaPartenzaChildren = [
       el("label", { text: "Scheda palestra di partenza:" }),
       selectSchedaPartenza,
-    ]));
+    ];
+    if (sequenzaSedute.length > 0) {
+      selectSchedaPartenza.setAttribute("disabled", "disabled");
+      schedaPartenzaChildren.push(el("p", {
+        class: "genera-piano-hint",
+        text: "Ignorata: \u00E8 attiva la sequenza schede delle Impostazioni (" + sequenzaSedute.join("-") + ").",
+      }));
+    }
+    form.appendChild(el("div", { class: "genera-piano-field" }, schedaPartenzaChildren));
 
     // Popola le opzioni con le sedute del programma (async), fallback al ciclo base.
     (function popolaSchedePartenza() {
@@ -531,8 +542,16 @@
       var includiCorsa = checkCorsa.checked;
       var includiPalestra = checkPalestra.checked;
       var schedaPartenzaPreview = selectSchedaPartenza.value ? parseInt(selectSchedaPartenza.value, 10) : null;
-      renderAnteprima(anteprimaEl, anno, mese, includiCorsa, includiPalestra,
-        settimanaCorrente, ultimaSeduta, giorniCorsa, giorniPalestra, null, cadenza, sessioniCorsaAlLivello, dataPartenzaPreview, schedaPartenzaPreview);
+      // Carica le sedute reali per un'anteprima fedele (anche per schede > ciclo base).
+      var progPromise = (Storage && typeof Storage.get === "function")
+        ? Storage.get("programma_palestra", "main").catch(function () { return null; })
+        : Promise.resolve(null);
+      progPromise.then(function (prog) {
+        var programmaSedute = (prog && Array.isArray(prog.sedute) && prog.sedute.length)
+          ? prog.sedute : null;
+        renderAnteprima(anteprimaEl, anno, mese, includiCorsa, includiPalestra,
+          settimanaCorrente, ultimaSeduta, giorniCorsa, giorniPalestra, programmaSedute, cadenza, sessioniCorsaAlLivello, dataPartenzaPreview, schedaPartenzaPreview, sequenzaSedute);
+      });
     });
     form.appendChild(btnAnteprima);
 
@@ -588,7 +607,7 @@
             ? programmaPalestra.sedute
             : null;
           var sessioni = generaSessioni(anno, mese, includiCorsa, includiPalestra,
-            settimanaCorrente, ultimaSeduta, giorniCorsa, giorniPalestra, programmaSedute, cadenza, sessioniCorsaAlLivello, dataPartenza, schedaPartenza);
+            settimanaCorrente, ultimaSeduta, giorniCorsa, giorniPalestra, programmaSedute, cadenza, sessioniCorsaAlLivello, dataPartenza, schedaPartenza, sequenzaSedute);
           return cancellaSettimaneDelMese(anno, mese, Storage)
             .then(function () {
               return salvaSessioniComePiano(sessioni, Storage);
@@ -614,7 +633,7 @@
   }
 
   function generaSessioni(anno, mese, includiCorsa, includiPalestra,
-    settimanaCorrente, ultimaSeduta, giorniCorsa, giorniPalestra, programmaSedute, cadenza, sessioniCorsaAlLivello, dataPartenza, schedaPartenza) {
+    settimanaCorrente, ultimaSeduta, giorniCorsa, giorniPalestra, programmaSedute, cadenza, sessioniCorsaAlLivello, dataPartenza, schedaPartenza, sequenzaSedute) {
     var sessioni = [];
 
     var CorsaGen = global.MaranelloPianoCorsaGenerator;
@@ -659,6 +678,12 @@
       prossimoCicloIdx = idxStart;
     }
 
+    // Sequenza schede manuale (impostazioni.sequenzaSedute): se presente,
+    // i giorni "P" consumano questa sequenza di numeri scheda ciclicamente,
+    // ignorando l'ordine incrementale e la scheda di partenza.
+    var usaSequenza = Array.isArray(sequenzaSedute) && sequenzaSedute.length > 0 && !!ciclo;
+    var posSeq = 0;
+
     // Data di partenza: usa dataPartenza se fornita, altrimenti oggi
     var oggiIso;
     if (dataPartenza && typeof dataPartenza === "string" && dataPartenza.length === 10) {
@@ -689,8 +714,25 @@
       var tipo = cadenzaEffettiva[posCiclo]; // "P", "C" o "R"
 
       if (tipo === "P" && includiPalestra && ciclo) {
-        // Genera sessione palestra
-        var seduta = ciclo[prossimoCicloIdx];
+        // Seleziona la seduta: dalla sequenza manuale (per numeroCiclo) se
+        // attiva, altrimenti dall'ordine incrementale automatico.
+        var seduta;
+        if (usaSequenza) {
+          var numScheda = sequenzaSedute[posSeq % sequenzaSedute.length];
+          posSeq++;
+          seduta = null;
+          for (var cj = 0; cj < ciclo.length; cj++) {
+            if (ciclo[cj] && ciclo[cj].numeroCiclo === numScheda) { seduta = ciclo[cj]; break; }
+          }
+          // Numero scheda inesistente nel programma: fallback all'indice clamp.
+          if (!seduta) {
+            seduta = ciclo[Math.max(0, Math.min(ciclo.length - 1, numScheda - 1))];
+          }
+        } else {
+          seduta = ciclo[prossimoCicloIdx];
+          prossimoCicloIdx = (prossimoCicloIdx + 1) % numSedute;
+        }
+
         var dataIso = anno + "-" + pad2(mese) + "-" + pad2(giorno);
 
         var eserciziSeduta = seduta.esercizi || [];
@@ -708,9 +750,6 @@
           repsRange: "6-12",
           stato: "Programmata",
         });
-
-        // Avanza al prossimo ciclo
-        prossimoCicloIdx = (prossimoCicloIdx + 1) % numSedute;
 
       } else if (tipo === "C" && includiCorsa) {
         // Il tipo di corsa (camminata / corsa / distanza in metri) è manuale.
@@ -792,11 +831,11 @@
   }
 
   function renderAnteprima(anteprimaEl, anno, mese, includiCorsa, includiPalestra,
-    settimanaCorrente, ultimaSeduta, giorniCorsa, giorniPalestra, programmaSedute, cadenza, sessioniCorsaAlLivello, dataPartenza, schedaPartenza) {
+    settimanaCorrente, ultimaSeduta, giorniCorsa, giorniPalestra, programmaSedute, cadenza, sessioniCorsaAlLivello, dataPartenza, schedaPartenza, sequenzaSedute) {
     anteprimaEl.innerHTML = "";
 
     var sessioni = generaSessioni(anno, mese, includiCorsa, includiPalestra,
-      settimanaCorrente, ultimaSeduta, giorniCorsa, giorniPalestra, programmaSedute, cadenza, sessioniCorsaAlLivello, dataPartenza, schedaPartenza);
+      settimanaCorrente, ultimaSeduta, giorniCorsa, giorniPalestra, programmaSedute, cadenza, sessioniCorsaAlLivello, dataPartenza, schedaPartenza, sequenzaSedute);
 
     if (sessioni.length === 0) {
       anteprimaEl.appendChild(el("p", { text: t("view.genera_piano.anteprima_vuota") }));
@@ -810,7 +849,11 @@
 
     var lista = el("ul", { class: "genera-piano-anteprima-lista" });
     sessioni.forEach(function (s) {
-      var testo = s.data + " — " + (s.nomeSessione || s.tipo);
+      var etichetta = s.nomeSessione || s.tipo;
+      if (s.tipo === "palestra" && s.numeroCiclo) {
+        etichetta = "Scheda " + s.numeroCiclo + (s.nomeSeduta ? " \u2014 " + s.nomeSeduta : "");
+      }
+      var testo = s.data + " \u2014 " + etichetta;
       if (s.durataStimataMin) testo += " (" + s.durataStimataMin + " min)";
       lista.appendChild(el("li", { text: testo }));
     });
