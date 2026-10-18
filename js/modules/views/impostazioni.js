@@ -677,9 +677,13 @@
       return;
     }
 
+    // Tutti gli store utente: include programma_palestra (schede + anagrafica
+    // esercizi + gruppi) e sessioni_nuoto, così il backup è completo per la
+    // migrazione su un altro dispositivo/PC.
     var stores = [
-      "impostazioni", "piano_settimane", "sessioni_corsa",
-      "sessioni_palestra", "peso", "allerte",
+      "impostazioni", "programma_palestra", "piano_settimane",
+      "sessioni_corsa", "sessioni_palestra", "sessioni_nuoto",
+      "peso", "allerte",
     ];
 
     var backup = { exportedAt: new Date().toISOString(), data: {} };
