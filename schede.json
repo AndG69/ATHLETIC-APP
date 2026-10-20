@@ -21,52 +21,68 @@
       "stato": "Programmata",
       "esercizi": [
         {
-          "nome": "Bil. Ang. presa larga",
-          "gruppo": "Bicipiti",
+          "nome": "Squat corpo libero",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 0,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Leg Extension",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 23,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Leg Curl sdraiato",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 23,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Leg press normale",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 20,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Squat bulgaro con bilancere",
+          "gruppo": "Glutei",
           "serie": 4,
           "ripetizioni": 12,
           "carico": 10,
           "tempoSecondi": null
         },
         {
-          "nome": "Bil. Ang. presa stretta",
-          "gruppo": "Bicipiti",
+          "nome": "Calf in piedi",
+          "gruppo": "Gambe",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 10,
+          "carico": 5,
           "tempoSecondi": null
         },
         {
-          "nome": "Bil. Ang. presa estrema",
-          "gruppo": "Bicipiti",
+          "nome": "Addominal Machine",
+          "gruppo": "Addominali",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 10,
+          "carico": 59,
           "tempoSecondi": null
         },
         {
-          "nome": "Manubrio alternato",
-          "gruppo": "Bicipiti",
+          "nome": "Plank",
+          "gruppo": "Addominali",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 10,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Panca Scott",
-          "gruppo": "Bicipiti",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 27,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Curl Cavo basso (ercolina)",
-          "gruppo": "Bicipiti",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 15.8,
-          "tempoSecondi": null
+          "carico": 0,
+          "tempoSecondi": 30
         }
       ]
     },
@@ -86,195 +102,10 @@
       "stato": "Programmata"
     },
     {
-      "data": "2026-10-03",
-      "tipo": "palestra",
-      "numeroCiclo": 5,
-      "nomeSeduta": "Dorsali",
-      "serie": 4,
-      "repsRange": "6-12",
-      "stato": "Programmata",
-      "esercizi": [
-        {
-          "nome": "Lat Machine triangolo",
-          "gruppo": "Dorsali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 32,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Lat Machine pull down",
-          "gruppo": "Dorsali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 18,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Incline lever row",
-          "gruppo": "Dorsali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 10,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Lat Machine presa inversa",
-          "gruppo": "Dorsali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 39,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Lat Machine presa larga",
-          "gruppo": "Dorsali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 39,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Lat machine presa stretta",
-          "gruppo": "Dorsali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 39,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Pulley row triangolo",
-          "gruppo": "Dorsali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 39,
-          "tempoSecondi": null
-        }
-      ]
-    },
-    {
-      "data": "2026-10-05",
-      "tipo": "palestra",
-      "numeroCiclo": 6,
-      "nomeSeduta": "Tricipiti",
-      "serie": 4,
-      "repsRange": "6-12",
-      "stato": "Programmata",
-      "esercizi": [
-        {
-          "nome": "Panca presa stretta bilancere",
-          "gruppo": "Tricipiti",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 10,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Push down inverso",
-          "gruppo": "Tricipiti",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 18,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Cable rope Push down",
-          "gruppo": "Tricipiti",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 11.3,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Push down Ercolina",
-          "gruppo": "Tricipiti",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 18,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "French press cavo alto",
-          "gruppo": "Tricipiti",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 13.5,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Cable rope Push down",
-          "gruppo": "Tricipiti",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 11.3,
-          "tempoSecondi": null
-        }
-      ]
-    },
-    {
-      "data": "2026-10-08",
-      "tipo": "palestra",
-      "numeroCiclo": 7,
-      "nomeSeduta": "Addominali",
-      "serie": 4,
-      "repsRange": "6-12",
-      "stato": "Programmata",
-      "esercizi": [
-        {
-          "nome": "Addominal Machine",
-          "gruppo": "Addominali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 43,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Plank",
-          "gruppo": "Addominali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 30,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Plank laterale",
-          "gruppo": "Addominali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 30,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Mountain Climber",
-          "gruppo": "Addominali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 0,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Woodchopper al cavo",
-          "gruppo": "Addominali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 15.8,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Iperestensioni",
-          "gruppo": "Lombari",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 0,
-          "tempoSecondi": null
-        }
-      ]
-    },
-    {
-      "data": "2026-10-10",
+      "data": "2026-10-20",
       "tipo": "palestra",
       "numeroCiclo": 1,
-      "nomeSeduta": "Pettorali",
+      "nomeSeduta": "Variante A",
       "serie": 4,
       "repsRange": "6-12",
       "stato": "Programmata",
@@ -296,90 +127,39 @@
           "tempoSecondi": null
         },
         {
-          "nome": "Panca Inclinata bilancere",
-          "gruppo": "Pettorali",
+          "nome": "Lat Machine presa larga",
+          "gruppo": "Dorsali",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 15,
+          "carico": 39,
           "tempoSecondi": null
         },
         {
-          "nome": "Pec Fly",
-          "gruppo": "Pettorali",
+          "nome": "Lat Machine triangolo",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 39,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Alzate laterali - Macchinario",
+          "gruppo": "Spalle",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 41,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Machine reverse fly",
+          "gruppo": "Spalle",
           "serie": 4,
           "ripetizioni": 12,
           "carico": 45,
           "tempoSecondi": null
         },
         {
-          "nome": "Chest Press",
-          "gruppo": "Pettorali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 29,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Supine press - presa larga",
-          "gruppo": "Pettorali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 35,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Spinte con manubri uniti",
-          "gruppo": "Pettorali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 10,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Supine press - presa stretta",
-          "gruppo": "Pettorali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 35,
-          "tempoSecondi": null
-        }
-      ]
-    },
-    {
-      "data": "2026-10-13",
-      "tipo": "palestra",
-      "numeroCiclo": 2,
-      "nomeSeduta": "Bicipiti",
-      "serie": 4,
-      "repsRange": "6-12",
-      "stato": "Programmata",
-      "esercizi": [
-        {
           "nome": "Bil. Ang. presa larga",
-          "gruppo": "Bicipiti",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 10,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Bil. Ang. presa stretta",
-          "gruppo": "Bicipiti",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 10,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Bil. Ang. presa estrema",
-          "gruppo": "Bicipiti",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 10,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Manubrio alternato",
           "gruppo": "Bicipiti",
           "serie": 4,
           "ripetizioni": 12,
@@ -395,20 +175,28 @@
           "tempoSecondi": null
         },
         {
-          "nome": "Curl Cavo basso (ercolina)",
-          "gruppo": "Bicipiti",
+          "nome": "Push down Ercolina",
+          "gruppo": "Tricipiti",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 15.8,
+          "carico": 20.5,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Cable rope Push down",
+          "gruppo": "Tricipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 13.5,
           "tempoSecondi": null
         }
       ]
     },
     {
-      "data": "2026-10-15",
+      "data": "2026-10-22",
       "tipo": "palestra",
-      "numeroCiclo": 3,
-      "nomeSeduta": "Gambe",
+      "numeroCiclo": 2,
+      "nomeSeduta": "Variante B",
       "serie": 4,
       "repsRange": "6-12",
       "stato": "Programmata",
@@ -422,11 +210,19 @@
           "tempoSecondi": null
         },
         {
-          "nome": "Leg press piedi stretti",
+          "nome": "Leg Extension",
           "gruppo": "Gambe",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 20,
+          "carico": 23,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Leg Curl sdraiato",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 23,
           "tempoSecondi": null
         },
         {
@@ -438,23 +234,141 @@
           "tempoSecondi": null
         },
         {
-          "nome": "Leg press piedi bassi",
-          "gruppo": "Gambe",
+          "nome": "Squat bulgaro con bilancere",
+          "gruppo": "Glutei",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 20,
+          "carico": 10,
           "tempoSecondi": null
         },
         {
-          "nome": "Leg Extension",
+          "nome": "Calf in piedi",
           "gruppo": "Gambe",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 23,
+          "carico": 5,
           "tempoSecondi": null
         },
         {
-          "nome": "Leg Curl",
+          "nome": "Addominal Machine",
+          "gruppo": "Addominali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 59,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Plank",
+          "gruppo": "Addominali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 0,
+          "tempoSecondi": 30
+        }
+      ]
+    },
+    {
+      "data": "2026-10-24",
+      "tipo": "palestra",
+      "numeroCiclo": 3,
+      "nomeSeduta": "Variante C",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Chest Press",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 29,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Panca Inclinata bilancere",
+          "gruppo": "Pettorali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 15,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Pulley row triangolo",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 39,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Rear Delt",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 39,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Shoulder press",
+          "gruppo": "Spalle",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 18,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Cable rope face pulls",
+          "gruppo": "Spalle",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 15.8,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Curl a Martello",
+          "gruppo": "Bicipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 8,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Curl Cavo basso (ercolina)",
+          "gruppo": "Bicipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 15.8,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "French press cavo alto",
+          "gruppo": "Tricipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 13.5,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Push down inverso",
+          "gruppo": "Tricipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 18,
+          "tempoSecondi": null
+        }
+      ]
+    },
+    {
+      "data": "2026-10-26",
+      "tipo": "palestra",
+      "numeroCiclo": 4,
+      "nomeSeduta": "Variante D",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Machine Abductor",
           "gruppo": "Gambe",
           "serie": 4,
           "ripetizioni": 12,
@@ -470,247 +384,27 @@
           "tempoSecondi": null
         },
         {
-          "nome": "Machine Abductor",
+          "nome": "Leg press piedi stretti",
           "gruppo": "Gambe",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 29,
-          "tempoSecondi": null
-        }
-      ]
-    },
-    {
-      "data": "2026-10-18",
-      "tipo": "palestra",
-      "numeroCiclo": 4,
-      "nomeSeduta": "Spalle",
-      "serie": 4,
-      "repsRange": "6-12",
-      "stato": "Programmata",
-      "esercizi": [
-        {
-          "nome": "Alzate posteriori pronospinate",
-          "gruppo": "Spalle",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 7,
+          "carico": 20,
           "tempoSecondi": null
         },
         {
-          "nome": "Deltoid Machine",
-          "gruppo": "Spalle",
+          "nome": "Leg Extension",
+          "gruppo": "Gambe",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 41,
+          "carico": 23,
           "tempoSecondi": null
         },
         {
-          "nome": "Shoulder press",
-          "gruppo": "Spalle",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 18,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Machine reverse fly",
-          "gruppo": "Spalle",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 45,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Panca inclinata",
-          "gruppo": "Spalle",
+          "nome": "Squat bulgaro con bilancere",
+          "gruppo": "Glutei",
           "serie": 4,
           "ripetizioni": 12,
           "carico": 10,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Cable rope face pulls",
-          "gruppo": "Spalle",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 15.8,
-          "tempoSecondi": null
-        }
-      ]
-    },
-    {
-      "data": "2026-10-20",
-      "tipo": "palestra",
-      "numeroCiclo": 5,
-      "nomeSeduta": "Dorsali",
-      "serie": 4,
-      "repsRange": "6-12",
-      "stato": "Programmata",
-      "esercizi": [
-        {
-          "nome": "Lat Machine triangolo",
-          "gruppo": "Dorsali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 32,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Lat Machine pull down",
-          "gruppo": "Dorsali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 18,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Incline lever row",
-          "gruppo": "Dorsali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 10,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Lat Machine presa inversa",
-          "gruppo": "Dorsali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 39,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Lat Machine presa larga",
-          "gruppo": "Dorsali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 39,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Lat machine presa stretta",
-          "gruppo": "Dorsali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 39,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Pulley row triangolo",
-          "gruppo": "Dorsali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 39,
-          "tempoSecondi": null
-        }
-      ]
-    },
-    {
-      "data": "2026-10-23",
-      "tipo": "palestra",
-      "numeroCiclo": 6,
-      "nomeSeduta": "Tricipiti",
-      "serie": 4,
-      "repsRange": "6-12",
-      "stato": "Programmata",
-      "esercizi": [
-        {
-          "nome": "Panca presa stretta bilancere",
-          "gruppo": "Tricipiti",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 10,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Push down inverso",
-          "gruppo": "Tricipiti",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 18,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Cable rope Push down",
-          "gruppo": "Tricipiti",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 11.3,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Push down Ercolina",
-          "gruppo": "Tricipiti",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 18,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "French press cavo alto",
-          "gruppo": "Tricipiti",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 13.5,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Cable rope Push down",
-          "gruppo": "Tricipiti",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 11.3,
-          "tempoSecondi": null
-        }
-      ]
-    },
-    {
-      "data": "2026-10-25",
-      "tipo": "palestra",
-      "numeroCiclo": 7,
-      "nomeSeduta": "Addominali",
-      "serie": 4,
-      "repsRange": "6-12",
-      "stato": "Programmata",
-      "esercizi": [
-        {
-          "nome": "Addominal Machine",
-          "gruppo": "Addominali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 43,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Plank",
-          "gruppo": "Addominali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 30,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Plank laterale",
-          "gruppo": "Addominali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 30,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Mountain Climber",
-          "gruppo": "Addominali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 0,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Woodchopper al cavo",
-          "gruppo": "Addominali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 15.8,
           "tempoSecondi": null
         },
         {
@@ -718,7 +412,31 @@
           "gruppo": "Lombari",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 0,
+          "carico": 5,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Calf in piedi",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 20,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Woodchopper al cavo",
+          "gruppo": "Addominali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 15,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Russian Twist",
+          "gruppo": "Addominali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 10,
           "tempoSecondi": null
         }
       ]
@@ -727,7 +445,7 @@
       "data": "2026-10-28",
       "tipo": "palestra",
       "numeroCiclo": 1,
-      "nomeSeduta": "Pettorali",
+      "nomeSeduta": "Variante A",
       "serie": 4,
       "repsRange": "6-12",
       "stato": "Programmata",
@@ -749,90 +467,39 @@
           "tempoSecondi": null
         },
         {
-          "nome": "Panca Inclinata bilancere",
-          "gruppo": "Pettorali",
+          "nome": "Lat Machine presa larga",
+          "gruppo": "Dorsali",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 15,
+          "carico": 39,
           "tempoSecondi": null
         },
         {
-          "nome": "Pec Fly",
-          "gruppo": "Pettorali",
+          "nome": "Lat Machine triangolo",
+          "gruppo": "Dorsali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 39,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Alzate laterali - Macchinario",
+          "gruppo": "Spalle",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 41,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Machine reverse fly",
+          "gruppo": "Spalle",
           "serie": 4,
           "ripetizioni": 12,
           "carico": 45,
           "tempoSecondi": null
         },
         {
-          "nome": "Chest Press",
-          "gruppo": "Pettorali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 29,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Supine press - presa larga",
-          "gruppo": "Pettorali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 35,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Spinte con manubri uniti",
-          "gruppo": "Pettorali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 10,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Supine press - presa stretta",
-          "gruppo": "Pettorali",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 35,
-          "tempoSecondi": null
-        }
-      ]
-    },
-    {
-      "data": "2026-10-30",
-      "tipo": "palestra",
-      "numeroCiclo": 2,
-      "nomeSeduta": "Bicipiti",
-      "serie": 4,
-      "repsRange": "6-12",
-      "stato": "Programmata",
-      "esercizi": [
-        {
           "nome": "Bil. Ang. presa larga",
-          "gruppo": "Bicipiti",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 10,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Bil. Ang. presa stretta",
-          "gruppo": "Bicipiti",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 10,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Bil. Ang. presa estrema",
-          "gruppo": "Bicipiti",
-          "serie": 4,
-          "ripetizioni": 12,
-          "carico": 10,
-          "tempoSecondi": null
-        },
-        {
-          "nome": "Manubrio alternato",
           "gruppo": "Bicipiti",
           "serie": 4,
           "ripetizioni": 12,
@@ -848,12 +515,95 @@
           "tempoSecondi": null
         },
         {
-          "nome": "Curl Cavo basso (ercolina)",
-          "gruppo": "Bicipiti",
+          "nome": "Push down Ercolina",
+          "gruppo": "Tricipiti",
           "serie": 4,
           "ripetizioni": 12,
-          "carico": 15.8,
+          "carico": 20.5,
           "tempoSecondi": null
+        },
+        {
+          "nome": "Cable rope Push down",
+          "gruppo": "Tricipiti",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 13.5,
+          "tempoSecondi": null
+        }
+      ]
+    },
+    {
+      "data": "2026-10-30",
+      "tipo": "palestra",
+      "numeroCiclo": 2,
+      "nomeSeduta": "Variante B",
+      "serie": 4,
+      "repsRange": "6-12",
+      "stato": "Programmata",
+      "esercizi": [
+        {
+          "nome": "Squat corpo libero",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 0,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Leg Extension",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 23,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Leg Curl sdraiato",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 23,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Leg press normale",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 20,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Squat bulgaro con bilancere",
+          "gruppo": "Glutei",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 10,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Calf in piedi",
+          "gruppo": "Gambe",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 5,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Addominal Machine",
+          "gruppo": "Addominali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 59,
+          "tempoSecondi": null
+        },
+        {
+          "nome": "Plank",
+          "gruppo": "Addominali",
+          "serie": 4,
+          "ripetizioni": 12,
+          "carico": 0,
+          "tempoSecondi": 30
         }
       ]
     }
@@ -863,7 +613,7 @@
     "sedute": [
       {
         "numeroCiclo": 1,
-        "nome": "Pettorali",
+        "nome": "Variante A",
         "esercizi": [
           {
             "nome": "Panca Piana bilancere",
@@ -882,85 +632,39 @@
             "tempoSecondi": null
           },
           {
-            "nome": "Panca Inclinata bilancere",
-            "gruppo": "Pettorali",
+            "nome": "Lat Machine presa larga",
+            "gruppo": "Dorsali",
             "serie": 4,
             "ripetizioni": 12,
-            "carico": 15,
+            "carico": 39,
             "tempoSecondi": null
           },
           {
-            "nome": "Pec Fly",
-            "gruppo": "Pettorali",
+            "nome": "Lat Machine triangolo",
+            "gruppo": "Dorsali",
+            "serie": 4,
+            "ripetizioni": 12,
+            "carico": 39,
+            "tempoSecondi": null
+          },
+          {
+            "nome": "Alzate laterali - Macchinario",
+            "gruppo": "Spalle",
+            "serie": 4,
+            "ripetizioni": 12,
+            "carico": 41,
+            "tempoSecondi": null
+          },
+          {
+            "nome": "Machine reverse fly",
+            "gruppo": "Spalle",
             "serie": 4,
             "ripetizioni": 12,
             "carico": 45,
             "tempoSecondi": null
           },
           {
-            "nome": "Chest Press",
-            "gruppo": "Pettorali",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 29,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Supine press - presa larga",
-            "gruppo": "Pettorali",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 35,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Spinte con manubri uniti",
-            "gruppo": "Pettorali",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 10,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Supine press - presa stretta",
-            "gruppo": "Pettorali",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 35,
-            "tempoSecondi": null
-          }
-        ]
-      },
-      {
-        "numeroCiclo": 2,
-        "nome": "Bicipiti",
-        "esercizi": [
-          {
             "nome": "Bil. Ang. presa larga",
-            "gruppo": "Bicipiti",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 10,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Bil. Ang. presa stretta",
-            "gruppo": "Bicipiti",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 10,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Bil. Ang. presa estrema",
-            "gruppo": "Bicipiti",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 10,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Manubrio alternato",
             "gruppo": "Bicipiti",
             "serie": 4,
             "ripetizioni": 12,
@@ -976,18 +680,26 @@
             "tempoSecondi": null
           },
           {
-            "nome": "Curl Cavo basso (ercolina)",
-            "gruppo": "Bicipiti",
+            "nome": "Push down Ercolina",
+            "gruppo": "Tricipiti",
             "serie": 4,
             "ripetizioni": 12,
-            "carico": 15.8,
+            "carico": 20.5,
+            "tempoSecondi": null
+          },
+          {
+            "nome": "Cable rope Push down",
+            "gruppo": "Tricipiti",
+            "serie": 4,
+            "ripetizioni": 12,
+            "carico": 13.5,
             "tempoSecondi": null
           }
         ]
       },
       {
-        "numeroCiclo": 3,
-        "nome": "Gambe",
+        "numeroCiclo": 2,
+        "nome": "Variante B",
         "esercizi": [
           {
             "nome": "Squat corpo libero",
@@ -995,30 +707,6 @@
             "serie": 4,
             "ripetizioni": 12,
             "carico": 0,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Leg press piedi stretti",
-            "gruppo": "Gambe",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 20,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Leg press normale",
-            "gruppo": "Gambe",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 20,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Leg press piedi bassi",
-            "gruppo": "Gambe",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 20,
             "tempoSecondi": null
           },
           {
@@ -1030,7 +718,147 @@
             "tempoSecondi": null
           },
           {
-            "nome": "Leg Curl",
+            "nome": "Leg Curl sdraiato",
+            "gruppo": "Gambe",
+            "serie": 4,
+            "ripetizioni": 12,
+            "carico": 23,
+            "tempoSecondi": null
+          },
+          {
+            "nome": "Leg press normale",
+            "gruppo": "Gambe",
+            "serie": 4,
+            "ripetizioni": 12,
+            "carico": 20,
+            "tempoSecondi": null
+          },
+          {
+            "nome": "Squat bulgaro con bilancere",
+            "gruppo": "Glutei",
+            "serie": 4,
+            "ripetizioni": 12,
+            "carico": 10,
+            "tempoSecondi": null
+          },
+          {
+            "nome": "Calf in piedi",
+            "gruppo": "Gambe",
+            "serie": 4,
+            "ripetizioni": 12,
+            "carico": 5,
+            "tempoSecondi": null
+          },
+          {
+            "nome": "Addominal Machine",
+            "gruppo": "Addominali",
+            "serie": 4,
+            "ripetizioni": 12,
+            "carico": 59,
+            "tempoSecondi": null
+          },
+          {
+            "nome": "Plank",
+            "gruppo": "Addominali",
+            "serie": 4,
+            "ripetizioni": 12,
+            "carico": 0,
+            "tempoSecondi": 30
+          }
+        ]
+      },
+      {
+        "numeroCiclo": 3,
+        "nome": "Variante C",
+        "esercizi": [
+          {
+            "nome": "Chest Press",
+            "gruppo": "Pettorali",
+            "serie": 4,
+            "ripetizioni": 12,
+            "carico": 29,
+            "tempoSecondi": null
+          },
+          {
+            "nome": "Panca Inclinata bilancere",
+            "gruppo": "Pettorali",
+            "serie": 4,
+            "ripetizioni": 12,
+            "carico": 15,
+            "tempoSecondi": null
+          },
+          {
+            "nome": "Pulley row triangolo",
+            "gruppo": "Dorsali",
+            "serie": 4,
+            "ripetizioni": 12,
+            "carico": 39,
+            "tempoSecondi": null
+          },
+          {
+            "nome": "Rear Delt",
+            "gruppo": "Dorsali",
+            "serie": 4,
+            "ripetizioni": 12,
+            "carico": 39,
+            "tempoSecondi": null
+          },
+          {
+            "nome": "Shoulder press",
+            "gruppo": "Spalle",
+            "serie": 4,
+            "ripetizioni": 12,
+            "carico": 18,
+            "tempoSecondi": null
+          },
+          {
+            "nome": "Cable rope face pulls",
+            "gruppo": "Spalle",
+            "serie": 4,
+            "ripetizioni": 12,
+            "carico": 15.8,
+            "tempoSecondi": null
+          },
+          {
+            "nome": "Curl a Martello",
+            "gruppo": "Bicipiti",
+            "serie": 4,
+            "ripetizioni": 12,
+            "carico": 8,
+            "tempoSecondi": null
+          },
+          {
+            "nome": "Curl Cavo basso (ercolina)",
+            "gruppo": "Bicipiti",
+            "serie": 4,
+            "ripetizioni": 12,
+            "carico": 15.8,
+            "tempoSecondi": null
+          },
+          {
+            "nome": "French press cavo alto",
+            "gruppo": "Tricipiti",
+            "serie": 4,
+            "ripetizioni": 12,
+            "carico": 13.5,
+            "tempoSecondi": null
+          },
+          {
+            "nome": "Push down inverso",
+            "gruppo": "Tricipiti",
+            "serie": 4,
+            "ripetizioni": 12,
+            "carico": 18,
+            "tempoSecondi": null
+          }
+        ]
+      },
+      {
+        "numeroCiclo": 4,
+        "nome": "Variante D",
+        "esercizi": [
+          {
+            "nome": "Machine Abductor",
             "gruppo": "Gambe",
             "serie": 4,
             "ripetizioni": 12,
@@ -1046,227 +874,27 @@
             "tempoSecondi": null
           },
           {
-            "nome": "Machine Abductor",
+            "nome": "Leg press piedi stretti",
             "gruppo": "Gambe",
             "serie": 4,
             "ripetizioni": 12,
-            "carico": 29,
-            "tempoSecondi": null
-          }
-        ]
-      },
-      {
-        "numeroCiclo": 4,
-        "nome": "Spalle",
-        "esercizi": [
-          {
-            "nome": "Alzate posteriori pronospinate",
-            "gruppo": "Spalle",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 7,
+            "carico": 20,
             "tempoSecondi": null
           },
           {
-            "nome": "Deltoid Machine",
-            "gruppo": "Spalle",
+            "nome": "Leg Extension",
+            "gruppo": "Gambe",
             "serie": 4,
             "ripetizioni": 12,
-            "carico": 41,
+            "carico": 23,
             "tempoSecondi": null
           },
           {
-            "nome": "Shoulder press",
-            "gruppo": "Spalle",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 18,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Machine reverse fly",
-            "gruppo": "Spalle",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 45,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Panca inclinata",
-            "gruppo": "Spalle",
+            "nome": "Squat bulgaro con bilancere",
+            "gruppo": "Glutei",
             "serie": 4,
             "ripetizioni": 12,
             "carico": 10,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Cable rope face pulls",
-            "gruppo": "Spalle",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 15.8,
-            "tempoSecondi": null
-          }
-        ]
-      },
-      {
-        "numeroCiclo": 5,
-        "nome": "Dorsali",
-        "esercizi": [
-          {
-            "nome": "Lat Machine triangolo",
-            "gruppo": "Dorsali",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 32,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Lat Machine pull down",
-            "gruppo": "Dorsali",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 18,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Incline lever row",
-            "gruppo": "Dorsali",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 10,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Lat Machine presa inversa",
-            "gruppo": "Dorsali",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 39,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Lat Machine presa larga",
-            "gruppo": "Dorsali",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 39,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Lat machine presa stretta",
-            "gruppo": "Dorsali",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 39,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Pulley row triangolo",
-            "gruppo": "Dorsali",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 39,
-            "tempoSecondi": null
-          }
-        ]
-      },
-      {
-        "numeroCiclo": 6,
-        "nome": "Tricipiti",
-        "esercizi": [
-          {
-            "nome": "Panca presa stretta bilancere",
-            "gruppo": "Tricipiti",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 10,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Push down inverso",
-            "gruppo": "Tricipiti",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 18,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Cable rope Push down",
-            "gruppo": "Tricipiti",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 11.3,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Push down Ercolina",
-            "gruppo": "Tricipiti",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 18,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "French press cavo alto",
-            "gruppo": "Tricipiti",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 13.5,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Cable rope Push down",
-            "gruppo": "Tricipiti",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 11.3,
-            "tempoSecondi": null
-          }
-        ]
-      },
-      {
-        "numeroCiclo": 7,
-        "nome": "Addominali",
-        "esercizi": [
-          {
-            "nome": "Addominal Machine",
-            "gruppo": "Addominali",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 43,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Plank",
-            "gruppo": "Addominali",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 30,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Plank laterale",
-            "gruppo": "Addominali",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 30,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Mountain Climber",
-            "gruppo": "Addominali",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 0,
-            "tempoSecondi": null
-          },
-          {
-            "nome": "Woodchopper al cavo",
-            "gruppo": "Addominali",
-            "serie": 4,
-            "ripetizioni": 12,
-            "carico": 15.8,
             "tempoSecondi": null
           },
           {
@@ -1274,7 +902,31 @@
             "gruppo": "Lombari",
             "serie": 4,
             "ripetizioni": 12,
-            "carico": 0,
+            "carico": 5,
+            "tempoSecondi": null
+          },
+          {
+            "nome": "Calf in piedi",
+            "gruppo": "Gambe",
+            "serie": 4,
+            "ripetizioni": 12,
+            "carico": 20,
+            "tempoSecondi": null
+          },
+          {
+            "nome": "Woodchopper al cavo",
+            "gruppo": "Addominali",
+            "serie": 4,
+            "ripetizioni": 12,
+            "carico": 15,
+            "tempoSecondi": null
+          },
+          {
+            "nome": "Russian Twist",
+            "gruppo": "Addominali",
+            "serie": 4,
+            "ripetizioni": 12,
+            "carico": 10,
             "tempoSecondi": null
           }
         ]
@@ -1298,7 +950,369 @@
       "Deltoidi anteriori",
       "Addominali laterali",
       "Deltoidi laterali"
+    ],
+    "esercizi": [
+      {
+        "nome": "Addominal Machine",
+        "gruppo": "Addominali",
+        "tempo": false
+      },
+      {
+        "nome": "Plank",
+        "gruppo": "Addominali",
+        "tempo": true
+      },
+      {
+        "nome": "Plank laterale",
+        "gruppo": "Addominali",
+        "tempo": true
+      },
+      {
+        "nome": "Crunch",
+        "gruppo": "Addominali",
+        "tempo": false
+      },
+      {
+        "nome": "Alzate Gambe",
+        "gruppo": "Addominali",
+        "tempo": false
+      },
+      {
+        "nome": "Curl Manubri",
+        "gruppo": "Bicipiti",
+        "tempo": false
+      },
+      {
+        "nome": "Curl a Martello",
+        "gruppo": "Bicipiti",
+        "tempo": false
+      },
+      {
+        "nome": "Panca Scott",
+        "gruppo": "Bicipiti",
+        "tempo": false
+      },
+      {
+        "nome": "Curl Cavo basso (ercolina)",
+        "gruppo": "Bicipiti",
+        "tempo": false
+      },
+      {
+        "nome": "Curl concentrato al cavo",
+        "gruppo": "Bicipiti",
+        "tempo": false
+      },
+      {
+        "nome": "French press cavo alto",
+        "gruppo": "Tricipiti",
+        "tempo": false
+      },
+      {
+        "nome": "Panca presa stretta bilancere",
+        "gruppo": "Tricipiti",
+        "tempo": false
+      },
+      {
+        "nome": "Push down Ercolina",
+        "gruppo": "Tricipiti",
+        "tempo": false
+      },
+      {
+        "nome": "Push down inverso",
+        "gruppo": "Tricipiti",
+        "tempo": false
+      },
+      {
+        "nome": "Seated row 2",
+        "gruppo": "Tricipiti",
+        "tempo": false
+      },
+      {
+        "nome": "Lat Machine presa larga",
+        "gruppo": "Dorsali",
+        "tempo": false
+      },
+      {
+        "nome": "Lat Machine triangolo",
+        "gruppo": "Dorsali",
+        "tempo": false
+      },
+      {
+        "nome": "Lat Machine presa inversa",
+        "gruppo": "Dorsali",
+        "tempo": false
+      },
+      {
+        "nome": "Pull down lat machine",
+        "gruppo": "Dorsali",
+        "tempo": false
+      },
+      {
+        "nome": "Pulley triangolo",
+        "gruppo": "Dorsali",
+        "tempo": false
+      },
+      {
+        "nome": "Seated Row",
+        "gruppo": "Dorsali",
+        "tempo": false
+      },
+      {
+        "nome": "Incline Level Row",
+        "gruppo": "Dorsali",
+        "tempo": false
+      },
+      {
+        "nome": "Trazioni assistite",
+        "gruppo": "Dorsali",
+        "tempo": false
+      },
+      {
+        "nome": "Rear Delt",
+        "gruppo": "Dorsali",
+        "tempo": false
+      },
+      {
+        "nome": "Chest Press",
+        "gruppo": "Pettorali",
+        "tempo": false
+      },
+      {
+        "nome": "Panca Inclinata bilancere",
+        "gruppo": "Pettorali",
+        "tempo": false
+      },
+      {
+        "nome": "Panca Piana bilancere",
+        "gruppo": "Pettorali",
+        "tempo": false
+      },
+      {
+        "nome": "Croci Manubri panca piana",
+        "gruppo": "Pettorali",
+        "tempo": false
+      },
+      {
+        "nome": "Incline press",
+        "gruppo": "Pettorali",
+        "tempo": false
+      },
+      {
+        "nome": "Pec Fly",
+        "gruppo": "Pettorali",
+        "tempo": false
+      },
+      {
+        "nome": "Supine press - presa stretta",
+        "gruppo": "Pettorali",
+        "tempo": false
+      },
+      {
+        "nome": "Supine press - presa larga",
+        "gruppo": "Pettorali",
+        "tempo": false
+      },
+      {
+        "nome": "Pull Over con manubrio",
+        "gruppo": "Pettorali",
+        "tempo": false
+      },
+      {
+        "nome": "Trazioni assistite - Dip",
+        "gruppo": "Pettorali",
+        "tempo": false
+      },
+      {
+        "nome": "Shoulder press",
+        "gruppo": "Spalle",
+        "tempo": false
+      },
+      {
+        "nome": "Shoulder Press 2",
+        "gruppo": "Spalle",
+        "tempo": false
+      },
+      {
+        "nome": "Alzate laterali - Macchinario",
+        "gruppo": "Spalle",
+        "tempo": false
+      },
+      {
+        "nome": "Alzate posteriori pronospinate",
+        "gruppo": "Spalle",
+        "tempo": false
+      },
+      {
+        "nome": "Decline Press 2",
+        "gruppo": "Spalle",
+        "tempo": false
+      },
+      {
+        "nome": "Leg Press",
+        "gruppo": "Gambe",
+        "tempo": false
+      },
+      {
+        "nome": "Leg Extension",
+        "gruppo": "Gambe",
+        "tempo": false
+      },
+      {
+        "nome": "Leg Curl sdraiato",
+        "gruppo": "Gambe",
+        "tempo": false
+      },
+      {
+        "nome": "Squat corpo libero",
+        "gruppo": "Gambe",
+        "tempo": false
+      },
+      {
+        "nome": "Machine Abductor",
+        "gruppo": "Gambe",
+        "tempo": false
+      },
+      {
+        "nome": "Machine Adductor",
+        "gruppo": "Gambe",
+        "tempo": false
+      },
+      {
+        "nome": "Calf in piedi",
+        "gruppo": "Gambe",
+        "tempo": false
+      },
+      {
+        "nome": "Gluteus Machine",
+        "gruppo": "Glutei",
+        "tempo": false
+      },
+      {
+        "nome": "Iperestensioni",
+        "gruppo": "Lombari",
+        "tempo": false
+      },
+      {
+        "nome": "Spinte con manubri uniti",
+        "gruppo": "Pettorali",
+        "tempo": false
+      },
+      {
+        "nome": "Bil. Ang. presa larga",
+        "gruppo": "Bicipiti",
+        "tempo": false
+      },
+      {
+        "nome": "Bil. Ang. presa stretta",
+        "gruppo": "Bicipiti",
+        "tempo": false
+      },
+      {
+        "nome": "Bil. Ang. presa estrema",
+        "gruppo": "Bicipiti",
+        "tempo": false
+      },
+      {
+        "nome": "Manubrio alternato",
+        "gruppo": "Bicipiti",
+        "tempo": false
+      },
+      {
+        "nome": "Leg press piedi stretti",
+        "gruppo": "Gambe",
+        "tempo": false
+      },
+      {
+        "nome": "Leg press normale",
+        "gruppo": "Gambe",
+        "tempo": false
+      },
+      {
+        "nome": "Leg press piedi bassi",
+        "gruppo": "Gambe",
+        "tempo": false
+      },
+      {
+        "nome": "Leg Curl",
+        "gruppo": "Gambe",
+        "tempo": false
+      },
+      {
+        "nome": "Deltoid Machine",
+        "gruppo": "Spalle",
+        "tempo": false
+      },
+      {
+        "nome": "Machine reverse fly",
+        "gruppo": "Spalle",
+        "tempo": false
+      },
+      {
+        "nome": "Panca inclinata",
+        "gruppo": "Spalle",
+        "tempo": false
+      },
+      {
+        "nome": "Cable rope face pulls",
+        "gruppo": "Spalle",
+        "tempo": false
+      },
+      {
+        "nome": "Lat Machine pull down",
+        "gruppo": "Dorsali",
+        "tempo": false
+      },
+      {
+        "nome": "Incline lever row",
+        "gruppo": "Dorsali",
+        "tempo": false
+      },
+      {
+        "nome": "Lat machine presa stretta",
+        "gruppo": "Dorsali",
+        "tempo": false
+      },
+      {
+        "nome": "Pulley row triangolo",
+        "gruppo": "Dorsali",
+        "tempo": false
+      },
+      {
+        "nome": "Cable rope Push down",
+        "gruppo": "Tricipiti",
+        "tempo": false
+      },
+      {
+        "nome": "Tricipiti al cavo alto",
+        "gruppo": "Tricipiti",
+        "tempo": false
+      },
+      {
+        "nome": "Mountain Climber",
+        "gruppo": "Addominali",
+        "tempo": false
+      },
+      {
+        "nome": "Woodchopper al cavo",
+        "gruppo": "Addominali",
+        "tempo": false
+      },
+      {
+        "nome": "Rematore multipower",
+        "gruppo": "Dorsali",
+        "tempo": false
+      },
+      {
+        "nome": "Squat bulgaro con bilancere",
+        "gruppo": "Glutei",
+        "tempo": false
+      },
+      {
+        "nome": "Russian Twist",
+        "gruppo": "Addominali",
+        "tempo": false
+      }
     ]
   },
-  "dataExport": "2026-10-03T10:41:05.333Z"
+  "dataExport": "2026-10-20T15:34:50.685Z"
 }
