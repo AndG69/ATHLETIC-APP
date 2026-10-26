@@ -133,15 +133,29 @@
       })
         .then(function (resp) { return resp.json(); })
         .then(function (data) {
-          if (data.ok) {
-            alert("Esportate " + data.count + " schede. Push su GitHub in corso...");
-          } else {
+          if (!data.ok) {
             alert("Errore: " + (data.error || "sconosciuto"));
+            return;
           }
+          if (data.git === false) {
+            // File salvato sul PC ma il push su GitHub NON è riuscito:
+            // il mobile continuerebbe a scaricare le schede vecchie.
+            alert(
+              "Esportate " + data.count + " schede sul PC, ma l'invio a GitHub e' FALLITO.\n\n" +
+              "Il telefono vedra' ancora le schede vecchie finche' il push non riesce.\n\n" +
+              "Dettaglio: " + (data.gitError || "errore git sconosciuto")
+            );
+            return;
+          }
+          // git === true (push riuscito) oppure undefined (server vecchio)
+          var msg = data.git === true
+            ? "Esportate " + data.count + " schede e inviate a GitHub.\n\nAttendi ~1 minuto, poi sincronizza dal telefono."
+            : "Esportate " + data.count + " schede. Push su GitHub in corso...";
+          alert(msg);
         })
         .catch(function (err) {
           console.error("[sync-mobile] errore export:", err);
-          alert("Errore di connessione al server locale.");
+          alert("Errore di connessione al server locale.\n\nControlla che il server sia avviato (start.bat) e di aver aperto l'app da http://localhost:3001");
         });
     });
   }
