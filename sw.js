@@ -3,7 +3,7 @@
  * Strategia: Cache-first per asset statici, network-first per dati.
  */
 
-var CACHE_NAME = "maranello-v11";
+var CACHE_NAME = "maranello-v13";
 var ASSETS = [
   "./index.html",
   "./css/tokens.css",
@@ -64,10 +64,45 @@ self.addEventListener("activate", function (event) {
   self.clients.claim();
 });
 
+// Vendor pesanti: cache-first (non cambiano quasi mai, evita download inutili).
+var CACHE_FIRST = /\/assets\/vendor\//;
+
 self.addEventListener("fetch", function (event) {
+  var req = event.request;
+
+  // Solo GET: le POST (es. /api/schede) passano direttamente alla rete.
+  if (req.method !== "GET") return;
+
+  var url = new URL(req.url);
+
+  // Asset vendor pesanti → cache-first.
+  if (CACHE_FIRST.test(url.pathname)) {
+    event.respondWith(
+      caches.match(req).then(function (cached) {
+        return cached || fetch(req);
+      })
+    );
+    return;
+  }
+
+  // HTML / JS / CSS / manifest → network-first: così gli aggiornamenti del
+  // codice (es. il campo "Sequenza schede") vengono presi subito quando sei
+  // online. Offline: fallback alla copia in cache.
   event.respondWith(
-    caches.match(event.request).then(function (cached) {
-      return cached || fetch(event.request);
-    })
+    fetch(req)
+      .then(function (resp) {
+        if (resp && resp.ok) {
+          var copy = resp.clone();
+          caches.open(CACHE_NAME).then(function (cache) {
+            cache.put(req, copy);
+          });
+        }
+        return resp;
+      })
+      .catch(function () {
+        return caches.match(req).then(function (cached) {
+          return cached || caches.match("./index.html");
+        });
+      })
   );
 });

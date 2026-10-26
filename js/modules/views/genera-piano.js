@@ -464,10 +464,12 @@
       selectSchedaPartenza,
     ];
     if (sequenzaSedute.length > 0) {
-      selectSchedaPartenza.setAttribute("disabled", "disabled");
+      // La sequenza delle Impostazioni resta attiva, ma la scheda di partenza
+      // non è più ignorata: indica da quale punto della sequenza iniziare.
       schedaPartenzaChildren.push(el("p", {
         class: "genera-piano-hint",
-        text: "Ignorata: \u00E8 attiva la sequenza schede delle Impostazioni (" + sequenzaSedute.join("-") + ").",
+        text: "\u00C8 attiva la sequenza schede delle Impostazioni (" + sequenzaSedute.join("-") +
+          "). La scheda scelta qui indica da quale punto della sequenza iniziare.",
       }));
     }
     form.appendChild(el("div", { class: "genera-piano-field" }, schedaPartenzaChildren));
@@ -683,6 +685,16 @@
     // ignorando l'ordine incrementale e la scheda di partenza.
     var usaSequenza = Array.isArray(sequenzaSedute) && sequenzaSedute.length > 0 && !!ciclo;
     var posSeq = 0;
+
+    // Se è attiva la sequenza E l'utente ha scelto una scheda di partenza,
+    // la sequenza inizia dalla prima posizione che contiene quel numero scheda
+    // (invece di partire sempre dall'inizio). Se il numero non è nella
+    // sequenza, si parte da 0.
+    if (usaSequenza && schedaPartenza != null) {
+      for (var sp = 0; sp < sequenzaSedute.length; sp++) {
+        if (sequenzaSedute[sp] === schedaPartenza) { posSeq = sp; break; }
+      }
+    }
 
     // Data di partenza: usa dataPartenza se fornita, altrimenti oggi
     var oggiIso;
